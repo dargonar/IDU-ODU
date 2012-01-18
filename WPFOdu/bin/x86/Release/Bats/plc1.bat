@@ -1,0 +1,1 @@
+"%PROGRAMFILES%\VIA\Ivision Server 2003\Config\sqlite.exe" "%PROGRAMFILES%\VIA\Ivision Server 2003\Config\dbmain" "update tags set state = 'a' where tagname not like '%%_2' and tagname not like 'Empty%%'; update tags set state = 'f' where tagname like '%%_2' or tagname like 'Empty%%';"

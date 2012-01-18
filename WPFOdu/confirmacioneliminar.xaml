@@ -1,0 +1,98 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2006" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" 
+        x:Class="dcf001.confirmacioneliminar" 
+        x:Name="Window" 
+        Title="confirmacioneliminar" 
+        AllowsTransparency="False" 
+        WindowStyle="None" 
+        Width="919" Height="446.667" 
+        Foreground="{x:Null}" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" 
+        Icon="/Odu;component/odu.ico"
+        ShowInTaskbar="True"
+        Topmost="True"
+        >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,0.982" StartPoint="0.5,0.018">
+            <GradientStop Color="#FF0A0A0A" Offset="0" />
+            <GradientStop Color="#FF191919" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+  <Grid x:Name="LayoutRoot" Width="919" Height="446.667" >
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" x:Name="rctPopUpBack" d:IsLocked="True" Margin="12.5,13.333,12.5,13.333">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+          <GradientStop Color="#FF000000" Offset="0.197" />
+          <GradientStop Color="#FF404040" Offset="1" />
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+      <Rectangle.BitmapEffect>
+        <OuterGlowBitmapEffect GlowColor="#FF000000" GlowSize="8" />
+      </Rectangle.BitmapEffect>
+    </Rectangle>
+    <Label Width="Auto" Height="Auto" Content="Eliminar" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleEliminar" HorizontalAlignment="Left" Margin="50,37.333,0,0" VerticalAlignment="Top" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathEliminar" Margin="34.664,85.984,132.836,0" VerticalAlignment="Top">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnClose" Width="75" Height="80" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" Margin="0,45.649,43.21,0" VerticalAlignment="Top" Click="btnClose_Click">
+      <Grid RenderTransformOrigin="0.5,0.5" Width="40.313" Height="7">
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1" />
+            <SkewTransform AngleX="0" AngleY="0" />
+            <RotateTransform Angle="45" />
+            <TranslateTransform X="0" Y="0" />
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" />
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" RenderTransformOrigin="0.5,0.5">
+          <Rectangle.RenderTransform>
+            <TransformGroup>
+              <ScaleTransform ScaleX="1" ScaleY="1" />
+              <SkewTransform AngleX="0" AngleY="0" />
+              <RotateTransform Angle="90" />
+              <TranslateTransform X="0" Y="0" />
+            </TransformGroup>
+          </Rectangle.RenderTransform>
+        </Rectangle>
+      </Grid>
+    </Button>
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Data="M202,141 L836,141" x:Name="path2" TextElement.FontSize="12" TextElement.Foreground="#FFFFFFFF" Height="1.359" Margin="34.664,0,35.336,163.324" VerticalAlignment="Bottom">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnSi" Width="187.5" Height="93.333" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="79.491,0,0,43.844" VerticalAlignment="Bottom" Click="btnSi_Click">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Si" />
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnNo" Width="187.5" Height="93.333" d:LayoutOverrides="Height" Margin="286.991,0,300.509,43.844" VerticalAlignment="Bottom" Click="btnNo_Click">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="No" />
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnCancelar" Width="187.5" Height="93.333" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,0,81.759,43.844" VerticalAlignment="Bottom" Click="btnCancelar_Click">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Cancelar" />
+      </Grid>
+    </Button>
+    <Label Width="Auto" Height="Auto" Content="¿Está seguro que desea eliminar el modelo?" FontFamily="Myriad Pro" FontSize="20" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblTexto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" d:LayoutOverrides="Width" Margin="155.125,161.333,155.125,0" VerticalAlignment="Top" />
+  </Grid>
+</Window>

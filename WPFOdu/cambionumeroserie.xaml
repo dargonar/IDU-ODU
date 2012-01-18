@@ -1,0 +1,104 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2006" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="dcf001.cambionumeroserie" x:Name="Window" 
+	Title="Cambiar Número de Serie" 
+	WindowStyle="None" 
+	Width="775" Height="666.667" 
+	ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
+	Foreground="{x:Null}" Icon="/Odu;component/odu.ico"  ShowInTaskbar="True" AllowsTransparency="False">
+	<Window.Background>
+		<LinearGradientBrush EndPoint="0.5,0.982" StartPoint="0.5,0.018">
+			<GradientStop Color="#FF0A0A0A" Offset="0" />
+			<GradientStop Color="#FF191919" Offset="1" />
+		</LinearGradientBrush>
+	</Window.Background>
+  <Grid x:Name="LayoutRoot" Width="775" Height="666.667" >
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" x:Name="rctPopUpBack" d:IsLocked="True" Margin="12.5,13.333,12.5,13.333">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+          <GradientStop Color="#FF000000" Offset="0.197" />
+          <GradientStop Color="#FF404040" Offset="1" />
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+      <Rectangle.BitmapEffect>
+        <OuterGlowBitmapEffect GlowColor="#FF000000" GlowSize="8" />
+      </Rectangle.BitmapEffect>
+    </Rectangle>
+    <Label Width="Auto" Height="Auto" Content="Cambio del número de serie" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleCambio" d:LayoutOverrides="Width" Margin="50,37.333,367.2,0" VerticalAlignment="Top" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathCambio" Margin="34.664,85.984,132.836,0" VerticalAlignment="Top">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnClose" Width="75" Height="80" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" Margin="0,45.649,43.21,0" VerticalAlignment="Top" Click="btnClose_Click">
+      <Grid RenderTransformOrigin="0.5,0.5" Width="40.313" Height="7">
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1" />
+            <SkewTransform AngleX="0" AngleY="0" />
+            <RotateTransform Angle="45" />
+            <TranslateTransform X="0" Y="0" />
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" />
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" RenderTransformOrigin="0.5,0.5">
+          <Rectangle.RenderTransform>
+            <TransformGroup>
+              <ScaleTransform ScaleX="1" ScaleY="1" />
+              <SkewTransform AngleX="0" AngleY="0" />
+              <RotateTransform Angle="90" />
+              <TranslateTransform X="0" Y="0" />
+            </TransformGroup>
+          </Rectangle.RenderTransform>
+        </Rectangle>
+      </Grid>
+    </Button>
+    <Label Width="Auto" Height="Auto" Content="Prefijo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPrefijo" IsEnabled="True" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="118.541,155.231,0,0" VerticalAlignment="Top" />
+    <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPrefijo" IsEnabled="True" Height="44" Width="287.5" Margin="184.869,151.917,302.631,0" VerticalAlignment="Top" />
+    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnCalcularPrefijo" Height="66.667" HorizontalAlignment="Right" Margin="0,140.584,109.259,0" VerticalAlignment="Top" Width="175">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Calcular Prefijo" />
+      </Grid>
+    </Button>
+    <Label Width="Auto" Height="Auto" Content="Número" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblNumero" IsEnabled="True" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="104.275,240.564,0,0" VerticalAlignment="Top" />
+    <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtNumero" IsEnabled="True" Height="44" Width="287.5" Margin="184.869,237.251,302.631,0" VerticalAlignment="Top" />
+    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnCalcularNumero" Height="66.667" Width="175" HorizontalAlignment="Right" Margin="0,225.917,109.259,0" VerticalAlignment="Top">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Calcular Número" />
+      </Grid>
+    </Button>
+    <Label Width="Auto" Height="Auto" Content="Sufijo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblSufijo" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="123.975,325.897,0,303.396" />
+    <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtSufijo" IsEnabled="True" Width="287.5" Margin="184.869,322.584,302.631,300.083" />
+    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnCalcularSufijo" Width="175" HorizontalAlignment="Right" Margin="0,311.251,109.259,288.749">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Calcular Sufijo" />
+      </Grid>
+    </Button>
+    <Label Width="Auto" Height="Auto" Content="Nro. Serie" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblSerie" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="93.304,0,0,218.063" VerticalAlignment="Bottom" />
+    <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtSerie" IsEnabled="True" Margin="184.869,0,108.881,214.749" VerticalAlignment="Bottom" Width="481.25" Height="44" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Data="M202,141 L836,141" x:Name="pathEnd" TextElement.FontSize="12" TextElement.Foreground="#FFFFFFFF" Height="1.359" Margin="34.664,0,35.336,167.324" VerticalAlignment="Bottom">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnAceptar" Width="225" Height="93.333" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="116.991,0,0,47.844" VerticalAlignment="Bottom">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Aceptar" />
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnCancelar" Width="225" Height="93.333" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,0,119.259,47.844" VerticalAlignment="Bottom">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Cancelar" />
+      </Grid>
+    </Button>
+  </Grid>
+</Window>

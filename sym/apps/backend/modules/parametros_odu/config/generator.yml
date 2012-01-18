@@ -1,0 +1,84 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Parametrosensayosodu
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          parametrosensayosodu
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        parametrosensayosodu_id:                            { label: Id}
+        parametrosensayosodu_ref:                           { label: Referencia, help: Nombre para ser referenciado}
+        parametrosensayosodu_descripcion:                   { label: Descripción}
+        parametrosensayosodu_modificado:                    { label: Modificado}
+        parametrosensayosodu_dcfs:                          { label: DCFs}
+        parametrosensayosodu_idversion:                     { label: Versión, help: Versión}
+        _version:                                           { label: Versión, help: Versión}
+        es_activo:                                          { label: Activo , help: Activo=1 - Inactivo=0 }
+        # Tiempo de Ensayo (seg.)
+        parametrosensayosodu_tiempoinicialestabilizacion:   { label: Tiempo Inicial Estabilización, help:Tiempo Inicial}
+        parametrosensayosodu_tiempomaximoestabilizacion:    { label: Time Out Estabilización, help:TimeOut Estab.}
+        parametrosensayosodu_tiempobajatension:             { label: Tiempo Baja Tensión, help: Baja Tensión}
+        parametrosensayosodu_tiempomaximobajatension:       { label: TimeOut Baja Tensión, help:TimeOut Baja Tensión}
+        parametrosensayosodu_tiempomedicioncalor:           { label: Tiempo Medición Modo Calor, help: Medición Modo Calor}
+        parametrosensayosodu_tiempomaximomedicioncalor:     { label: TimeOut Medición Modo Calor, help:TimeOut Modo Calor}
+        parametrosensayosodu_tiempomedicionfrio:            { label: Tiempo Medición Modo Frío, help: Medición Modo Frío}
+        parametrosensayosodu_tiemporecuperacionminima:      { label: Tiempo de Recuperación Mínimo, help:Recuperación Min.}
+        parametrosensayosodu_tiempomaximorecuperacionminima:{ label: TimeOut de Recuperación Mínimo, help:TimeOut Recuperación}
+        parametrosensayosodu_delayarranquecompresor:        { label: Delay Arrranque Compresor, help:Delay Arrranque Comp.}
+        parametrosensayosodu_tiempoapagadoentrecaloryfrio:  { label: Tiempo Apagado entre Calor y Frío, help:T. de ODU Off entre C y F}
+        parametrosensayosodu_tiempocierrevalvula1:          { label: Tiempo de cierre de válvula 1, help:T. antes de cierre Valv. 1}
+        parametrosensayosodu_tiempocierrevalvula2:          { label: Tiempo de cierre de válvula 2, help:T. antes de cierre Valv. 2}
+        parametrosensayosodu_tiempofinal:                   { label: Tiempo Final, help: Final}
+        # Valores límites de control
+        parametrosensayosodu_presioninicialmin:             { label: Presión Inicial MIN, help: Bar}
+        parametrosensayosodu_presioninicialmax:             { label: Presión Inicial MAX, help: Bar}
+        parametrosensayosodu_deltapresionestabilizacionmin: { label: Diferencia de Presión Estabilización MIN, help:Bar}
+        parametrosensayosodu_deltapresionestabilizacionmax: { label: Diferencia de Presión Estabilización MAX, help:Bar}
+        parametrosensayosodu_velocidadminbajatension:       { label: Velocidad en Baja Tensión MIN, help:RPM}
+        parametrosensayosodu_deltapresionbajatensionmin:    { label: Diferenciua de Presión en Baja Tensión MIN, help:Bar}
+        parametrosensayosodu_deltapresionbajatensionmax:    { label: Diferenciua de Presión en Baja Tensión MAX, help:Bar}
+        parametrosensayosodu_deltatempmincalor:             { label: Diferencia de Temperatura en Modo Calor MIN, help: ºC}
+        parametrosensayosodu_deltatempmaxcalor:             { label: Diferencia de Temperatura en Modo Calor MAX, help: ºC}
+        parametrosensayosodu_corrientemincalor:             { label: Corriente en Modo Calor MIN, help:A}
+        parametrosensayosodu_corrientemaxcalor:             { label: Corriente en Modo Calor MAX, help:A}
+        parametrosensayosodu_potenciamincalor:              { label: Potencia en Modo Calor MIN, help:kW}
+        parametrosensayosodu_potenciamaxcalor:              { label: Potencia en Modo Calor MAX, help:kW}
+        parametrosensayosodu_velocidadminventiladorcalor:   { label: Velocidad Ventilador en Modo Calor MIN, help:RPM}
+        parametrosensayosodu_velocidadmaxventiladorcalor:   { label: Velocidad Ventilador en Modo Calor MAX, help:RPM}
+        parametrosensayosodu_presionminapagadocompresor:    { label: Presión Apagado de Compresor, help:Bar}
+        parametrosensayosodu_deltatempminfrio:              { label: Diferencia de Temperatura en Frío MIN, help: ºC}
+        parametrosensayosodu_deltatempmaxfrio:              { label: Diferencia de Temperatura en Frío MAX, help: ºC}
+        parametrosensayosodu_corrienteminfrio:              { label: Corriente en Modo Frío MIN, help:A}
+        parametrosensayosodu_corrientemaxfrio:              { label: Corriente en Modo Frío MAX, help:A}
+        parametrosensayosodu_potenciaminfrio:               { label: Potencia en Modo Frío MIN, help:kW}
+        parametrosensayosodu_potenciamaxfrio:               { label: Potencia en Modo Frío MAX, help:kW}
+        parametrosensayosodu_velocidadminventiladorfrio:    { label: Velocidad Ventilador en Modo Frío MIN, help:RPM}
+        parametrosensayosodu_velocidadmaxventiladorfrio:    { label: Velocidad Ventilador en Modo Frío MAX, help:RPM}
+        parametrosensayosodu_presionminfrio:                { label: Presión en Modo Frío MIN, help:BAR}
+        parametrosensayosodu_presionmaxfrio:                { label: Presión en Modo Frío MAX, help:BAR}
+        parametrosensayosodu_presionmaxrecuperacion:        { label: Presión Máxima de Recuperación, help:Bar}
+      list:    
+        title:                    Listado de Parámetros de Ensayo ODU
+        sort:                     [parametrosensayosodu_id, asc]
+        display:                  [parametrosensayosodu_id, parametrosensayosodu_ref, parametrosensayosodu_descripcion, _version]
+        object_actions:
+          _edit:                  { label: 'Editar' }
+        batch_actions:            []
+        actions:                  []
+      filter:  
+        display:                  [parametrosensayosodu_id, parametrosensayosodu_ref, parametrosensayosodu_descripcion, parametrosensayosodu_idversion]
+      form:    ~
+      edit:    
+        display:
+          "NONE":                           [parametrosensayosodu_id, parametrosensayosodu_ref, parametrosensayosodu_descripcion, parametrosensayosodu_modificado, parametrosensayosodu_dcfs, parametrosensayosodu_idversion, es_activo]
+          "Tiempos de ensayo en segundos":  [parametrosensayosodu_tiempoinicialestabilizacion, parametrosensayosodu_tiempomaximoestabilizacion, parametrosensayosodu_tiempobajatension, parametrosensayosodu_tiempomaximobajatension, parametrosensayosodu_tiempomedicioncalor, parametrosensayosodu_tiempomaximomedicioncalor, parametrosensayosodu_tiempomedicionfrio, parametrosensayosodu_tiemporecuperacionminima, parametrosensayosodu_tiempomaximorecuperacionminima, parametrosensayosodu_delayarranquecompresor, parametrosensayosodu_tiempoapagadoentrecaloryfrio, parametrosensayosodu_tiempocierrevalvula1, parametrosensayosodu_tiempocierrevalvula2, parametrosensayosodu_tiempofinal]
+          "Valores límites de control":     [parametrosensayosodu_presioninicialmin, parametrosensayosodu_presioninicialmax, parametrosensayosodu_deltapresionestabilizacionmin, parametrosensayosodu_deltapresionestabilizacionmax, parametrosensayosodu_velocidadminbajatension, parametrosensayosodu_deltapresionbajatensionmin, parametrosensayosodu_deltapresionbajatensionmax, parametrosensayosodu_deltatempmincalor, parametrosensayosodu_deltatempmaxcalor, parametrosensayosodu_corrientemincalor, parametrosensayosodu_corrientemaxcalor, parametrosensayosodu_potenciamincalor, parametrosensayosodu_potenciamaxcalor, parametrosensayosodu_velocidadminventiladorcalor, parametrosensayosodu_velocidadmaxventiladorcalor, parametrosensayosodu_presionminapagadocompresor, parametrosensayosodu_deltatempminfrio, parametrosensayosodu_deltatempmaxfrio, parametrosensayosodu_corrienteminfrio, parametrosensayosodu_corrientemaxfrio, parametrosensayosodu_potenciaminfrio, parametrosensayosodu_potenciamaxfrio, parametrosensayosodu_velocidadminventiladorfrio, parametrosensayosodu_velocidadmaxventiladorfrio, parametrosensayosodu_presionminfrio, parametrosensayosodu_presionmaxfrio, parametrosensayosodu_presionmaxrecuperacion]
+      new:     ~

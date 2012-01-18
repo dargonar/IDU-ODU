@@ -1,0 +1,6 @@
+# default values
+all:
+  sf_guard_plugin:
+    algorithm_callable: sprintf
+    # profile_class: UserProfile
+    # profile_field_name: sf_guard_user_id

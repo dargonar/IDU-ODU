@@ -1,0 +1,226 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2006" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:uc="clr-namespace:WPFiDU" x:Class="dcf001.configuracion" 
+	x:Name="Window" 
+	Title="Configuración" 
+	WindowStyle="None" 
+	Width="1250" Height="866.667" 
+	ResizeMode="NoResize" 
+	WindowStartupLocation="CenterScreen" 
+	Foreground="{x:Null}" Icon="/Odu;component/odu.ico"  ShowInTaskbar="True" AllowsTransparency="False">
+	<Window.Background>
+		<LinearGradientBrush EndPoint="0.5,0.982" StartPoint="0.5,0.018">
+			<GradientStop Color="#FF0A0A0A" Offset="0" />
+			<GradientStop Color="#FF191919" Offset="1" />
+		</LinearGradientBrush>
+	</Window.Background>
+  <Grid x:Name="LayoutRoot" Width="1250" Height="866.667" >
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" x:Name="rctPopUpBack" d:IsLocked="True" Margin="12.5,13.333,12.5,13.333">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+          <GradientStop Color="#FF000000" Offset="0.197" />
+          <GradientStop Color="#FF404040" Offset="1" />
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+      <Rectangle.BitmapEffect>
+        <OuterGlowBitmapEffect GlowColor="#FF000000" GlowSize="8" />
+      </Rectangle.BitmapEffect>
+    </Rectangle>
+    <Label Width="Auto" Height="Auto" Content="Configuración" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleConfiguracion" HorizontalAlignment="Left" Margin="50,37.333,0,0" VerticalAlignment="Top" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathConfiguracion" Margin="34.664,85.984,131.586,0" VerticalAlignment="Top">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnClose" Width="75" Height="80" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" Margin="0,45.649,41.96,0" VerticalAlignment="Top" Click="btnClose_Click">
+      <Grid RenderTransformOrigin="0.5,0.5" Width="40.313" Height="7">
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1" />
+            <SkewTransform AngleX="0" AngleY="0" />
+            <RotateTransform Angle="45" />
+            <TranslateTransform X="0" Y="0" />
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" />
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" RenderTransformOrigin="0.5,0.5">
+          <Rectangle.RenderTransform>
+            <TransformGroup>
+              <ScaleTransform ScaleX="1" ScaleY="1" />
+              <SkewTransform AngleX="0" AngleY="0" />
+              <RotateTransform Angle="90" />
+              <TranslateTransform X="0" Y="0" />
+            </TransformGroup>
+          </Rectangle.RenderTransform>
+        </Rectangle>
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnProbarConexion" Margin="0,118.823,375,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="181.25" Height="80" Click="btnProbarConexion_Click">
+      <Grid Width="122.629" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Probar Conexión" />
+      </Grid>
+    </Button>
+    <Label Height="Auto" Content="Cadena de Conexión" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblCadena" IsEnabled="True" HorizontalContentAlignment="Right" Margin="78.12,139.333,0,0" d:LayoutOverrides="Height" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185.729" />
+    <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtCadena" IsEnabled="True" Margin="271.348,136.823,581.153,0" VerticalAlignment="Top" Height="44" />
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnGuardarCambios" Width="181.25" Height="80" HorizontalAlignment="Right" Margin="0,118.823,145,0" VerticalAlignment="Top" Click="btnGuardarCambios_Click">
+      <Grid Width="123.116" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Guardar Cambios" />
+      </Grid>
+    </Button>
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="13.991" Data="M202,141 L836,141" x:Name="pathProbar" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Margin="0,159.828,301.911,0" VerticalAlignment="Top" Width="96.25">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+      <Path.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform ScaleX="1" ScaleY="1" />
+          <SkewTransform AngleX="0" AngleY="0" />
+          <RotateTransform Angle="90" />
+          <TranslateTransform X="0" Y="0" />
+        </TransformGroup>
+      </Path.RenderTransform>
+    </Path>
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="3" x:Name="rctNumero" HorizontalAlignment="Left" Margin="49.911,224.664,0,396.667" Width="562.5">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+          <GradientStop Color="#FF000000" Offset="0.197" />
+          <GradientStop Color="#FF404040" Offset="1" />
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Label Width="Auto" Height="Auto" Content="Número de serie" FontFamily="Myriad Pro" FontSize="18" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleNumero" HorizontalAlignment="Left" Margin="80.625,241.333,0,0" VerticalAlignment="Top" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathNumero" HorizontalAlignment="Left" Margin="57.164,285.984,0,0" VerticalAlignment="Top" Width="545.625">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Label Height="Auto" Content="Prefijo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPrefijoNum" IsEnabled="True" HorizontalContentAlignment="Right" Margin="79.995,321.333,0,0" d:LayoutOverrides="Height" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75.104" />
+    <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPrefijoNum" IsEnabled="True" Margin="160.723,318.823,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Height="44" />
+    <Label Height="Auto" Content="Sufijo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblSufijoNum" IsEnabled="True" HorizontalContentAlignment="Right" Width="75.104" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="79.995,391.333,0,0" VerticalAlignment="Top" />
+    <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtSufijoNum" IsEnabled="True" Width="125" HorizontalAlignment="Left" Margin="160.723,388.823,0,0" VerticalAlignment="Top" Height="44" />
+    <Label Height="Auto" Content="Nro. Mínimo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblMinimoNum" IsEnabled="True" HorizontalContentAlignment="Right" Width="118.229" HorizontalAlignment="Left" Margin="314.37,321.333,0,0" VerticalAlignment="Top" />
+    <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtMinimoNum" IsEnabled="True" Width="125" Height="44" HorizontalAlignment="Left" Margin="438.223,318.823,0,0" VerticalAlignment="Top" />
+    <Label Height="Auto" Content="Nro. Máximo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblMaximoNum" IsEnabled="True" HorizontalContentAlignment="Right" Width="121.979" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="310.62,391.333,0,0" VerticalAlignment="Top" />
+    <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtMaximoNum" IsEnabled="True" Width="125" HorizontalAlignment="Left" Margin="438.223,388.823,0,0" VerticalAlignment="Top" Height="44" />
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="3" x:Name="rctSupervisor" HorizontalAlignment="Right" Margin="0,224.664,50.714,0" Width="538.691" Height="152" VerticalAlignment="Top">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+          <GradientStop Color="#FF000000" Offset="0.197" />
+          <GradientStop Color="#FF404040" Offset="1" />
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Label Width="306.425" Height="42.183" Content="Administracion de passwords" FontFamily="Myriad Pro" FontSize="18" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleSupervisor" d:LayoutOverrides="Width" HorizontalAlignment="Right" Margin="0,241.333,259.83,0" VerticalAlignment="Top" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathSupervisor" HorizontalAlignment="Right" Margin="0,285.984,60.336,0" VerticalAlignment="Top" Width="545.625">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="3" x:Name="rctIdentificacion" Margin="49.911,0,0,128" Height="236" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="552.878">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+          <GradientStop Color="#FF000000" Offset="0.197" />
+          <GradientStop Color="#FF404040" Offset="1" />
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Label Width="408.071" Height="42.183" Content="Identificación de equipos no aprobados" FontFamily="Myriad Pro" FontSize="18" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleIdentificacion" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="80.625,0,0,315.324" VerticalAlignment="Bottom" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathIdentificacion" Width="545.625" HorizontalAlignment="Left" Margin="57.164,0,0,315.324" VerticalAlignment="Bottom">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Label Height="Auto" Content="Prefijo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPrefijoId" IsEnabled="True" HorizontalContentAlignment="Right" Width="75.104" HorizontalAlignment="Left" Margin="79.995,0,0,245.96" VerticalAlignment="Bottom" />
+    <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPrefijoId" IsEnabled="True" Width="125" Height="44" HorizontalAlignment="Left" Margin="160.723,0,0,241.844" VerticalAlignment="Bottom" />
+    <Label Height="Auto" Content="Sufijo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblSufijoId" IsEnabled="True" HorizontalContentAlignment="Right" Width="75.104" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="79.995,0,0,175.96" VerticalAlignment="Bottom" />
+    <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtSufijoId" IsEnabled="True" Width="125" HorizontalAlignment="Left" Margin="160.723,0,0,171.844" VerticalAlignment="Bottom" Height="44" />
+    <Label Height="Auto" Content="Nro. Mínimo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblMinimoId" IsEnabled="True" HorizontalContentAlignment="Right" Width="118.229" HorizontalAlignment="Left" Margin="314.37,0,0,245.96" VerticalAlignment="Bottom" />
+    <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtMinimoId" IsEnabled="True" Width="125" Height="44" HorizontalAlignment="Left" Margin="438.223,0,0,241.844" VerticalAlignment="Bottom" />
+    <Label Height="Auto" Content="Nro. Máximo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblMaximoId" IsEnabled="True" HorizontalContentAlignment="Right" Width="121.979" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="310.62,0,0,175.96" VerticalAlignment="Bottom" />
+    <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtMaximoId" IsEnabled="True" Width="125" HorizontalAlignment="Left" Margin="438.223,0,0,171.844" VerticalAlignment="Bottom" Height="44" />
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="3" x:Name="rctEtiquetas" Width="538.691" HorizontalAlignment="Right" Margin="0,402,47.459,128">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+          <GradientStop Color="#FF000000" Offset="0.197" />
+          <GradientStop Color="#FF404040" Offset="1" />
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Label Width="346" Content="Límites de temperatura y Etiquetas" FontFamily="Myriad Pro" FontSize="18" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleetiquetas" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,421,227,414" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="2.035" Data="M202,141 L836,141" x:Name="pathEtiquetas" Width="515.289" HorizontalAlignment="Right" Margin="0,0,60.336,404.27" VerticalAlignment="Bottom">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <ToggleButton Style="{StaticResource styTBVerde}" x:Name="tgbImpresora1" IsEnabled="True" HorizontalContentAlignment="Center" Height="58" FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Right" Margin="0,0,411.675,242" VerticalAlignment="Bottom" Width="164.325" Click="tgbImpresora1_Click">
+      <Grid Width="172" Height="71.48" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="135*" />
+          <ColumnDefinition Width="36*" />
+          <ColumnDefinition Width="4.209*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Habilitar Impresión&#xA;de Etiqueta Producto" d:LayoutOverrides="Height" Margin="6.914,17,1.653,3" Grid.ColumnSpan="2" />
+      </Grid>
+    </ToggleButton>
+    <Label Height="28.03" Content="Impresora" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblImpresora1" IsEnabled="True" HorizontalContentAlignment="Left" Width="83" HorizontalAlignment="Right" Margin="0,0,308.336,294" VerticalAlignment="Bottom" />
+    <ComboBox x:Name="cmbImpresora1" Style="{DynamicResource styComboBox}" IsSynchronizedWithCurrentItem="True" Height="53.333" Width="331" HorizontalAlignment="Right" Margin="0,0,60.336,237" VerticalAlignment="Bottom" IsEnabled="False" FontSize="30"/>
+    <ToggleButton Style="{StaticResource styTBVerde}" x:Name="tgbImpresora2" IsEnabled="True" HorizontalContentAlignment="Center" Height="58" FontFamily="Myriad Pro" FontSize="16" Width="164.825" HorizontalAlignment="Right" Margin="0,0,411.675,146" VerticalAlignment="Bottom" Click="tgbImpresora2_Click">
+      <Grid Width="142" Height="71.48" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="34*" />
+          <RowDefinition Height="37.48*" />
+        </Grid.RowDefinitions>
+        <TextBlock FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Habilitar Impresión
+de Etiqueta Bulto" d:LayoutOverrides="Height" HorizontalAlignment="Center" Margin="0,16.54" Width="205.184" Grid.RowSpan="2" />
+      </Grid>
+    </ToggleButton>
+    <Label Height="28.03" Content="Impresora" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblImpresora2" IsEnabled="True" HorizontalContentAlignment="Left" Margin="0,0,306.336,198" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="85" />
+    <ComboBox x:Name="cmbImpresora2" Style="{DynamicResource styComboBox}" IsSynchronizedWithCurrentItem="True" Height="53.333" Margin="0,0,60.336,146" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="331" IsEnabled="False" FontSize="30" />
+    <Button HorizontalAlignment="Right" Margin="0,302,101,0" Name="btnPassSupAdm" Style="{DynamicResource styBtnVerde}" Width="196.328" Height="59.2" VerticalAlignment="Top" Click="btnPassSupAdm_Click">
+      <Grid Height="Auto" Width="122.629">
+        <TextBlock FontFamily="Myriad Pro" FontSize="16" Margin="2.573,-11.289,-11.66,-11.289" Text="Cambiar Password super admin" TextAlignment="Center" TextWrapping="Wrap" />
+      </Grid>
+    </Button>
+    <Button HorizontalAlignment="Right" Margin="0,304,336,0" Name="btnPassAdm" Style="{DynamicResource styBtnVerde}" Width="195.978" Height="57.667" VerticalAlignment="Top" Click="btnPassAdm_Click">
+      <Grid Height="Auto" Width="122.629">
+        <TextBlock FontFamily="Myriad Pro" FontSize="16" Margin="0,0,-9.671,0" Text="Cambiar Password administrador" TextAlignment="Center" TextWrapping="Wrap" />
+      </Grid>
+    </Button>
+        <Button Height="45" HorizontalAlignment="Right" Margin="0,0,47.459,67" Name="btnTeclado" Style="{DynamicResource styBtnRojo}" VerticalAlignment="Bottom" Width="137.877" Click="btnTeclado_Click">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Center" Margin="0" Text="Teclado en Pantalla" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" /></Grid>
+        </Button>
+    <uc:NumericTextBox FontSize="16" Foreground="White" HorizontalAlignment="Right" IsEnabled="True" Margin="0,0,60.336,335" x:Name="txtTempMax" Padding="8,2" Style="{DynamicResource styTxtNegro}" TextWrapping="Wrap" VerticalContentAlignment="Center" Width="125" Visibility="Hidden" Factor="0.1" NumberFormat="0.0#" Height="50" VerticalAlignment="Bottom" />
+        <uc:NumericTextBox FontSize="16" Foreground="White" HorizontalAlignment="Right" IsEnabled="True" Margin="0,0,336,333" x:Name="txtTempMin" Padding="8,2" Style="{DynamicResource styTxtNegro}" TextWrapping="Wrap" VerticalContentAlignment="Center" Width="125" Visibility="Hidden" Factor="0.1" Height="50.667" VerticalAlignment="Bottom" />
+    <TextBlock FontFamily="Myriad Pro" FontSize="15" Foreground="White" Height="42.676" Margin="0,0,471,335" MaxWidth="272" Name="txtblckInfo" Text="Temperatura mínima" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="102" TextWrapping="Wrap" TextAlignment="Right" /><TextBlock FontFamily="Myriad Pro" FontSize="15" Foreground="White" Height="42.676" Margin="0,0,194.402,335" MaxWidth="272" Name="textBlock1" Text="Temperatura máxima" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="102" /><Label FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="White" Height="28.03" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsEnabled="True" Margin="113.528,0,0,76" Name="label1" VerticalAlignment="Bottom" Width="125.69">Numero de Serie</Label><ComboBox FontSize="30" Height="53.333" IsEnabled="True" IsSynchronizedWithCurrentItem="True" Margin="239.528,0,0,67" Name="cmbNroSerie" Style="{DynamicResource styComboBox}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="323.695" /><Label FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FF9A9A9A" Height="28.03" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsEnabled="True" Margin="346.223,0,0,41" Name="label2" VerticalAlignment="Bottom" Width="217">Reiniciar aplicación al modificar</Label><Label FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="White" Height="28.03" HorizontalContentAlignment="Left" IsEnabled="True" Margin="0,0,393,71.07" Name="label3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="182.163">Imprimir etiquetas p/ falla</Label><ComboBox FontSize="30" Height="53.333" HorizontalAlignment="Right" IsEnabled="True" IsSynchronizedWithCurrentItem="True" Margin="0,0,203.245,58.667" Name="cmbPrintErrorTests" Style="{DynamicResource styComboBox}" VerticalAlignment="Bottom" Width="188.091" /><Label FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FF9A9A9A" Height="28.03" HorizontalAlignment="Right" HorizontalContentAlignment="Left" IsEnabled="True" Margin="0,0,203.245,32.667" Name="label4" VerticalAlignment="Bottom" Width="217">Reiniciar aplicación al modificar</Label>
+    </Grid>
+</Window>

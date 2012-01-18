@@ -1,0 +1,45 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           LogIduOdu
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          log_idu_odu
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        id:           {label:Id}
+        date:         {label:Fecha, date_format: yyyy-MM-dd } 
+        thread:       {label:Thread}
+        context:      {label:Contexto}
+        level:        {label:Nivel}
+        logger:       {label:Logger}
+        message:      {label:Mensaje}
+        exception:    {label:Excepción}
+        dcf:          {label:Estación, help: RunTest}
+        username:     {label:Usuario}
+        line:         {label:Línea}
+      list:    
+        title:                    Listado de Logs
+        sort:                     [id, asc]
+        display:                  [id, date, level, message, username]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:
+          #referencia:             { label: 'Ver Referencia' }
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:            []
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  []
+          #_new:                   { label: 'Crear nuevo'  }  
+      filter:  
+        display:                  [id, date, level, message, username]
+      form:    ~
+      edit:    ~
+      new:     ~

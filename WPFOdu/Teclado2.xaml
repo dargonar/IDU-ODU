@@ -1,0 +1,157 @@
+    <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2006" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" x:Class="WPFiDU.Teclado2" 
+        x:Name="Window" 
+        Title="Login" 
+        WindowStyle="None" 
+        Height="897.5" Width="613" 
+        Foreground="{x:Null}" 
+        ResizeMode="NoResize" 
+            Background="Transparent"
+        WindowStartupLocation="CenterScreen" 
+		Icon="/Odu;component/odu.ico"  ShowInTaskbar="True" AllowsTransparency="False">
+    
+    <Grid x:Name="LayoutRoot" Width="575" Height="466.667"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="36*" />
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="35*" />
+            <ColumnDefinition Width="90.829*" />
+            <ColumnDefinition Width="24.924*" />
+            <ColumnDefinition Width="53*" />
+            <ColumnDefinition Width="79*" />
+            <ColumnDefinition Width="211*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="11*" />
+        </Grid.ColumnDefinitions>
+        <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" x:Name="rctPopUpBack" 
+                   Margin="-11.25,-197.5,-10,-202" Grid.ColumnSpan="11">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+                    <GradientStop Color="#FF000000" Offset="0.197" />
+                    <GradientStop Color="#FF404040" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="#FF000000" GlowSize="8" />
+            </Rectangle.BitmapEffect>
+        </Rectangle>
+        <Button IsEnabled="True" Margin="30.075,100,50.032,0" Name="btn1" Style="{DynamicResource styBtnVerde}" Click="btn1_Click" Grid.ColumnSpan="6" Height="80" VerticalAlignment="Top">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="1" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button Height="80" IsEnabled="True" Margin="50.346,100,11.29,0" Name="button3" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Top" Grid.Column="8" Click="button3_Click">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="3" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button IsEnabled="True" Margin="22.127,100,0,0" Name="button2" Style="{DynamicResource styBtnVerde}" Click="button2_Click" Grid.Column="5" HorizontalAlignment="Left" Width="147.444" Grid.ColumnSpan="4" Height="80" VerticalAlignment="Top">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="2" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button IsEnabled="True" Margin="50.346,210.667,11.29,176" Name="button6" Style="{DynamicResource styBtnVerde}" Grid.Column="8" Click="button6_Click">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="6" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button IsEnabled="True" Margin="22.127,210.667,0,176" Name="button5" Style="{DynamicResource styBtnVerde}" Click="button5_Click" Grid.Column="5" Grid.ColumnSpan="4" HorizontalAlignment="Left" Width="147.444">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="5" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button IsEnabled="True" Margin="31.913,210.667,48.902,176" Name="button4" Style="{DynamicResource styBtnVerde}" Click="button4_Click" Grid.ColumnSpan="6">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="4" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button Height="80" IsEnabled="True" Margin="50.346,0,11.29,-48" Name="buttonNumeral" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Bottom" Grid.Column="8" Click="buttonNumeral_Click">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="LIMPIAR" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button Height="80" IsEnabled="True" Margin="26.127,0,0,-48" Name="button0" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Bottom" Click="button0_Click" Grid.Column="5" Grid.ColumnSpan="4" HorizontalAlignment="Left" Width="147.444">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button Height="80" IsEnabled="True" Margin="50.346,0,11.29,62.667" Name="button9" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Bottom" Grid.Column="8" Click="button9_Click">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="9" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button Height="80" IsEnabled="True" Margin="24.127,0,0,62.667" Name="button8" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Bottom" Click="button8_Click" Grid.Column="5" Grid.ColumnSpan="4" HorizontalAlignment="Left" Width="147.444">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="8" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button Height="80" IsEnabled="True" Margin="30.075,0,48.902,-48" Name="buttonAst" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Bottom" Click="buttonAst_Click" Grid.ColumnSpan="6">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="*" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+                <Image Margin="-18,-4,-19,-3" Name="image1" Source="/Odu;component/Images/computer_key_Backspace.png" Stretch="None"  MouseDown="image1_MouseDown" />
+            </Grid>
+        </Button>
+        <Button Height="80" IsEnabled="True" Margin="31.913,0,48.902,62.667" Name="button7" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Bottom" Click="button7_Click" Grid.ColumnSpan="6">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="7" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="80" Margin="0,-180,11,0" Name="btnClose" Style="{DynamicResource styBtnRojo}" VerticalAlignment="Top" Grid.Column="8" Click="btnClose_Click" HorizontalAlignment="Right" Width="74.266" Grid.ColumnSpan="3">
+            <Grid Height="7" RenderTransformOrigin="0.5,0.5" Width="40.313">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                        <SkewTransform AngleX="0" AngleY="0" />
+                        <RotateTransform Angle="45" />
+                        <TranslateTransform X="0" Y="0" />
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Rectangle Fill="White" Stroke="{x:Null}" />
+                <Rectangle Fill="White" RenderTransformOrigin="0.5,0.5" Stroke="{x:Null}">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                            <SkewTransform AngleX="0" AngleY="0" />
+                            <RotateTransform Angle="90" />
+                            <TranslateTransform X="0" Y="0" />
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+        </Button>
+        <PasswordBox Style="{DynamicResource styPwdNegro}" FontSize="16" Foreground="White" Height="44" IsEnabled="True" Margin="49.342,0,11,0" Name="txtPassword" Padding="8,2" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.ColumnSpan="7" Grid.Column="4" ForceCursor="True" Visibility="Visible" FontFamily="Myriad Pro" Background="Black" />
+       
+        <Button Height="76" Margin="33.75,0,174.042,-142.667" Name="btnOK" Style="{DynamicResource styBtnNegro}" VerticalAlignment="Bottom" Click="btnOK_Click" Grid.ColumnSpan="9">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="30" HorizontalAlignment="Center" Margin="0" Text="Ingresar" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+        </Button>
+        <Label FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="6" Height="34.04" Margin="30.075,5,29.924,0" Name="lblPassword" VerticalAlignment="Top" IsEnabled="False" Visibility="Visible">Contraseña</Label>
+        <Label FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="3" Height="34.04" Margin="2,-61,39,0" Name="lblUsuario" VerticalAlignment="Top" Grid.Column="2">Usuario</Label>
+        <TextBox Grid.ColumnSpan="5" Height="44" Margin="49.341,-65.96,11.29,0" Name="txtUsuario" VerticalAlignment="Top" Grid.Column="4" FontFamily="Myriad Pro" FontSize="16" Visibility="Hidden" />
+        <Button Height="76" IsCancel="False" IsEnabled="True" Margin="50.346,0,11.29,-142.667" Name="btnTecladoEnPantalla" Style="{DynamicResource styBtnRojo}" VerticalAlignment="Bottom" Grid.Column="8" Click="btnTecladoEnPantalla_Click">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" Margin="-12,0,-10,0">Teclado en Pantalla</TextBlock>
+            </Grid>
+        </Button>
+        <Label FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="6" Height="34" Margin="26.287,-152,40,0" Name="lblTitleEliminar" VerticalAlignment="Top">Inicio de sesión</Label>
+        <Path Data="M202,141L836,141" Fill="{x:Null}" Grid.ColumnSpan="10" Height="1.359" Margin="10.951,-87,32.479,0" Name="pathEliminar" Stretch="Fill" StrokeThickness="0.5" VerticalAlignment="Top">
+            <Path.Stroke>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="Transparent" Offset="0" />
+                    <GradientStop Color="Transparent" Offset="1" />
+                    <GradientStop Color="White" Offset="0.115" />
+                    <GradientStop Color="White" Offset="0.894" />
+                </LinearGradientBrush>
+            </Path.Stroke>
+        </Path>
+        <ComboBox FontSize="25" Grid.ColumnSpan="7" Height="42.667" IsSynchronizedWithCurrentItem="True" 
+                  Margin="49.341,-65,11,0" Name="cmbUser" Style="{DynamicResource styComboBox}" VerticalAlignment="Top" Grid.Column="4" />
+        <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="80" Margin="44,-180,84,0" Name="btnRefresh" Style="{DynamicResource styBtnRojo}" VerticalAlignment="Top" Grid.Column="8" Click="btnRefresh_Click" />
+        <Image Height="43" Margin="61,-162.649,98,0" Name="imgRefresh" Source="/Odu;component/Images/refresh.png" Stretch="None" VerticalAlignment="Top" Grid.Column="8" />
+    </Grid>
+</Window>

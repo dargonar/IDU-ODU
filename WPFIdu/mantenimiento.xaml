@@ -1,0 +1,122 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2006" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" x:Class="dcf001.mantenimiento" x:Name="Window" Title="mantenimiento" 
+        WindowStyle="None" Background="Transparent" 
+        Width="775" Height="633.333" 
+        Foreground="{x:Null}" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" Icon="/Idu;component/idu.ico"  ShowInTaskbar="True" AllowsTransparency="False">
+  <Grid x:Name="LayoutRoot" Width="775" Height="633.333" >
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="412*" />
+      <ColumnDefinition Width="88*" />
+      <ColumnDefinition Width="98*" />
+    </Grid.ColumnDefinitions>
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" x:Name="rctPopUpBack" d:IsLocked="True" Margin="12.5,13.333,12.5,13.333" Grid.ColumnSpan="3">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+          <GradientStop Color="#FF000000" Offset="0.197" />
+          <GradientStop Color="#FF404040" Offset="1" />
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+      <Rectangle.BitmapEffect>
+        <OuterGlowBitmapEffect GlowColor="#FF000000" GlowSize="8" />
+      </Rectangle.BitmapEffect>
+    </Rectangle>
+    <Label Width="184.7" Height="45.387" Content="Mantenimiento" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleMantenimiento" HorizontalAlignment="Left" Margin="50,37.333,0,0" VerticalAlignment="Top" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathManteniniento" Margin="34.664,85.984,10.336,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnClose" Height="80" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="4.29,45.649,43.21,0" VerticalAlignment="Top" Click="btnClose_Click" Grid.Column="2">
+      <Grid RenderTransformOrigin="0.5,0.5" Width="40.313" Height="7">
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1" />
+            <SkewTransform AngleX="0" AngleY="0" />
+            <RotateTransform Angle="45" />
+            <TranslateTransform X="0" Y="0" />
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" />
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" RenderTransformOrigin="0.5,0.5">
+          <Rectangle.RenderTransform>
+            <TransformGroup>
+              <ScaleTransform ScaleX="1" ScaleY="1" />
+              <SkewTransform AngleX="0" AngleY="0" />
+              <RotateTransform Angle="90" />
+              <TranslateTransform X="0" Y="0" />
+            </TransformGroup>
+          </Rectangle.RenderTransform>
+        </Rectangle>
+      </Grid>
+    </Button>
+    <Label Height="38.977" Content="Monitoreo" FontFamily="Myriad Pro" FontSize="16" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitelMonitoreo" Margin="260,143,20.35,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathMonitoreo" Margin="242.164,183,54.086,0" VerticalAlignment="Top" TextElement.FontSize="12" TextElement.Foreground="#FFFFFFFF" Grid.ColumnSpan="3">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnMonitoreo" Width="187.5" Height="133.333" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="53.241,118.823,0,0" VerticalAlignment="Top" Click="btnMonitoreo_Click">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Monitoreo" />
+      </Grid>
+    </Button>
+    <TextBlock FontSize="14" TextAlignment="Left" TextWrapping="Wrap" FontFamily="Myriad Pro" x:Name="txbMonitoro" Foreground="#FFFFFFFF" Text="Monitoreo de variables y control manual de funcionamiento del equipo." Margin="266.25,193,122.209,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="67.307" />
+    <Label Content="Ajustes de Parámetros" FontFamily="Myriad Pro" 
+           FontSize="16" FontWeight="Bold" Foreground="#FFFFFFFF" 
+           x:Name="lblTitleAjustes" Margin="261.25,296,19.1,302" Grid.ColumnSpan="2" />
+      
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathModelos" Margin="242.164,0,54.086,299.324" VerticalAlignment="Bottom" Grid.ColumnSpan="3">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnAjustesParametros" Width="187.5" HorizontalAlignment="Left" Margin="53.241,276.25,0,0" Click="btnAjustesParametros_Click" Height="136.583" VerticalAlignment="Top">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Ajustes&#xA;de Parámetros" />
+      </Grid>
+    </Button>
+    <TextBlock FontSize="14" TextAlignment="Left" TextWrapping="Wrap" 
+               FontFamily="Myriad Pro" Foreground="#FFFFFFFF" 
+               Text="Configuración de ensayos, lectura y escritura a y desde PLC y Base de datos." 
+               x:Name="txbAjustes" Margin="266.25,0,55.959,202.5" Grid.ColumnSpan="3" 
+               Height="89.083" VerticalAlignment="Bottom" />
+    <Label Height="38.977" Content="Variables PLC" FontFamily="Myriad Pro" FontSize="16" FontWeight="Bold" 
+           Foreground="#FFFFFFFF" x:Name="lblTitleVariablesPLC" Margin="260,0,20.35,137.819" 
+           VerticalAlignment="Bottom" Grid.ColumnSpan="2" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathVariablesPLC" Margin="242.164,0,54.086,135.324" VerticalAlignment="Bottom" Grid.ColumnSpan="3">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnVariablesPLC" Width="187.5" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="53.241,435.75,0,0" Click="btnVariablesPLC_Click" Height="133.333" VerticalAlignment="Top">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Variables&#xA;PLC" />
+      </Grid>
+    </Button>
+    <TextBlock FontSize="14" TextAlignment="Left" TextWrapping="Wrap" FontFamily="Myriad Pro" Foreground="#FFFFFFFF" Text="Visualización y configuración de variables internas del PLC." x:Name="txbVariablesPLC" Margin="261.25,0,61.25,37.5" VerticalAlignment="Bottom" Grid.ColumnSpan="3" Height="89.743" />
+  </Grid>
+</Window>

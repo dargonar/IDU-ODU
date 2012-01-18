@@ -1,0 +1,172 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2006" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:Microsoft_Samples_KMoore_WPFSamples_DateControls="clr-namespace:Microsoft.Samples.KMoore.WPFSamples.DateControls;assembly=J832.Wpf.BagOTricksLib" x:Class="dcf001.ensayos" x:Name="Window" Title="Ensayos" Width="959.904" Height="800" Background="{x:Null}" Foreground="{x:Null}" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" 
+	Icon="/Idu;component/idu.ico"  ShowInTaskbar="True" AllowsTransparency="False">
+  <Grid x:Name="LayoutRoot" Width="959.904" Height="800" >
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" x:Name="rctPopUpBack" d:IsLocked="True" Margin="12.5,13.333,12.5,13.333">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+          <GradientStop Color="#FF000000" Offset="0.197" />
+          <GradientStop Color="#FF404040" Offset="1" />
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+      <Rectangle.BitmapEffect>
+        <OuterGlowBitmapEffect GlowColor="#FF000000" GlowSize="8" />
+      </Rectangle.BitmapEffect>
+    </Rectangle>
+    <Label Width="Auto" Height="Auto" Content="Ensayos" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleEnsayos" d:LayoutOverrides="Width" HorizontalAlignment="Left" Margin="50,37.333,0,0" VerticalAlignment="Top" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathEnsayos" Margin="34.664,85.984,132.836,0" VerticalAlignment="Top">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnClose" Width="75" HorizontalAlignment="Right" Margin="0,45.649,43.21,0" VerticalAlignment="Top" Height="80" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnClose_Click">
+      <Grid RenderTransformOrigin="0.5,0.5" Width="40.313" Height="7">
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1" />
+            <SkewTransform AngleX="0" AngleY="0" />
+            <RotateTransform Angle="45" />
+            <TranslateTransform X="0" Y="0" />
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" />
+        <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" RenderTransformOrigin="0.5,0.5">
+          <Rectangle.RenderTransform>
+            <TransformGroup>
+              <ScaleTransform ScaleX="1" ScaleY="1" />
+              <SkewTransform AngleX="0" AngleY="0" />
+              <RotateTransform Angle="90" />
+              <TranslateTransform X="0" Y="0" />
+            </TransformGroup>
+          </Rectangle.RenderTransform>
+        </Rectangle>
+      </Grid>
+    </Button>
+    <ListView Margin="53.75,112,278.75,310.244" x:Name="ltvEnsayos" Background="{x:Null}" FontFamily="Myriad Pro" FontSize="14" Foreground="#FFFFFFFF" IsSynchronizedWithCurrentItem="True" SelectionMode="Single" ItemsSource="{Binding}">
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                    <Setter Property="BorderBrush" Value="LightGray" />
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+
+                                <Border Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}"
+								Padding="{TemplateBinding Padding}">
+                                    <StackPanel>
+                                        <GridViewRowPresenter Height="60"/>
+                                        <TextBlock Text="{Binding XPath=Details}" Visibility="Collapsed" Name="tb" TextWrapping="Wrap" Margin="2,0,0,40"/>
+							</StackPanel>
+                                </Border>
+                                <!--ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Trigger.Setters>
+                                            <Setter Property="Visibility" Value="Visible" TargetName="tb"/>
+                                        </Trigger.Setters>
+                                    </Trigger>
+                                </ControlTemplate.Triggers-->
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Trigger.Setters>
+                                <Setter Property="Background" Value="Gray" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger.Setters>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+        <GridView>
+          <GridViewColumn Header="Marca" DisplayMemberBinding="{Binding Marca}" />
+          <GridViewColumn Header="Modelo" DisplayMemberBinding="{Binding Modelo}" />
+          <GridViewColumn Header="Serie" DisplayMemberBinding="{Binding Serie}" />
+          <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding Fecha}" />
+          <GridViewColumn Header="Aprobado" DisplayMemberBinding="{Binding AprobadoSINO}" />
+          <GridViewColumn Header="DCF" DisplayMemberBinding="{Binding DCF}" />
+        </GridView>
+      </ListView.View>
+    </ListView>
+    <Microsoft_Samples_KMoore_WPFSamples_DateControls:DatePicker x:Name="dpkDesde" IsEnabled="True" BorderBrush="{x:Null}" Style="{DynamicResource styDatePicker}" Height="60" FontFamily="Myriad Pro" FontSize="16" d:LayoutOverrides="Width" HorizontalAlignment="Right" Margin="0,150.841,41.96,0" VerticalAlignment="Top" Width="216.25" />
+    <Label Height="Auto" Content="Desde" FontFamily="Myriad Pro" FontSize="20" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblDesde" IsEnabled="True" HorizontalAlignment="Right" Margin="0,116,149.896,0" VerticalAlignment="Top" Width="113.854" />
+    <Microsoft_Samples_KMoore_WPFSamples_DateControls:DatePicker x:Name="dpkHasta" IsEnabled="True" BorderBrush="{x:Null}" Style="{DynamicResource styDatePicker}" Height="60" FontFamily="Myriad Pro" FontSize="16" Width="216.25" d:LayoutOverrides="Width" HorizontalAlignment="Right" Margin="0,254.175,41.96,0" VerticalAlignment="Top" />
+    <Label Height="Auto" Content="Hasta" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblHasta" IsEnabled="True" Width="113.854" HorizontalAlignment="Right" Margin="0,220,149.896,0" VerticalAlignment="Top" />
+    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnConsultar" Width="216.25" d:LayoutOverrides="Width" HorizontalAlignment="Right" Margin="0,334.983,41.96,398.351" Click="btnConsultar_Click">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Consultar" />
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnEliminarRegistro" IsEnabled="True" IsCancel="False" Width="216.25" Height="66.667" d:LayoutOverrides="Width" HorizontalAlignment="Right" Margin="0,0,41.96,310.244" VerticalAlignment="Bottom" Click="btnEliminarRegistro_Click">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Eliminar Registro" />
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnVer" Width="216.25" Height="66.667" HorizontalAlignment="Right" Margin="0,0,41.96,221.333" VerticalAlignment="Bottom" Click="btnVer_Click">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text=" Ver Detalles del Ensayo" />
+      </Grid>
+    </Button>
+    <Label Width="Auto" Height="Auto" Content="Reimpresiones" FontFamily="Myriad Pro" FontSize="18" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleReimpresiones" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="50,0,0,170.613" VerticalAlignment="Bottom" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathReimpresiones" HorizontalAlignment="Left" Margin="34.664,0,0,167.324" VerticalAlignment="Bottom" Width="281.25">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+    <Label Width="497.554" Height="31.637" Content="Administración de Ensayos" FontFamily="Myriad Pro" FontSize="18" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblAdministracion" Margin="0,0,-210.063,170.613" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnReimprimirProducto" Height="113.333" HorizontalAlignment="Left" Margin="50,0,0,41.333" VerticalAlignment="Bottom" Width="118.75" Click="btnReimprimirProducto_Click" IsEnabled="False">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Reimprimir Etiqueta Producto" />
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnReimprimirCaja" Height="113.333" Width="118.75" HorizontalAlignment="Left" Margin="182.912,0,0,41.333" VerticalAlignment="Bottom" Click="btnReimprimirCaja_Click" IsEnabled="False">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Reimprimir Etiqueta Caja" Width="105.734" />
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnVerFallas" Height="113.333" Margin="0,0,328.67,41.333" VerticalAlignment="Bottom" Click="btnVerFallas_Click" HorizontalAlignment="Right" Width="119.087">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Ver Fallas del Dia" Width="99.554" />
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnVerAprobados" Height="113.333" HorizontalAlignment="Right" Margin="0,0,195.773,41.333" VerticalAlignment="Bottom" Width="118.75" Click="btnVerAprobados_Click">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Ver Aprobados del Dia" Width="114.634" />
+      </Grid>
+    </Button>
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnEliminarFallas" Height="113.333" HorizontalAlignment="Right" Margin="0,0,63.305,41.333" VerticalAlignment="Bottom" Width="118.75" Click="btnEliminarFallas_Click">
+      <Grid Width="Auto" Height="Auto">
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Eliminar Fallas" Width="110.113" />
+      </Grid>
+    </Button>
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathAdministracion" Margin="315.914,0,47.836,167.324" VerticalAlignment="Bottom">
+      <Path.Stroke>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+          <GradientStop Color="#00FFFFFF" Offset="0" />
+          <GradientStop Color="#00FFFFFF" Offset="1" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+        </LinearGradientBrush>
+      </Path.Stroke>
+    </Path>
+        <Button Height="66.667" HorizontalAlignment="Left" Margin="53.75,0,0,221.333" Name="button1" Style="{DynamicResource styBtnNegro}" VerticalAlignment="Bottom" Width="216.25" Click="button1_Click">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Center" Margin="0" Text="Teclado en Pantalla" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" /></Grid>
+        </Button>
+        <TextBox FontSize="16" Foreground="White" Height="44" IsEnabled="True" Margin="281.723,0,278.75,232.666" Name="txtBusqueda" Padding="8,2" Style="{DynamicResource styTxtNegro}" TextWrapping="Wrap" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+    </Grid>
+</Window>

@@ -1,0 +1,75 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Ensayosrealizadosodu
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          ensayosrealizadosodu
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        ensayosrealizadosodu_id:                           { label: Id }
+        ensayosrealizadosodu_marca:                        { label: Marca }
+        ensayosrealizadosodu_modelo:                       { label: Modelo }
+        ensayosrealizadosodu_codigo:                       { label: Código }
+        ensayosrealizadosodu_serie:                        { label: Nº de Serie }
+        ensayosrealizadosodu_fecha:                        { label: Fecha , date_format: yyyy-MM-dd } 
+        ensayosrealizadosodu_aprobado:                     { label: Aprobado, help: Aprob.=1 - Desap.=0 }
+        ensayosrealizadosodu_dcf:                          { label: Estación, help: RunTest }
+        ensayosrealizadosodu_diferenciadetemperatura:      { label: Diferencia de Temperatura }
+        ensayosrealizadosodu_temperaturaambiente:          { label: Temperatura Ambiente }
+        ensayosrealizadosodu_humedad:                      { label: Humedad }
+        ensayosrealizadosodu_tensionalta:                  { label: Tensión Alta }
+        ensayosrealizadosodu_tensionbaja:                  { label: Tensión Baja }
+        ensayosrealizadosodu_corrientealta:                { label: Corriente Alta }
+        ensayosrealizadosodu_corrientebaja:                { label: Corriente Baja }
+        ensayosrealizadosodu_potenciaalta:                 { label: Potencia Alta }
+        ensayosrealizadosodu_factordepotencia:             { label: Factor de Potencia }
+        ensayosrealizadosodu_velocidadalta:                { label: Velocidad en Alta }
+        ensayosrealizadosodu_velocidadbaja:                { label: Velocidad en Baja }
+        ensayosrealizadosodu_presioninicial:               { label: Presión Inicial }
+        ensayosrealizadosodu_presionbajatension:           { label: Presión en Baja Tensión }
+        ensayosrealizadosodu_presionensayo:                { label: Presión Ensayo }
+        ensayosrealizadosodu_presionrecuperacion:          { label: Presión Recuperación }
+        ensayosrealizadosodu_flags:                        { label: Flags }
+        ensayosrealizadosodu_tensionaltacalor:             { label: Tensión Alta en Modo Calor }
+        ensayosrealizadosodu_corrientealtacalor:           { label: Corriente Alta en modo Calor }
+        ensayosrealizadosodu_factordepotenciacalor:        { label: Factor de Potencia en Modo Calor}
+        ensayosrealizadosodu_potenciaaltacalor:            { label: Potencia Alta en modo Calor}
+        ensayosrealizadosodu_velocidadaltacalor:           { label: Velocidad Alta en modo Calor }
+        ensayosrealizadosodu_temperaturaaltacalor:         { label: Temperatura alta en modo Calor }
+        ensayosrealizadosodu_temperaturaambientecalor:     { label: Temperatura ambiente en modo Calor }
+        ensayosrealizadosodu_humedadcalor:                 { label: Humedad en modo calor }
+        ensayosrealizadosodu_presionbajatensioncalor:      { label: Presión en modo baja tensión Calor }
+        ensayosrealizadosodu_vacio:                        { label: Vacío }
+        ensayosrealizadosodu_hipot:                        { label: Hipot }
+        ensayosrealizadosodu_fuga:                         { label: Fuga }
+        ensayosrealizadosodu_observaciones:                { label: Observaciones }
+        ensayosrealizadosodu_tiempoensayo:                 { label: Duración, help: Segundos }
+        ensayosrealizadosodu_cantidadreimpresion:          { label: Cantidad Impresiones }
+        ensayosrealizadosodu_usuario:                      { label: Usuario}
+        orden_fabricacion:                                  { label: Orden Fabricación }
+      list:    
+        title:                    Listado de Ensayos Realizados ODU
+        sort:                     [ensayosrealizadosodu_id, desc]
+        display:                  [ensayosrealizadosodu_id, ensayosrealizadosodu_marca, ensayosrealizadosodu_modelo, ensayosrealizadosodu_codigo, ensayosrealizadosodu_serie, orden_fabricacion, ensayosrealizadosodu_fecha, ensayosrealizadosodu_aprobado, ensayosrealizadosodu_dcf]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:
+          #referencia:             { label: 'Ver Referencia' }
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:            []
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  []
+          #_new:                   { label: 'Crear nuevo'  }  
+      filter:  
+        display:                  [ensayosrealizadosodu_id, ensayosrealizadosodu_marca, ensayosrealizadosodu_modelo, ensayosrealizadosodu_codigo, ensayosrealizadosodu_serie, orden_fabricacion, ensayosrealizadosodu_fecha, ensayosrealizadosodu_aprobado, ensayosrealizadosodu_dcf]
+      form:    ~
+      edit:    ~
+      new:     ~

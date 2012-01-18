@@ -1,0 +1,59 @@
+﻿Modelo;895;1730;24;120;23;Arial;1;0;0;0;
+ModeloPeq;1100;1450;250;320;9;Arial;0;0;0;0;
+Capacidad;60;800;212;260;12;Arial;1;0;0;0;
+ModoFrio;802;1500;950;1050;20;Arial;1;0;0;0;
+Peso;500;700;398;460;12;Arial;1;0;0;0;
+Alto;500;700;465;520;12;Arial;1;0;0;0;
+Ancho;500;700;530;590;12;Arial;1;0;0;0;
+Profundidad;500;700;598;660;12;Arial;1;0;0;0;
+Conjunto;365;520;736;765;6;Arial;1;0;0;0;
+CodigoEAN;972;1510;630;890;10;Arial;0;0;0;0;
+CapacidadKcal;1484;1710;950;1010;13;Arial;1;0;0;0;
+ModoPeq;270;0;264;0;12;Arial;1;0;0;0;
+Nro Serie;2100;1580;380;580;12;Arial;1;0;0;0;
+FixNroSerie;922;1580;395;580;6;Arial;1;0;0;0;Nº de serie 
+FixCodigoEAN;922;1580;590;580;8;Arial;1;0;0;0;Código EAN
+FixConjunto;320;520;713;765;6;Arial;1;0;0;0;CODIGO CONJUNTO
+FixDistribuye;180;520;769;765;12;Arial;1;0;0;0;Distribuye & Garantiza
+FixCarrier;200;520;819;765;12;Arial;1;0;0;0;Carrier Fueguina S.A.
+FixAvenida;120;520;882;765;6;Arial;1;0;0;0;Ruta Nacional Nº 3 Km. 2832,22 - C.P. 9420 - Río Grande 
+FixArgentina;310;520;911;765;6;Arial;1;0;0;0;Tierra del Fuego - Argentina
+FixFabricado;22;520;985;765;6;Arial;1;0;0;0;Fabricado en A.A.E Tierra del Fuego
+FixInd;22;520;1010;765;6;Arial;1;0;0;0;Industria Argentina
+FixCapacidadKcal;1483;1710;1000;1010;10;Arial;1;0;0;0;Kcal/h
+FixVolt;210;0;316;0;12;Arial;1;0;0;0;220-240V. ~50Hz
+CodigoBarraConjunto;930;1730;147;120;30;Free 3 of 9 Extended;0;0;0;0;
+CodigoAAE;516;550;943;980;7;Arial;1;0;0;0;
+FixAAE;310;550;943;980;7;Arial;1;0;0;0;CÓDIGO AAE:
+EANBarCode;930;1730;630;120;45;Code EAN13;0;0;0;0;
+Nro_Serie_BarCode;930;1580;425;580;28;Free 3 of 9 Extended;0;0;0;0;
+Nro_Serie_Small;1110;1580;515;580;7;Arial;0;0;0;0;
+-- 3 of 9 Barcode
+-- Modelo;895;1730;24;120;23;Arial;1;0;0;0;
+-- ModeloPeq;1050;1450;280;320;11;Arial;0;0;0;0;
+-- Capacidad;60;800;212;260;12;Arial;1;0;0;0;
+-- ModoFrio;802;1500;950;1050;20;Arial;1;0;0;0;
+-- Peso;500;700;398;460;12;Arial;1;0;0;0;
+-- Alto;500;700;465;520;12;Arial;1;0;0;0;
+-- Ancho;500;700;530;590;12;Arial;1;0;0;0;
+-- Profundidad;500;700;598;660;12;Arial;1;0;0;0;
+-- Conjunto;365;520;736;765;6;Arial;1;0;0;0;
+-- CodigoEAN;972;1510;630;890;10;Arial;0;0;0;0;
+-- CapacidadKcal;1484;1710;950;1010;13;Arial;1;0;0;0;
+-- ModoPeq;270;0;264;0;12;Arial;1;0;0;0;
+-- Nro Serie;992;1580;450;580;17;Arial;1;0;0;0;
+-- FixNroSerie;942;1580;395;580;8;Arial;1;0;0;0;Nro de Serie 
+-- FixCodigoEAN;942;1580;590;580;8;Arial;1;0;0;0;Código EAN
+-- FixConjunto;320;520;713;765;6;Arial;1;0;0;0;CODIGO CONJUNTO
+-- FixDistribuye;180;520;769;765;12;Arial;1;0;0;0;Distribuye & Garantiza
+-- FixCarrier;200;520;819;765;12;Arial;1;0;0;0;Carrier Fueguina S.A.
+-- FixAvenida;120;520;886;765;6;Arial;1;0;0;0;Ruta Nacional Nº 3 Km. 2832,22 - C.P. 9420 - Río Grande 
+-- FixArgentina;310;520;914;765;6;Arial;1;0;0;0;Tierra del Fuego - Argentina
+-- FixFabricado;22;520;985;765;6;Arial;1;0;0;0;Fabricado en A.A.E Tierra del Fuego
+-- FixInd;22;520;1010;765;6;Arial;1;0;0;0;Industria Argentina
+-- FixCapacidadKcal;1483;1710;1000;1010;10;Arial;1;0;0;0;Kcal/h
+-- FixVolt;210;0;316;0;12;Arial;1;0;0;0;220-240V. ~50Hz
+-- CodigoBarraConjunto;930;1730;147;120;30;Free 3 of 9 Extended;1;0;0;0;
+-- FixInd;22;520;1010;765;6;Arial;1;0;0;0;Industria Argentina
+-- FixCapacidadKcal;1483;1710;1000;1010;10;Arial;1;0;0;0;Kcal/h
+-- FixVolt;21

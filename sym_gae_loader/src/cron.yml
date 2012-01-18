@@ -1,0 +1,4 @@
+cron:
+- description: Contact mailer
+  url: /welcome_email
+  schedule: every 5 minutes

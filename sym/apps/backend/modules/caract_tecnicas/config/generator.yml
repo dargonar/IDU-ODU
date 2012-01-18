@@ -1,0 +1,77 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Caracteristicastecnicasequipos
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          caracteristicastecnicasequipos
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        id:                                                       { label: Id }
+        caracteristicastecnicasequipos_id:                        { label: Id }
+        caracteristicastecnicasequipos_version:                   { label: Versión }
+        caracteristicastecnicasequipos_descripcion1:              { label: Descripción1, help: no utilizado }
+        caracteristicastecnicasequipos_descripcion2:              { label: Descripción2, help: no utilizado }
+        caracteristicastecnicasequipos_descripcion3:              { label: Descripción3, help: no utilizado }
+        caracteristicastecnicasequipos_descripcion4:              { label: Descripción4, help: no utilizado }
+        caracteristicastecnicasequipos_descripcion5:              { label: Descripción5, help: no utilizado }
+        caracteristicastecnicasequipos_descripcion6:              { label: Descripción6, help: no utilizado }
+        caracteristicastecnicasequipos_tensionnominal:            { label: Tensión Nominalhelp: no utilizado }
+        caracteristicastecnicasequipos_frecuencia:                { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_potenciamaxima:            { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_corrientemaxima:           { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_carga:                     { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_presion:                   { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_capacidadfrio:             { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_potencianominalfrio:       { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_corrientenominalfrio:      { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_peso:                      { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_capacidadcalor:            { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_potencianominalcalor:      { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_corrientenominalcalor:     { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_err:                       { label: Id, help: no utilizado }
+        caracteristicastecnicasequipos_esidu:                     { label: Línea, help: IDU=1 ODU=0}
+        caracteristicastecnicasequipos_nombre:                    { label: Nombre, help: Descripción de la Caract. }
+        caracteristicastecnicasequipos_idparametros:              { label: Parámetro Ref., help: Parámetro Referenciado }
+        caracteristicastecnicasequipos_idparametros_idu:          { label: Parámetro IDU Ref., help: Parámetro IDU Referenciado }  # foreign: parametrosensayosidu_id
+        caracteristicastecnicasequipos_idparametros_odu:          { label: Parámetro ODU Ref., help: Parámetro ODU Referenciado }  # foreign: parametrosensayosodu_id
+        es_activo:                                                { label: Activo , help: Activo=1 - Inactivo=0 }
+      list:    
+        title:                    Listado de Características Técnicas
+        sort:                     [id, asc]
+        display:                  [id, caracteristicastecnicasequipos_nombre, caracteristicastecnicasequipos_idparametros, _caracteristicastecnicasequipos_esidu]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:
+          parametros:             { label: 'Ver Parámetros' }
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  
+          _new:                   { label: 'Crear nuevo'  }  
+      filter:  
+        display:                  [id, caracteristicastecnicasequipos_nombre, caracteristicastecnicasequipos_idparametros, caracteristicastecnicasequipos_esidu]
+      form:    ~
+      edit:    
+        fields:                   
+          caracteristicastecnicasequipos_nombre:              { label: Nombre, help: Descripción de la Caract. Es la referencia utilizada desde Modelos. }
+          caracteristicastecnicasequipos_esidu:               { label: ¿Es IDU?,help:IDU=1(configure sólo "Parámetro IDU Ref") ODU=0(configure sólo "Parámetro ODU Ref")}
+          caracteristicastecnicasequipos_idparametros_idu:    { label: Parámetro IDU Ref., help: Parámetro IDU Referenciado si ES IDU = 1 } 
+          caracteristicastecnicasequipos_idparametros_odu:    { label: Parámetro ODU Ref., help: Parámetro ODU Referenciado si ES IDU = 0}
+        title:                    Editando Referencia (Caract. Técnica) <strong>%%caracteristicastecnicasequipos_nombre%%</strong>
+        display:                  [caracteristicastecnicasequipos_nombre, caracteristicastecnicasequipos_esidu, caracteristicastecnicasequipos_idparametros_idu, caracteristicastecnicasequipos_idparametros_odu]
+      new:     
+        fields:                   
+          caracteristicastecnicasequipos_nombre:              { label: Nombre, help: Descripción de la Caract. Es la referencia utilizada desde Modelos. }
+          caracteristicastecnicasequipos_esidu:               { label: ¿Es IDU?,help:IDU=1(configure sólo "Parámetro IDU Ref") ODU=0(configure sólo "Parámetro ODU Ref")}
+          caracteristicastecnicasequipos_idparametros_idu:    { label: Parámetro IDU Ref., help: Parámetro IDU Referenciado si ES IDU = 1 } 
+          caracteristicastecnicasequipos_idparametros_odu:    { label: Parámetro ODU Ref., help: Parámetro ODU Referenciado si ES IDU = 0}
+        title:                    Nueva Referencia (Caract. Técnica)
+        display:                  [caracteristicastecnicasequipos_nombre, caracteristicastecnicasequipos_esidu, caracteristicastecnicasequipos_idparametros_idu, caracteristicastecnicasequipos_idparametros_odu]

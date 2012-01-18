@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<minimalLanguageDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LightSpeedModel1">
+  <modelMoniker name="/LightSpeedModel1" />
+  <nestedChildShapes>
+    <entityShape Id="8383ee6b-9758-4845-a303-5b05c8d53e58" absoluteBounds="0.75, 0.75, 1.5, 1.3317366536458333">
+      <entityMoniker name="/LightSpeedModel1/InfoEnsayosReset" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2228b2fd-82e3-45bb-9312-2c7cd806080a" absoluteBounds="0.76500000000000012, 1.1600000000000001, 1.4700000000000002, 0.82173665364583326" name="Properties" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </entityShape>
+  </nestedChildShapes>
+</minimalLanguageDiagram>

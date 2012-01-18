@@ -1,0 +1,78 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Parametrosensayosidu
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          parametrosensayosidu
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        parametrosensayosidu_id:                            { label: Id}
+        parametrosensayosidu_referencia:                    { label: Referencia, help: Nombre para ser referenciado}
+        parametrosensayosidu_descripcion:                   { label: Descripción}
+        parametrosensayosidu_dcfs:                          { label: DCFs}
+        parametrosensayosidu_modificado:                    { label: Modificado}
+        parametrosensayosidu_idversion:                     { label: Versión, help: Versión}
+        _version:                                           { label: Versión, help: Versión}
+        es_activo:                                          { label: Activo , help: Activo=1 - Inactivo=0 }
+        # Tiempos de ensayo en segundos
+        parametrosensayosidu_retardostopinicial:            { label: Retardo Stop Inicial, help: Idem (EU:segundos)}
+        parametrosensayosidu_retardostartmitad:             { label: Retardo Start 1/2, help: Idem (EU:segundos) }
+        parametrosensayosidu_timeoutcalor:                  { label: TimeOut Arranque en Calor, help: TimeOut Arranque (Calor) (EU:segundos)}
+        parametrosensayosidu_timeoutfrio :                  { label: TimeOut Arranque en Frío, help: TimeOut Arranque (Frío) (EU:segundos)}
+        parametrosensayosidu_retardostart2bajatension:      { label: Retardo Start 2 Baja Tensión, help: Retardo Start 2 BT (EU:segundos)}
+        parametrosensayosidu_tiempomodovelocidadbaja:       { label: Tiempo en Modo Baja Velocidad, help: Ensayo Low (EU:segundos)} 
+        parametrosensayosidu_timeoutbajatension:            { label: TimeOut Baja Tensión, help: Ensayo Low (EU:segundos)} 
+        parametrosensayosidu_tiempomodovelocidadalta:       { label: Tiempo en Modo Alta Velocidad, help: Ensayo HIGH (EU:segundos)} 
+        parametrosensayosidu_retardodesenergizado:          { label: Retardo Desenergizado, help: (EU:segundos)} 
+        parametrosensayosidu_final:                         { label: Final, help:(EU:segundos)} 
+        # Valores límites de control
+        parametrosensayosidu_temperatura:                   { label: Temperatura de IDU OFF, help: Temperatura de IDU OFF entre C y F} 
+        parametrosensayosidu_velocidadbajatensionmin:       { label: Vel Baja Tensión MIN} 
+        parametrosensayosidu_velocidadbajatensionmax:       { label: Vel Baja Tensión MAX} 
+        
+        parametrosensayosidu_corrientebajatensionmin:       { label: Corriente Baja Tensión MIN} 
+        parametrosensayosidu_corrientebajatensionmax:       { label: Corriente Baja Tensión MAX} 
+        
+        parametrosensayosidu_velocidadminmodovelbaja:       { label: Velocidad Modo Baja Velocidad MIN} 
+        parametrosensayosidu_velocidadmaxmodovelbaja:       { label: Velocidad Modo Baja Velocidad MAX} 
+        
+        parametrosensayosidu_corrienteminmodovelbaja:       { label: Corriente Modo Baja Velocidad MIN} 
+        parametrosensayosidu_corrientemaxmodovelbaja:       { label: Corriente Modo Baja Velocidad MAX} 
+        
+        parametrosensayosidu_velocidadminmodovelalta:       { label: Velocidad Modo Alta Velocidad MIN} 
+        parametrosensayosidu_velocidadmaxmodovelalta:       { label: Velocidad Modo Alta Velocidad MAX} 
+        
+        parametrosensayosidu_corrienteminmodovelalta:       { label: Corriente Modo Alta Velocidad MAX} 
+        parametrosensayosidu_corrientemaxmodovelalta:       { label: Corriente Modo Alta Velocidad MAX} 
+        
+      list:    
+        title:                    Listado de Parámetros de Ensayo IDU
+        sort:                     [parametrosensayosidu_id, asc]
+        display:                  [parametrosensayosidu_id, parametrosensayosidu_referencia, parametrosensayosidu_descripcion, _version]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:
+          #referencia:             { label: 'Ver Referencia' }
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:            []
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  []
+          #_new:                   { label: 'Crear nuevo'  }  
+      filter:  
+        display:                  [parametrosensayosidu_id, parametrosensayosidu_referencia, parametrosensayosidu_descripcion, parametrosensayosidu_idversion]
+      form:    ~
+      edit:    
+        title:                    Editando Parámetros IDU <strong>%%parametrosensayosidu_referencia%%</strong>
+        display:
+          "NONE":                           [parametrosensayosidu_referencia, parametrosensayosidu_descripcion, parametrosensayosidu_dcfs, parametrosensayosidu_idversion]
+          "Tiempos de ensayo en segundos":  [ parametrosensayosidu_retardostopinicial, parametrosensayosidu_retardostartmitad, parametrosensayosidu_timeoutcalor, parametrosensayosidu_timeoutfrio, parametrosensayosidu_retardostart2bajatension,parametrosensayosidu_tiempomodovelocidadbaja , parametrosensayosidu_timeoutbajatension, parametrosensayosidu_tiempomodovelocidadalta, parametrosensayosidu_retardodesenergizado, parametrosensayosidu_final]
+          "Valores límites de control":     [ parametrosensayosidu_temperatura,    parametrosensayosidu_velocidadbajatensionmin, parametrosensayosidu_velocidadbajatensionmax,    parametrosensayosidu_corrientebajatensionmin, parametrosensayosidu_corrientebajatensionmax,    parametrosensayosidu_velocidadminmodovelbaja, parametrosensayosidu_velocidadmaxmodovelbaja,       parametrosensayosidu_corrienteminmodovelbaja, parametrosensayosidu_corrientemaxmodovelbaja,              parametrosensayosidu_velocidadminmodovelalta, parametrosensayosidu_velocidadmaxmodovelalta,               parametrosensayosidu_corrienteminmodovelalta, parametrosensayosidu_corrientemaxmodovelalta]
+      new:     ~

@@ -1,0 +1,2058 @@
+Caracteristicastecnicasequipos:
+  connection: doctrine
+  tableName: caracteristicastecnicasequipos
+  columns:
+    caracteristicastecnicasequipos_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    caracteristicastecnicasequipos_version:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_descripcion1:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_descripcion2:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_descripcion3:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_descripcion4:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_descripcion5:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_descripcion6:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_tensionnominal:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_frecuencia:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_potenciamaxima:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_corrientemaxima:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_carga:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_presion:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_capacidadfrio:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_potencianominalfrio:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_corrientenominalfrio:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_peso:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_capacidadcalor:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_potencianominalcalor:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_corrientenominalcalor:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_err:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_esidu:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_nombre:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_idparametros:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    caracteristicastecnicasequipos_idparametros_idu:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    caracteristicastecnicasequipos_idparametros_odu:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    es_activo:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: false
+      autoincrement: false
+  relations:
+    Parametrosensayosidu:
+      local: caracteristicastecnicasequipos_idparametros_idu
+      foreign: parametrosensayosidu_id
+      type: one
+    Parametrosensayosodu:
+      local: caracteristicastecnicasequipos_idparametros_odu
+      foreign: parametrosensayosodu_id
+      type: one
+Componentesetiquetas:
+  connection: doctrine
+  tableName: componentesetiquetas
+  columns:
+    componentesetiquetas_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    componentesetiquetas_font:
+      type: string(32)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: ARIAL
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_size:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '12'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_bold:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_italic:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_yinicial:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_xinicial:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_yfinal:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_variable:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_tipo:
+      type: integer(2)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_alignh:
+      type: integer(2)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_alignv:
+      type: integer(2)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_xfinal:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_param:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    componentesetiquetas_numeroetiqueta:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+Ensayosrealizadosidu:
+  connection: doctrine
+  tableName: ensayosrealizadosidu
+  columns:
+    ensayosrealizadosidu_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    ensayosrealizadosidu_marca:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_modelo:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_codigo:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_serie:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ensayosrealizadosidu_fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_aprobado:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_dcf:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_tiempoensayo:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_velocidadinicial:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_velocidadbajatension:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_velocidadlow:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_velocidadhigh:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_corrienteinicial:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_corrientebajatension:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_corrientelow:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_corrientehigh:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_corrientecalorinicial:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_hipot:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_fuga:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_observaciones:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_cantidadreimpresion:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosidu_usuario:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    orden_fabricacion:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: N/D
+      notnull: false
+      autoincrement: false
+Ensayosrealizadosodu:
+  connection: doctrine
+  tableName: ensayosrealizadosodu
+  columns:
+    ensayosrealizadosodu_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    ensayosrealizadosodu_marca:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_modelo:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_codigo:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_serie:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_aprobado:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_dcf:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_diferenciadetemperatura:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_temperaturaambiente:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_humedad:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_tensionalta:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_tensionbaja:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_corrientealta:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_corrientebaja:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_potenciaalta:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_factordepotencia:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_velocidadalta:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_velocidadbaja:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_presioninicial:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_presionbajatension:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_presionensayo:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_presionrecuperacion:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_flags:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_tensionaltacalor:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_corrientealtacalor:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_factordepotenciacalor:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_potenciaaltacalor:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_velocidadaltacalor:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_temperaturaaltacalor:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_temperaturaambientecalor:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_humedadcalor:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_presionbajatensioncalor:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_vacio:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_hipot:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_fuga:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_observaciones:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_tiempoensayo:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_cantidadreimpresion:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ensayosrealizadosodu_usuario:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    orden_fabricacion:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: N/D
+      notnull: false
+      autoincrement: false
+Etiquetas:
+  connection: doctrine
+  tableName: etiquetas
+  columns:
+    etiquetas_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    etiquetas_nombre:
+      type: string(64)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    etiquetas_esidu:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    es_activa:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    es_bulto:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+Fallasidu:
+  connection: doctrine
+  tableName: fallasidu
+  columns:
+    numerodefalla:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    descripcion:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    prioridadalta:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+Fallasodu:
+  connection: doctrine
+  tableName: fallasodu
+  columns:
+    numerodefalla:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    descripcion:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    prioridadalta:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+Infoensayosreset:
+  connection: doctrine
+  tableName: infoensayosreset
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    numeroensayosok:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    usuario:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: USER
+      notnull: true
+      autoincrement: false
+    pc:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"PC"'
+      notnull: true
+      autoincrement: false
+    esidu:
+      type: bit(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: 'b''0'''
+      notnull: true
+      autoincrement: false
+LogIduOdu:
+  connection: doctrine
+  tableName: log_idu_odu
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    date:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    thread:
+      type: string(32)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    context:
+      type: string(512)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    level:
+      type: string(512)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    logger:
+      type: string(512)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    message:
+      type: string(4000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    exception:
+      type: string(2000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dcf:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    username:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    line:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+
+Modelos:
+  connection: doctrine
+  tableName: modelos
+  columns:
+    modelos_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    modelos_marca:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_modelo:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_codigo:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_referencia:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_ean13:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_etiqueta:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    modelos_etiquetacaja:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    modelos_logo:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_conjunto:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_capacidad:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_codigoicsa:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_descripcion:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_dimensiones:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    modelos_esidu:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    es_activo:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    background_bulto:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    background_producto:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+
+Parametrosensayosidu:
+  connection: doctrine
+  tableName: parametrosensayosidu
+  columns:
+    parametrosensayosidu_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    parametrosensayosidu_referencia:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_descripcion:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_dcfs:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_modificado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_retardostopinicial:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_retardostartmitad:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_timeoutcalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_timeoutfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_retardostart2bajatension:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_tiempomodovelocidadbaja:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_tiempomodovelocidadalta:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_retardodesenergizado:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_final:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_temperatura:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_velocidadbajatensionmin:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_velocidadbajatensionmax:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_corrientebajatensionmin:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_corrientebajatensionmax:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_velocidadminmodovelbaja:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_velocidadmaxmodovelbaja:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_corrienteminmodovelbaja:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_corrientemaxmodovelbaja:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_velocidadminmodovelalta:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_velocidadmaxmodovelalta:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_corrienteminmodovelalta:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_corrientemaxmodovelalta:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_timeoutbajatension:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    parametrosensayosidu_idversion:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    es_activo:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+  relations:
+    Caracteristicastecnicasequipos:
+      local: parametrosensayosidu_id
+      foreign: caracteristicastecnicasequipos_idparametros_idu
+      type: many
+      
+Parametrosensayosodu:
+  connection: doctrine
+  tableName: parametrosensayosodu
+  columns:
+    parametrosensayosodu_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    parametrosensayosodu_ref:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_descripcion:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_modificado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_dcfs:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempoinicialestabilizacion:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempomaximoestabilizacion:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempobajatension:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempomaximobajatension:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempomedicioncalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempomaximomedicioncalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempomedicionfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiemporecuperacionminima:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempomaximorecuperacionminima:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_delayarranquecompresor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempoapagadoentrecaloryfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempocierrevalvula1:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempocierrevalvula2:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_tiempofinal:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_presioninicialmin:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_presioninicialmax:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_deltapresionestabilizacionmin:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_deltapresionestabilizacionmax:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_velocidadminbajatension:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_deltapresionbajatensionmin:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_deltapresionbajatensionmax:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_deltatempmincalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_deltatempmaxcalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_corrientemincalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_corrientemaxcalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_potenciamincalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_potenciamaxcalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_velocidadmaxventiladorcalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_velocidadminventiladorcalor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_presionminapagadocompresor:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_deltatempminfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_deltatempmaxfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_corrientemaxfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_corrienteminfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_potenciaminfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_potenciamaxfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_velocidadminventiladorfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_velocidadmaxventiladorfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_presionminfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_presionmaxfrio:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_presionmaxrecuperacion:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    parametrosensayosodu_idversion:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    es_activo:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+  relations:
+    Caracteristicastecnicasequipos:
+      local: parametrosensayosodu_id
+      foreign: caracteristicastecnicasequipos_idparametros_odu
+      type: many
+      
+Reimpresiones:
+  connection: doctrine
+  tableName: reimpresiones
+  columns:
+    reimpresiones_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    reimpresiones_marca:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    reimpresiones_modelo:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    reimpresiones_codigo:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    reimpresiones_serie:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    reimpresiones_fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    reimpresiones_aprobado:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    reimpresiones_observaciones:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    reimpresiones_esidu:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+# Serie:
+  # connection: doctrine
+  # tableName: serie
+  # columns:
+    # serie_id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: true
+      # autoincrement: true
+    # serie_tipo:
+      # type: string(1)
+      # fixed: true
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # serie_numero:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # serie_maximo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # serie_minimo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # serie_prefijo:
+      # type: string(10)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # serie_sufijo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: false
+      # default: '0'
+      # notnull: true
+      # autoincrement: false
+
+#Perfil de usuario asociado a sfGuardUser
+UserProfile:
+  actAs: [Timestampable]
+  columns:
+    sf_guard_user_id:       integer(8)
+    numero_legajo:          string(255)
+    phone:                  string(255)
+    turno:                  string(255)
+    puesto:                 string(255)
+    linea:                  string(255)
+  relations:
+    User:
+      class: sfGuardUser
+      foreign: id
+      local: sf_guard_user_id
+      type: one
+      onDelete: cascade
+      foreignType: one
+      foreignAlias: Profile
+      
+Usuarios:
+  connection: doctrine
+  tableName: usuarios
+  columns:
+    usuarios_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    usuarios_password:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '""'
+      notnull: true
+      autoincrement: false
+    usuarios_descripcion:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Versiones:
+  connection: doctrine
+  tableName: versiones
+  columns:
+    versiones_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    versiones_descripcion:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '"'
+      notnull: true
+      autoincrement: false

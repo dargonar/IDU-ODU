@@ -1,0 +1,703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11D47D27-91C5-44FA-A32E-25B430A1ADA6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPFiDU</RootNamespace>
+    <AssemblyName>Idu</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>http://localhost/WPFiDU/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ApplicationIcon>idu.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IVRTKERNELLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\IVRTKERNELLib.dll</HintPath>
+    </Reference>
+    <Reference Include="J832.Common, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\J832.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="J832.Wpf.BagOTricksLib, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\J832.Wpf.BagOTricksLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Mindscape.LightSpeed, Version=2.1.762.9425, Culture=neutral, PublicKeyToken=360c8f37b466ebb2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\Mindscape.LightSpeed.dll</HintPath>
+    </Reference>
+    <Reference Include="Mindscape.LightSpeed.Linq, Version=2.1.762.9425, Culture=neutral, PublicKeyToken=360c8f37b466ebb2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\Mindscape.LightSpeed.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=5.1.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="OPCdotNETLib, Version=1.0.555.24106, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\OPCdotNETLib.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Royale">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ajusteparametrosidu.xaml.cs">
+      <DependentUpon>ajusteparametrosidu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnimatedImageControl.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ArchivoEtiqueta\ArchivoEtiqueta.cs" />
+    <Compile Include="Archivo\Archivo.cs" />
+    <Compile Include="Archivo\ArchivoIDU.cs" />
+    <Compile Include="Archivo\ArchivoODU.cs" />
+    <Compile Include="BL\CaracteristicasTecnicasManager.cs" />
+    <Compile Include="BL\ConfiguracionManager.cs" />
+    <Compile Include="BL\EnsayosManager.cs" />
+    <Compile Include="BL\EnvironmentTempManager.cs" />
+    <Compile Include="BL\EtiquetaManager.cs" />
+    <Compile Include="BL\ExceptionManager.cs" />
+    <Compile Include="BL\ImagenesManager.cs" />
+    <Compile Include="BL\Manager.cs" />
+    <Compile Include="BL\ManagerUsuarios.cs" />
+    <Compile Include="BL\ModelosManager.cs" />
+    <Compile Include="BL\NumeroDeSerieManager.cs" />
+    <Compile Include="BL\ParametrosManager.cs" />
+    <Compile Include="BL\VariablesPLCManager.cs" />
+    <Compile Include="BL\VersionEquiposManager.cs" />
+    <Compile Include="cambiarmodelo.xaml.cs">
+      <DependentUpon>cambiarmodelo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="cambiarnombre.xaml.cs">
+      <DependentUpon>cambiarnombre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BL\ManagerResetEnsayos.cs" />
+    <Compile Include="CommonObjects\CaracteristicasTecnicas.cs" />
+    <Compile Include="CommonObjects\sfUser.cs" />
+    <Compile Include="CommonObjects\Configuracion.cs" />
+    <Compile Include="CommonObjects\Ensayos.cs" />
+    <Compile Include="CommonObjects\EnsayosIDU.cs" />
+    <Compile Include="CommonObjects\EnsayosODU.cs" />
+    <Compile Include="CommonObjects\Etiqueta.cs" />
+    <Compile Include="CommonObjects\EtiquetaItem.cs" />
+    <Compile Include="CommonObjects\Modelo.cs" />
+    <Compile Include="CommonObjects\NumeroDeSerie.cs" />
+    <Compile Include="CommonObjects\ParametrosEnsayo.cs" />
+    <Compile Include="CommonObjects\ParametrosEnsayoIDU.cs" />
+    <Compile Include="CommonObjects\ParametrosEnsayoODU.cs" />
+    <Compile Include="CommonObjects\Usuario.cs" />
+    <Compile Include="CommonObjects\VersionEquipo.cs" />
+    <Compile Include="DAO\OFAccess.cs" />
+    <Compile Include="Etiquetas\EtiquetaBulto.cs" />
+    <Compile Include="Etiquetas\EtiquetaProducto.cs" />
+    <Compile Include="Etiquetas\EtiquetasManagerEx.cs" />
+    <Compile Include="Etiquetas\IEtiqueta.cs" />
+    <Compile Include="Etiquetas\ImpresorEtiqueta.cs" />
+    <Compile Include="Etiquetas\PosicElement.cs" />
+    <Compile Include="Etiquetas\PosicEtiquetaBulto.cs" />
+    <Compile Include="Etiquetas\PosicEtiquetaProducto.cs" />
+    <Compile Include="Generator\InfoEnsayosResetManager.cs" />
+    <Compile Include="Generator\InfoEnsayosResetManagerExtended.cs" />
+    <Compile Include="Generator\Manager.cs" />
+    <Compile Include="homeIDU2.xaml.cs">
+      <DependentUpon>homeIDU2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LightSpeedModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LightSpeedModel1.lsmodel</DependentUpon>
+    </Compile>
+    <Compile Include="modeloafabricar.xaml.cs">
+      <DependentUpon>modeloafabricar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="cambionumeroserie.xaml.cs">
+      <DependentUpon>cambionumeroserie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="conexionplc.xaml.cs">
+      <DependentUpon>conexionplc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="configuracion.xaml.cs">
+      <DependentUpon>configuracion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="confirmacioneliminar.xaml.cs">
+      <DependentUpon>confirmacioneliminar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="consulta.xaml.cs">
+      <DependentUpon>consulta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\BaseDAO.cs" />
+    <Compile Include="DAO\IDUDb.cs" />
+    <Compile Include="DAO\ODUDb.cs" />
+    <Compile Include="detallesensayoidu.xaml.cs">
+      <DependentUpon>detallesensayoidu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ensayos.xaml.cs">
+      <DependentUpon>ensayos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="excepcion.xaml.cs">
+      <DependentUpon>excepcion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="formatosetiquetas.xaml.cs">
+      <DependentUpon>formatosetiquetas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="homeIDU.xaml.cs">
+      <DependentUpon>homeIDU.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimiento.xaml.cs">
+      <DependentUpon>mantenimiento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimientomodelos.xaml.cs">
+      <DependentUpon>mantenimientomodelos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimientoproducto.xaml.cs">
+      <DependentUpon>mantenimientoproducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimientoreferencias.xaml.cs">
+      <DependentUpon>mantenimientoreferencias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="monitoreoIDU.xaml.cs">
+      <DependentUpon>monitoreoIDU.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="parametrizacion.xaml.cs">
+      <DependentUpon>parametrizacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="plcbtnsaux.xaml.cs">
+      <DependentUpon>plcbtnsaux.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PLC\OPCWrapper.cs" />
+    <Compile Include="PLC\PLC.cs" />
+    <Compile Include="PLC\PLCIDU.cs" />
+    <Compile Include="PLC\PLCODU.cs" />
+    <Compile Include="PLC\VariablePLC.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="NumericTextBox.xaml.cs">
+      <DependentUpon>NumericTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teclado.xaml.cs">
+      <DependentUpon>Teclado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teclado2.xaml.cs">
+      <DependentUpon>Teclado2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\AppSrvcsManager.cs" />
+    <Compile Include="Utils\DBImporter.cs" />
+    <Compile Include="Utils\DCFConnectionChecker.cs" />
+    <Compile Include="Utils\LastDCFConnectionManager.cs" />
+    <Compile Include="Utils\LastTestedModelManager.cs" />
+    <Compile Include="Utils\OneAppInstanceChecker.cs" />
+    <Compile Include="Utils\PiezasOkManager.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="variablesplcODUxaml.xaml.cs">
+      <DependentUpon>variablesplcODUxaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaprevia.xaml.cs">
+      <DependentUpon>vistaprevia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="wndComunicacion.xaml.cs">
+      <DependentUpon>wndComunicacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="wndServicesManager.xaml.cs">
+      <DependentUpon>wndServicesManager.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Imagenes\CAPACIDAD\CAP_CAR_09fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\CAP_CAR_09fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\CAP_CAR_12fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\CAP_CAR_12fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\CAP_CAR_18fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\CAP_CAR_18fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\CAP_CAR_22fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\CAP_CAR_22fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_07fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_09fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_09fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_12fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_12fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_18fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_18fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_22fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_22fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_OEM_09fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_OEM_09fs.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_OEM_18fc.wmf" />
+    <None Include="Imagenes\CAPACIDAD\tipo_capacidad_OEM_18fs.wmf" />
+    <None Include="Imagenes\DIMENSION\DIM_CARRIER.wmf" />
+    <None Include="Imagenes\DIMENSION\DIM_CAR_Idu1013.wmf" />
+    <None Include="Imagenes\DIMENSION\DIM_CAR_Idu1822.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_idu_07fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_idu_09fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_idu_09fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_idu_12fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_idu_12fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_idu_18fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_idu_18fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_idu_22fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_idu_22fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_07fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_09fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_09fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_12fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_12fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_18fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_18fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_22fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_22fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_aux_09fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_aux_09fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_aux_12fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_aux_12fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_aux_18fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_aux_18fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_aux_24fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_aux_24fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_gal_09fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_gal_09fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_gal_12fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_gal_12fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_gal_18fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_gal_18fs.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_gal_24fc.wmf" />
+    <None Include="Imagenes\DIMENSION\dim_odu_gal_24fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant07.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant_07fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_bryant_22fs.wmf" />
+    <None Include="Imagenes\EAN13\EAN_CAR_2250FC.wmf" />
+    <None Include="Imagenes\EAN13\EAN_CAR_2250FS.wmf" />
+    <None Include="Imagenes\EAN13\EAN_CAR_3000FC.wmf" />
+    <None Include="Imagenes\EAN13\EAN_CAR_3000FS.wmf" />
+    <None Include="Imagenes\EAN13\EAN_CAR_4500FC.wmf" />
+    <None Include="Imagenes\EAN13\EAN_CAR_4500FS.wmf" />
+    <None Include="Imagenes\EAN13\EAN_CAR_5500FC.wmf" />
+    <None Include="Imagenes\EAN13\EAN_CAR_5500FS.wmf" />
+    <None Include="Imagenes\EAN13\ean_confortmaker_int_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_confortmaker_int_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_confortmaker_int_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_confortmaker_int_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_confortmaker_int_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_confortmaker_int_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_confortmaker_int_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_confortmaker_int_22fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror07.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_int_07fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_int_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_int_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_int_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_int_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_int_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_int_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_int_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_int_22fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_liso_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_liso_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_liso_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_liso_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_liso_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_liso_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_liso_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_conqueror_liso_22fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_grundig_liso_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_grundig_liso_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_grundig_liso_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_grundig_liso_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_grundig_liso_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_grundig_liso_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_grundig_liso_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_grundig_liso_22fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall07.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_07fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_2205fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_2205fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_int_22fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_liso_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_liso_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_liso_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_liso_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_liso_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_liso_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_liso_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_marshall_liso_22fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer07.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer_07fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_springer_22fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey07.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey09.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey13.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey_07fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_surrey_22fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_tempstar_xxxx.wmf" />
+    <None Include="Imagenes\EAN13\ean_winner_07fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_winner_09fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_winner_09fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_winner_12fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_winner_12fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_winner_18fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_winner_18fs.wmf" />
+    <None Include="Imagenes\EAN13\ean_winner_22fc.wmf" />
+    <None Include="Imagenes\EAN13\ean_winner_22fs.wmf" />
+    <None Include="Imagenes\EXTRAS\LIRAM.WMF" />
+    <None Include="Imagenes\EXTRAS\LREPARG.WMF" />
+    <None Include="Imagenes\LOGO\bryant.wmf" />
+    <None Include="Imagenes\LOGO\bryant0.wmf" />
+    <None Include="Imagenes\LOGO\CARRIER.wmf" />
+    <None Include="Imagenes\LOGO\Confortmaker.wmf" />
+    <None Include="Imagenes\LOGO\conqueror.wmf" />
+    <None Include="Imagenes\LOGO\Grundig.wmf" />
+    <None Include="Imagenes\LOGO\marshall.wmf" />
+    <None Include="Imagenes\LOGO\marshall_original.wmf" />
+    <None Include="Imagenes\LOGO\Source1.wmf" />
+    <None Include="Imagenes\LOGO\springer.wmf" />
+    <None Include="Imagenes\LOGO\surrey.wmf" />
+    <None Include="Imagenes\LOGO\tempstar.wmf" />
+    <None Include="Imagenes\LOGO\winner.wmf" />
+    <None Include="Imagenes\LOGO\York.wmf" />
+    <None Include="LightSpeedModel1.lsmodel">
+      <Generator>LightSpeedModelGenerator</Generator>
+      <LastGenOutput>LightSpeedModel1.cs</LastGenOutput>
+    </None>
+    <None Include="LightSpeedModel1.lsmodel.diagram">
+      <DependentUpon>LightSpeedModel1.lsmodel</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\designxxi.png" />
+    <Resource Include="Images\designxxi_old.png" />
+    <Resource Include="Images\dispositivos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ajusteparametrosidu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="archivobtnsaux.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="cambiarmodelo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="cambiarnombre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="homeIDU2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeloafabricar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="cambionumeroserie.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="conexionplc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="configuracion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="confirmacioneliminar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="consulta.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="detallesensayoidu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ensayos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="excepcion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="formatosetiquetas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="homeIDU.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mantenimiento.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mantenimientomodelos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mantenimientoproducto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mantenimientoreferencias.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="monitoreoIDU.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="parametrizacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="plcbtnsaux.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NumericTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teclado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teclado2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="variablesplcODUxaml.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="vistaprevia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="wndComunicacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="wndServicesManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\aire.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\compresor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\dispositivos2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="idu.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetTraceView\NetTraceView.csproj">
+      <Project>{8787FE93-4CA6-4E80-9EB4-757F92486098}</Project>
+      <Name>NetTraceView</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\computer_key_Backspace.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

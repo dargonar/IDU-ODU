@@ -1,0 +1,1 @@
+<?php echo $user_profile->getUser()->getLastName() . ', ' . $user_profile->getUser()->getFirstName(); ?>

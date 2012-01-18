@@ -1,0 +1,19 @@
+#Perfil de usuario asociado a sfGuardUser
+UserProfile:
+  actAs: [Timestampable]
+  columns:
+    sf_guard_user_id:       integer(8)
+    numero_legajo:          string(255)
+    phone:                  string(255)
+    turno:                  string(255)
+    puesto:                 string(255)
+    linea:                  string(255)
+  relations:
+    User:
+      class: sfGuardUser
+      foreign: id
+      local: sf_guard_user_id
+      type: one
+      onDelete: cascade
+      foreignType: one
+      foreignAlias: Profile

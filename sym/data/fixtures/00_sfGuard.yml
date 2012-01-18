@@ -1,0 +1,569 @@
+sfGuardUser:
+  sgu_admin:
+    first_name:     Super
+    last_name:      Admin
+    username:       admin
+    password:       admin248
+    is_super_admin: true
+    Groups:         [Group_admin]
+  
+# =============================================== #    
+# GAE Generated Users                             #
+
+  sfguard_rbepre:
+    first_name: Rafael
+    last_name: Bepre
+    username: rbepre
+    password: 34
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_cpuebla:
+    first_name: Carlos
+    last_name: Puebla
+    username: cpuebla
+    password: 219
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_mcarrion:
+    first_name: Matias
+    last_name: Carrion
+    username: mcarrion
+    password: 334
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_vrobles:
+    first_name: Victor
+    last_name: Robles
+    username: vrobles
+    password: 56
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_aansaldi:
+    first_name: Aldo
+    last_name: Ansaldi
+    username: aansaldi
+    password: 58
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_fgarcía:
+    first_name: Fernando
+    last_name: García
+    username: fgarcía
+    password: 67
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_lamaya:
+    first_name: Leonel
+    last_name: Amaya
+    username: lamaya
+    password: 51
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_smoglie:
+    first_name: Sebastian
+    last_name: Moglie
+    username: smoglie
+    password: 46
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_hcampostrini:
+    first_name: Hugo
+    last_name: Campostrini
+    username: hcampostrini
+    password: 28
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_mnavarrete:
+    first_name: Martin
+    last_name: Navarrete
+    username: mnavarrete
+    password: 115
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_maguilar:
+    first_name: Marcelo
+    last_name: Aguilar
+    username: maguilar
+    password: 129
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_evega:
+    first_name: Emanuel
+    last_name: Vega
+    username: evega
+    password: 324
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_hmaldonado:
+    first_name: Hugo
+    last_name: Maldonado
+    username: hmaldonado
+    password: 251
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_dgodoy:
+    first_name: Daniel
+    last_name: Godoy
+    username: dgodoy
+    password: 304
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_salves:
+    first_name: Sergio
+    last_name: Alves
+    username: salves
+    password: 27
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_dde la cruz:
+    first_name: Daniel
+    last_name: De La Cruz
+    username: dde la cruz
+    password: 247
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_aknorr:
+    first_name: Alexis
+    last_name: Knorr
+    username: aknorr
+    password: 120
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_mandino:
+    first_name: Martin
+    last_name: Andino
+    username: mandino
+    password: 58
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_jpereda:
+    first_name: Jorge
+    last_name: Pereda
+    username: jpereda
+    password: 20
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_nriveros:
+    first_name: Nelson
+    last_name: Riveros
+    username: nriveros
+    password: 131
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_hdupuy:
+    first_name: Hugo
+    last_name: Dupuy
+    username: hdupuy
+    password: 261
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_villafañe:
+    first_name: 
+    last_name: Villafañe
+    username: villafañe
+    password: 277
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_cromero:
+    first_name: Claudio
+    last_name: Romero
+    username: cromero
+    password: 265
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_glelles:
+    first_name: Gabriel
+    last_name: Lelles
+    username: glelles
+    password: 249
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_mfernandez:
+    first_name: Marcelo
+    last_name: Fernandez
+    username: mfernandez
+    password: 26
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_jfernandez:
+    first_name: Jose Luis
+    last_name: Fernandez
+    username: jfernandez
+    password: 96
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_pperez:
+    first_name: Pablo
+    last_name: Perez
+    username: pperez
+    password: 122
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_gtejeda:
+    first_name: Gonzalo
+    last_name: Tejeda
+    username: gtejeda
+    password: 108
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_ggallo:
+    first_name: Gabriel
+    last_name: Gallo
+    username: ggallo
+    password: 116
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_srolon:
+    first_name: Sebastian
+    last_name: Rolon
+    username: srolon
+    password: 284
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_mespeche:
+    first_name: Miguel
+    last_name: Espeche
+    username: mespeche
+    password: 94
+    is_super_admin: false
+    Groups: [Group_oper]
+
+  sfguard_gvilla:
+    first_name: Gabriel
+    last_name: Villa
+    username: gvilla
+    password: 30
+    is_super_admin: false
+    Groups: [Group_admin]
+
+  sfguard_sblanco:
+    first_name: Sebastián
+    last_name: Blanco
+    username: sblanco
+    password: 98
+    is_super_admin: false
+    Groups: [Group_admin]
+
+  sfguard_obellani:
+    first_name: Oscar
+    last_name: Bellani
+    username: obellani
+    password: 213
+    is_super_admin: true
+    Groups: [Group_admin]
+
+  sfguard_psilva:
+    first_name: Patricio
+    last_name: Silva
+    username: psilva
+    password: 113
+    is_super_admin: true
+    Groups: [Group_admin]
+    
+sfGuardGroup:
+  Group_admin:
+    name:           Administrador
+    description:    Grupo de administradores
+    Permissions:    [Permission_admin]
+
+  Group_oper:
+    name:           Operador
+    description:    Grupo de operadores
+    Permissions:    [Permission_oper]
+
+sfGuardPermission:
+  Permission_admin:
+    name:           admin_permission
+    description:    Administración total
+   
+  Permission_oper:
+    name:           oper_permission
+    description:    Operador
+    
+UserProfile:
+  UserProfile1:
+    numero_legajo:          123456789
+    phone:                  011-1531272458
+    turno:                  Ninguno
+    User:                   sgu_admin
+  
+# =============================================== #    
+# GAE Generated Profiles                          #
+  
+  user_rbepre:
+    numero_legajo: 34
+    phone: 002964-34
+    turno: Mañana
+    linea: ODU
+    User: sfguard_rbepre
+
+  user_cpuebla:
+    numero_legajo: 219
+    phone: 002964-219
+    turno: Mañana
+    linea: ODU
+    User: sfguard_cpuebla
+
+  user_mcarrion:
+    numero_legajo: 334
+    phone: 002964-334
+    turno: Mañana
+    linea: ODU
+    User: sfguard_mcarrion
+
+  user_vrobles:
+    numero_legajo: 56
+    phone: 002964-56
+    turno: Mañana
+    linea: ODU
+    User: sfguard_vrobles
+
+  user_aansaldi:
+    numero_legajo: 58
+    phone: 002964-58
+    turno: Mañana
+    linea: ODU
+    User: sfguard_aansaldi
+
+  user_fgarcía:
+    numero_legajo: 67
+    phone: 002964-67
+    turno: Mañana
+    linea: ODU
+    User: sfguard_fgarcía
+
+  user_lamaya:
+    numero_legajo: 51
+    phone: 002964-51
+    turno: Mañana
+    linea: ODU
+    User: sfguard_lamaya
+
+  user_smoglie:
+    numero_legajo: 46
+    phone: 002964-46
+    turno: Mañana
+    linea: ODU
+    User: sfguard_smoglie
+
+  user_hcampostrini:
+    numero_legajo: 28
+    phone: 002964-28
+    turno: Mañana
+    linea: ODU
+    User: sfguard_hcampostrini
+
+  user_mnavarrete:
+    numero_legajo: 115
+    phone: 002964-115
+    turno: Tarde
+    linea: ODU
+    User: sfguard_mnavarrete
+
+  user_maguilar:
+    numero_legajo: 129
+    phone: 002964-129
+    turno: Tarde
+    linea: ODU
+    User: sfguard_maguilar
+
+  user_evega:
+    numero_legajo: 324
+    phone: 002964-324
+    turno: Tarde
+    linea: ODU
+    User: sfguard_evega
+
+  user_hmaldonado:
+    numero_legajo: 251
+    phone: 002964-251
+    turno: Tarde
+    linea: ODU
+    User: sfguard_hmaldonado
+
+  user_dgodoy:
+    numero_legajo: 304
+    phone: 002964-304
+    turno: Tarde
+    linea: ODU
+    User: sfguard_dgodoy
+
+  user_salves:
+    numero_legajo: 27
+    phone: 002964-27
+    turno: Tarde
+    linea: ODU
+    User: sfguard_salves
+
+  user_dde la cruz:
+    numero_legajo: 247
+    phone: 002964-247
+    turno: Tarde
+    linea: ODU
+    User: sfguard_dde la cruz
+
+  user_aknorr:
+    numero_legajo: 120
+    phone: 002964-120
+    turno: Tarde
+    linea: ODU
+    User: sfguard_aknorr
+
+  user_mandino:
+    numero_legajo: 58
+    phone: 002964-58
+    turno: Tarde
+    linea: ODU
+    User: sfguard_mandino
+
+  user_jpereda:
+    numero_legajo: 20
+    phone: 002964-20
+    turno: Mañana
+    linea: IDU
+    User: sfguard_jpereda
+
+  user_nriveros:
+    numero_legajo: 131
+    phone: 002964-131
+    turno: Mañana
+    linea: IDU
+    User: sfguard_nriveros
+
+  user_hdupuy:
+    numero_legajo: 261
+    phone: 002964-261
+    turno: Mañana
+    linea: IDU
+    User: sfguard_hdupuy
+
+  user_villafañe:
+    numero_legajo: 277
+    phone: 002964-277
+    turno: Mañana
+    linea: IDU
+    User: sfguard_villafañe
+
+  user_cromero:
+    numero_legajo: 265
+    phone: 002964-265
+    turno: Mañana
+    linea: IDU
+    User: sfguard_cromero
+
+  user_glelles:
+    numero_legajo: 249
+    phone: 002964-249
+    turno: Mañana
+    linea: IDU
+    User: sfguard_glelles
+
+  user_mfernandez:
+    numero_legajo: 26
+    phone: 002964-26
+    turno: Mañana
+    linea: IDU
+    User: sfguard_mfernandez
+
+  user_jfernandez:
+    numero_legajo: 96
+    phone: 002964-96
+    turno: Tarde
+    linea: IDU
+    User: sfguard_jfernandez
+
+  user_pperez:
+    numero_legajo: 122
+    phone: 002964-122
+    turno: Tarde
+    linea: IDU
+    User: sfguard_pperez
+
+  user_gtejeda:
+    numero_legajo: 108
+    phone: 002964-108
+    turno: Tarde
+    linea: IDU
+    User: sfguard_gtejeda
+
+  user_ggallo:
+    numero_legajo: 116
+    phone: 002964-116
+    turno: Tarde
+    linea: IDU
+    User: sfguard_ggallo
+
+  user_srolon:
+    numero_legajo: 284
+    phone: 002964-284
+    turno: Tarde
+    linea: IDU
+    User: sfguard_srolon
+
+  user_mespeche:
+    numero_legajo: 94
+    phone: 002964-94
+    turno: Tarde
+    linea: IDU
+    User: sfguard_mespeche
+
+  user_gvilla:
+    numero_legajo: 30
+    phone: 002964-30
+    turno: ND
+    linea: ND
+    User: sfguard_gvilla
+
+  user_sblanco:
+    numero_legajo: 98
+    phone: 002964-98
+    turno: ND
+    linea: ND
+    User: sfguard_sblanco
+
+  user_obellani:
+    numero_legajo: 213
+    phone: 002964-213
+    turno: ND
+    linea: ND
+    User: sfguard_obellani
+
+  user_psilva:
+    numero_legajo: 113
+    phone: 002964-113
+    turno: ND
+    linea: ND
+    User: sfguard_psilva
+    
+  
+   

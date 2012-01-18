@@ -1,0 +1,241 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2006" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:uc="clr-namespace:WPFiDU" x:Class="dcf001.ajusteparametrosodu" x:Name="Window" Title="Ajuste de Parámetros" WindowStyle="None" Background="Transparent" Width="1250" Height="933.333" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Idu;component/idu.ico"  ShowInTaskbar="True" AllowsTransparency="False">
+    <Window.Resources>
+        <Storyboard x:Key="tmlCambiando" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lblCambiando" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0.1" />
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource tmlCambiando}" />
+        </EventTrigger>
+    </Window.Triggers>
+    
+    <Grid x:Name="LayoutRoot">
+        <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" x:Name="rctPopUpBack" Margin="12.5,13.333,12.5,13.333" d:IsLocked="True">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
+                    <GradientStop Color="#FF000000" Offset="0.197" />
+                    <GradientStop Color="#FF404040" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="#FF000000" GlowSize="8" />
+            </Rectangle.BitmapEffect>
+        </Rectangle>
+        <Label Width="Auto" Height="Auto" Content="Ajustes de Parametros ODU" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleAjustesODU" HorizontalAlignment="Left" Margin="50,37.333,0,0" VerticalAlignment="Top" />
+        <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathAjustesODU" Margin="26.226,85.984,143.24,0" VerticalAlignment="Top">
+            <Path.Stroke>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="#00FFFFFF" Offset="0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+                </LinearGradientBrush>
+            </Path.Stroke>
+        </Path>
+        <Button Style="{DynamicResource styBtnRojo}" x:Name="btnClose" Width="75" Height="80" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" Margin="0,45.649,41.96,0" VerticalAlignment="Top" Click="btnClose_Click">
+            <Grid RenderTransformOrigin="0.5,0.5" Width="40.313" Height="7">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                        <SkewTransform AngleX="0" AngleY="0" />
+                        <RotateTransform Angle="45" />
+                        <TranslateTransform X="0" Y="0" />
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" />
+                <Rectangle Fill="#FFFFFFFF" Stroke="{x:Null}" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                            <SkewTransform AngleX="0" AngleY="0" />
+                            <RotateTransform Angle="90" />
+                            <TranslateTransform X="0" Y="0" />
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+        </Button>
+        <Label Width="Auto" Height="Auto" Content="Tiempo de Ensayo (seg.)" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleTiempoEnsayo" Margin="349.375,100,621.425,0" VerticalAlignment="Top" d:LayoutOverrides="Width" />
+        <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathTiempoEnsayo" Margin="329.664,146.651,567.836,0" VerticalAlignment="Top">
+            <Path.Stroke>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="#00FFFFFF" Offset="0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+                </LinearGradientBrush>
+            </Path.Stroke>
+        </Path>
+        <Label Width="Auto" Height="Auto" Content="Tiempo Inicial" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblTiempoInicial" IsEnabled="True" HorizontalAlignment="Left" Margin="425.321,160,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtTiempoInicial" IsEnabled="True" Margin="554,157.489,0,0" Height="43.334" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="111" Height="28.03" Content="TimeOut Estab." FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblTimeOutEst" IsEnabled="True" HorizontalAlignment="Left" Margin="419,212.667,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtTimeOutEst" IsEnabled="True" Margin="554,206,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="97.745" Height="28.03" Content="Baja Tensión" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblBajaTension" IsEnabled="True" HorizontalAlignment="Left" Margin="432,263,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtBajaTension" IsEnabled="True" Margin="554,254,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="161" Height="28.03" Content="TimeOut Baja Tensión" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblTimeOutBajaTension" IsEnabled="True" HorizontalAlignment="Left" Margin="369,314,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtTimeOutBajaTension" IsEnabled="True" Margin="553,303,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="153.19" Height="28.03" Content="Medición Modo Calor" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblMedicionModoCalor" IsEnabled="True" HorizontalAlignment="Left" Margin="376.81,360,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtMedicionModoCalor" IsEnabled="True" Height="42.667" Margin="552,352,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="149.806" Content="TimeOut Modo Calor" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblTimeOutModoCalor" IsEnabled="True" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="378.348,406,0,0" HorizontalContentAlignment="Right" Height="28.333" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtTimeOutModoCalor" IsEnabled="True" d:LayoutOverrides="Height" Margin="551,400,0,0" Height="43.333" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="144.423" Content="Medición Modo Frio" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblMedicionModoFrio" IsEnabled="True" HorizontalAlignment="Left" Margin="383.731,455.303,0,0" HorizontalContentAlignment="Right" Height="28.03" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtMedicionModoFrio" IsEnabled="True" Margin="551,448,0,0" Height="43.333" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="135.195" Content="Recuperación Min." FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblRecupMinima" IsEnabled="True" HorizontalAlignment="Left" Margin="392.959,502.676,0,0" HorizontalContentAlignment="Right" Height="28.03" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtRecupMinima" IsEnabled="True" Margin="551,495.666,0,0" Height="42.667" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="165.186" Content="TimeOut Recuperación" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblTimeOutRecup" IsEnabled="True" HorizontalAlignment="Left" Margin="362.968,550.303,0,0" HorizontalContentAlignment="Right" Height="28.03" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtTimeOutRecup" IsEnabled="True" Margin="551,543.666,0,0" HorizontalAlignment="Left" Width="150" Height="42.667" VerticalAlignment="Top" Factor="0.1" />
+        <Label Width="163.187" Content="Delay Arranque Comp." FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblDelayArranque" IsEnabled="True" HorizontalAlignment="Left" Margin="366.813,600.303,0,0" HorizontalContentAlignment="Right" Height="28.03" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtDelayArranque" IsEnabled="True" Margin="550,591.666,0,0" Height="42.667" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="193" Content="T. de ODU Off entre C y F" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblTODUentreCyF" IsEnabled="True" HorizontalAlignment="Left" Margin="334,648.303,0,0" HorizontalContentAlignment="Right" Height="28.03" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtTODUentreCyF" IsEnabled="True" Margin="551,639.666,0,0" HorizontalAlignment="Left" Width="150" Height="42.667" VerticalAlignment="Top" Factor="0.1" />
+        <Label Width="187" Content="T. antes de Cierre Valv. 1" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblTCierreValv1" IsEnabled="True" HorizontalAlignment="Left" Margin="342,697.303,0,0" HorizontalContentAlignment="Right" Height="28.03" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtTCierreValv1" IsEnabled="True" Margin="551,687.666,0,0" Height="42.667" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="187" Content="T. antes de Cierre Valv. 2" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblTCierreValv2" IsEnabled="True" HorizontalAlignment="Left" Margin="343,746.303,0,0" HorizontalContentAlignment="Right" Height="28.03" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtTCierreValv2" IsEnabled="True" Margin="551,735.666,0,0" Height="42.667" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="53" Content="Final" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblFinal" IsEnabled="True" HorizontalAlignment="Left" Margin="476,794.303,0,0" HorizontalContentAlignment="Right" Height="28.03" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtFinal" IsEnabled="True" Margin="551,783.666,0,0" Height="42.667" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Factor="0.1" />
+        <Label Width="299.825" Height="Auto" Content="Valores Limites de Control" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleValores" Margin="0,100,239.55,0" VerticalAlignment="Top" HorizontalAlignment="Right" />
+        <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathValores" Margin="0,146.651,39.711,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="519.375">
+            <Path.Stroke>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="#00FFFFFF" Offset="0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+                </LinearGradientBrush>
+            </Path.Stroke>
+        </Path>
+        <Label Width="Auto" Height="Auto" Content="Presion Inicial" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPresionInicial" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Width" Margin="0,160.667,328.254,0" VerticalAlignment="Top" HorizontalAlignment="Right" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPresionInicialMin" IsEnabled="True" HorizontalAlignment="Right" Margin="0,158.156,221.134,0" VerticalAlignment="Top" Width="100" Factor="0.01" NumberFormat="0.0#" />
+        <Label Width="Auto" Height="Auto" Content="Dif. Presion Est." FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblDifPresionEst" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Width" Margin="0,209.333,328.254,0" VerticalAlignment="Top" HorizontalAlignment="Right" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtDifPresionEstMin" IsEnabled="True" HorizontalAlignment="Right" Margin="0,206.823,221.134,0" VerticalAlignment="Top" Width="100" Factor="0.01" NumberFormat="0.0#" />
+        <Label Width="166.45" Height="28.03" Content="Velocidad Baja Tensión" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblVelBajaTension" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="HorizontalAlignment, Width" HorizontalAlignment="Right" Margin="0,259.333,327.497,0" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtVelBajaTensionMin" IsEnabled="True" HorizontalAlignment="Right" Margin="0,256.823,220.777,0" VerticalAlignment="Top" Width="100" Factor="1" NumberFormat="0" />
+        <Label Width="176.062" Height="28.03" Content="Dif. Presión Baja Tensión" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblDifPresionBajaTension" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="HorizontalAlignment, Width" HorizontalAlignment="Right" Margin="0,308,326.163,0" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtDifPresionBajaTensionMin" IsEnabled="True" HorizontalAlignment="Right" Margin="0,305.489,220.11,0" VerticalAlignment="Top" Width="100" Factor="0.01" NumberFormat="0.0#" />
+        <Label Width="192" Height="28.03" Content="Dif. de Temp. Modo Calor" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblDifTempModoCalor" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="HorizontalAlignment, Width" HorizontalAlignment="Right" Margin="0,358.667,328.164,0" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtDifTempModoCalorMin" IsEnabled="True" Height="42.667" HorizontalAlignment="Right" Margin="0,356.156,221.134,0" VerticalAlignment="Top" Width="100" Factor="0.1" />
+        <Label Width="194" Height="28.03" Content="Corriente ODU Modo Calor" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblCorrODUModoCalor" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="HorizontalAlignment, Width, Height" HorizontalAlignment="Right" Margin="0,407.333,327.497,0" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtCorrODUModoCalorMin" IsEnabled="True" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,405.536,221.134,0" Width="100" Height="42.907" VerticalAlignment="Top" Factor="0.001" NumberFormat="0.00#" />
+        <Label Width="192" Content="Potencia ODU Modo Calor" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPotODUModoCalor" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="HorizontalAlignment, Width, Height" HorizontalAlignment="Right" Margin="0,456.895,329.498,0" Height="27.566" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPotODUModoCalorMin" IsEnabled="True" HorizontalAlignment="Right" Margin="0,454.823,221.134,435.844" Width="100" Factor="0.001" NumberFormat="0.00#" />
+        <Label Width="164.449" Height="28.03" Content="Vel. Vent. Modo Calor" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblVelVentModoCalor" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="HorizontalAlignment, Width, Height" HorizontalAlignment="Right" Margin="0,0,329.498,390" VerticalAlignment="Bottom" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtVelVentModoCalorMin" IsEnabled="True" HorizontalAlignment="Right" Margin="0,0,221.216,386.171" VerticalAlignment="Bottom" Width="100" Height="42.667" Factor="1" NumberFormat="0" />
+        <Label Width="Auto" Height="Auto" Content="Presión Apagado Comp." FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPresionApagComp" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Width, Height" Margin="0,0,326.04,340.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPresionApagCompMin" IsEnabled="True" Margin="0,0,221.675,336.484" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Height="42.667" Factor="0.01" NumberFormat="0.0#" />
+        <Label Width="Auto" Height="Auto" Content="Dif. Temp. Modo Frio" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblDifTempModoFrio" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Width, Height" Margin="0,0,326.041,290.6" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtDifTempModoFrioMin" IsEnabled="True" Margin="0,0,221.675,286.484" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Height="42.667" Factor="0.1" />
+        <Label Width="Auto" Height="Auto" Content="Corriente ODU Modo Frio" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblCorrODUModoFrio" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Width, Height" Margin="0,0,326.041,241.933" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtCorrODUModoFrioMin" IsEnabled="True" Margin="0,0,221.675,237.817" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Height="42.667" Factor="0.001" NumberFormat="0.00#" />
+        <Label Width="Auto" Height="Auto" Content="Potencia ODU Modo Frio" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPotODUModoFrio" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Width, Height" Margin="0,0,326.041,189.933" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPotODUModoFrioMin" IsEnabled="True" Margin="0,0,221.675,185.817" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Height="42.667" Factor="0.001" NumberFormat="0.00#" />
+        <Label Width="Auto" Height="Auto" Content="Vel. Vent. Modo Frio" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblVelVentModoFrio" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Width, Height" Margin="0,0,326.041,138.6" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtVelVentModoFrioMin" IsEnabled="True" Margin="0,0,221.675,134.484" VerticalAlignment="Bottom" Height="42.667" HorizontalAlignment="Right" Width="100" Factor="1" NumberFormat="0" />
+        <Label Width="Auto" Height="Auto" Content="Presión Modo Frio" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPresionModoFrio" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Width, Height" Margin="0,0,326.041,87.933" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPresionModoFrioMin" IsEnabled="True" Margin="906.325,0,0,83.817" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="42.667" Factor="0.01" NumberFormat="0.0#" />
+        <Label Width="Auto" Height="Auto" Content="Presión Recuperación" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPresionRecup" IsEnabled="True" HorizontalContentAlignment="Right" d:LayoutOverrides="Width" Margin="0,0,326.041,35.933" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+        <Label Width="Auto" Height="Auto" Content="Bar" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblPresionInicialUnit" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,160,63.62,0" VerticalAlignment="Top" />
+        <Label Width="Auto" Height="Auto" Content="Bar" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblDifPresUnit" HorizontalAlignment="Right" Margin="0,208.667,63.62,0" VerticalAlignment="Top" />
+        <Label Width="Auto" Height="Auto" Content="Rpm" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblVelBajaUnit" HorizontalAlignment="Right" Margin="0,258.667,51.629,0" VerticalAlignment="Top" />
+        <Label Width="Auto" Height="Auto" Content="Bar" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblDifPresBajaUnit" HorizontalAlignment="Right" Margin="0,307.333,63.62,0" VerticalAlignment="Top" />
+        <Label Width="Auto" Height="Auto" Content="ºC" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblDifTempCUnit" HorizontalAlignment="Right" Margin="0,0,71.945,536.355" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="A" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblCorrODUCUnit" HorizontalAlignment="Right" Margin="0,407.333,78.404,0" d:LayoutOverrides="Height" VerticalAlignment="Top" />
+        <Label Width="Auto" Height="Auto" Content="Kw" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblPotODUCUnit" d:LayoutOverrides="VerticalAlignment, Height" HorizontalAlignment="Right" Margin="0,0,65.404,437.688" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="Rpm" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblVelVentCUnit" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,0,51.629,388.015" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="Bar" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblPresFUnit" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,0,61.814,85.661" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="Bar" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblPresRecupUnit" HorizontalAlignment="Right" Margin="0,0,61.814,33.661" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="Rpm" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblVelVentFUnit" HorizontalAlignment="Right" Margin="0,0,49.823,136.329" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="ºC" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblDifTempFUnit" HorizontalAlignment="Right" Margin="0,0,70.139,288.329" d:LayoutOverrides="Height" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="A" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblCorrODUFUnit" HorizontalAlignment="Right" Margin="0,0,76.598,239.663" d:LayoutOverrides="Height" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="Kw" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblPotODUFUnit" HorizontalAlignment="Right" Margin="0,0,63.598,187.663" d:LayoutOverrides="Height" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="Bar" FontFamily="Myriad Pro" FontSize="16" FontWeight="Normal" Foreground="#FF5F5F5F" x:Name="lblPresApCompUnit" HorizontalAlignment="Right" Margin="0,0,61.814,338.329" d:LayoutOverrides="Height" VerticalAlignment="Bottom" />
+        <Label Width="Auto" Height="Auto" Content="ID Param. en DCF" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblIDenDCF" IsEnabled="True" HorizontalContentAlignment="Center" d:LayoutOverrides="Width, Height" Margin="104.389,108.001,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtIDenDCF" IsEnabled="False" Margin="52.795,142.824,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Height="42.667" />
+        <Label Width="Auto" Height="Auto" Content="Referencia" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblReferencia" IsEnabled="True" HorizontalContentAlignment="Center" d:LayoutOverrides="Width, Height" Margin="130.673,191.335,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtReferencia" IsEnabled="True" Margin="52.795,226.157,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Height="42.667" />
+        <Label Width="Auto" Height="Auto" Content="Descripción" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblDescripcion" IsEnabled="True" HorizontalContentAlignment="Center" d:LayoutOverrides="Width, Height" Margin="125.28,275.335,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,4,8,4" VerticalContentAlignment="Top" Text="" TextWrapping="Wrap" x:Name="txtDescripcion" IsEnabled="True" Margin="52.795,310.157,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Height="110.667" />
+        <!--ComboBox Margin="52.795,462.021,0,428.645" x:Name="cmbVersion" Style="{DynamicResource styComboBox}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Width="250" /-->
+        <Button Style="{DynamicResource styBtnVerde}" x:Name="btnBDLeer" Height="73.333" Margin="52.795,0,0,302.313" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="115" Click="btnBDLeer_Click">
+            <Grid Width="Auto" Height="Auto">
+                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Base de datos" />
+      </Grid>
+        </Button>
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPresionInicialMax" IsEnabled="True" Width="100" HorizontalAlignment="Right" Margin="0,158.156,108.634,0" VerticalAlignment="Top" Factor="0.01" NumberFormat="0.0#" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtDifPresionEstMax" IsEnabled="True" Width="100" HorizontalAlignment="Right" Margin="0,206.823,108.634,0" VerticalAlignment="Top" Factor="0.01" NumberFormat="0.0#" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" Height="42.667" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtDifPresionBajaTensionMax" IsEnabled="True" Width="100" HorizontalAlignment="Right" Margin="0,305.489,108.634,0" VerticalAlignment="Top" Factor="0.01" NumberFormat="0.0#" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtDifTempModoCalorMax" IsEnabled="True" Height="42.667" Width="100" HorizontalAlignment="Right" Margin="0,356.156,108.634,0" VerticalAlignment="Top" Factor="0.1" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtCorrODUModoCalorMax" IsEnabled="True" Height="42.667" Width="100" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,405.489,108.634,0" VerticalAlignment="Top" Factor="0.001" NumberFormat="0.00#" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPotODUModoCalorMax" IsEnabled="True" Width="100" HorizontalAlignment="Right" Margin="0,454.823,108.634,435.844" Factor="0.001" NumberFormat="0.00#" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtVelVentModoCalorMax" IsEnabled="True" Width="100" Height="42.667" HorizontalAlignment="Right" Margin="0,0,108.716,386.171" VerticalAlignment="Bottom" Factor="1" NumberFormat="0" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtDifTempModoFrioMax" IsEnabled="True" Width="100" Height="42.667" HorizontalAlignment="Right" Margin="0,0,109.175,286.484" VerticalAlignment="Bottom" Factor="0.1" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtCorrODUModoFrioMax" IsEnabled="True" Width="100" Height="42.667" HorizontalAlignment="Right" Margin="0,0,109.175,237.817" VerticalAlignment="Bottom" Factor="0.001" NumberFormat="0.00#" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPotODUModoFrioMax" IsEnabled="True" Width="100" Height="42.667" HorizontalAlignment="Right" Margin="0,0,109.175,185.817" VerticalAlignment="Bottom" Factor="0.001" NumberFormat="0.00#" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtVelVentModoFrioMax" IsEnabled="True" Height="42.667" Width="100" HorizontalAlignment="Right" Margin="0,0,109.175,134.484" VerticalAlignment="Bottom" Factor="1" NumberFormat="0" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPresionModoFrioMax" IsEnabled="True" Width="100" Height="42.667" HorizontalAlignment="Right" Margin="0,0,109.175,83.817" VerticalAlignment="Bottom" Factor="0.01" NumberFormat="0.0#" />
+        <uc:NumericTextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtPresionRecupMax" IsEnabled="True" Height="42.667" Width="100" HorizontalAlignment="Right" Margin="0,0,109.175,31.817" VerticalAlignment="Bottom" Factor="0.01" NumberFormat="0.0#" />
+        <Label Width="Auto" Height="Auto" Content="Base de Datos" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblBasedeDatos" IsEnabled="True" HorizontalContentAlignment="Center" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="116.949,0,0,377.959" VerticalAlignment="Bottom" />
+        <Button Style="{DynamicResource styBtnVerde}" x:Name="btnArchivoAbrir" Height="73.333" Width="115" HorizontalAlignment="Left" Margin="52.795,0,0,169.647" VerticalAlignment="Bottom" Click="btnArchivoAbrir_Click">
+            <Grid Width="Auto" Height="Auto">
+                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Abrir" />
+      </Grid>
+        </Button>
+        <Button Style="{DynamicResource styBtnRojo}" x:Name="btnArchivoGuardar" Height="73.333" Width="115" HorizontalAlignment="Left" Margin="187.795,0,0,169.647" VerticalAlignment="Bottom" Click="btnArchivoGuardar_Click">
+            <Grid Width="Auto" Height="Auto">
+                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Guardar" />
+      </Grid>
+        </Button>
+        <Label Width="Auto" Height="Auto" Content="Archivo" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblArchivo" IsEnabled="True" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="141.705,0,0,249.292" VerticalAlignment="Bottom" />
+        <Button Style="{DynamicResource styBtnVerde}" x:Name="btnPLCLeer" Height="73.333" Width="115" HorizontalAlignment="Left" Margin="52.795,0,0,43.647" VerticalAlignment="Bottom" Click="btnPLCLeer_Click">
+            <Grid Width="Auto" Height="Auto">
+                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Leer" />
+      </Grid>
+        </Button>
+        <Button Style="{DynamicResource styBtnRojo}" x:Name="btnPLCEscribir" Height="73.333" Width="115" HorizontalAlignment="Left" Margin="187.795,0,0,43.647" VerticalAlignment="Bottom" Click="btnPLCEscribir_Click">
+            <Grid Width="Auto" Height="Auto">
+                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Escribir" />
+      </Grid>
+        </Button>
+        <Label Width="Auto" Height="Auto" Content="PLC" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblPLC" IsEnabled="True" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="157.061,0,0,120.625" VerticalAlignment="Bottom" />
+        <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathBD" HorizontalAlignment="Left" Margin="52.679,0,0,382.187" VerticalAlignment="Bottom" Width="246.616">
+            <Path.Stroke>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="#00FFFFFF" Offset="0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+                </LinearGradientBrush>
+            </Path.Stroke>
+        </Path>
+        <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathArc" Width="246.616" HorizontalAlignment="Left" Margin="53.488,0,0,250.867" VerticalAlignment="Bottom">
+            <Path.Stroke>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="#00FFFFFF" Offset="0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+                </LinearGradientBrush>
+            </Path.Stroke>
+        </Path>
+        <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathPLC" Width="246.616" HorizontalAlignment="Left" Margin="53.488,0,0,124.679" VerticalAlignment="Bottom">
+            <Path.Stroke>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="#00FFFFFF" Offset="0" />
+                    <GradientStop Color="#00FFFFFF" Offset="1" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.115" />
+                    <GradientStop Color="#FFFFFFFF" Offset="0.894" />
+                </LinearGradientBrush>
+            </Path.Stroke>
+        </Path>
+        <uc:NumericTextBox FontSize="16" Foreground="White" Height="42.667" HorizontalAlignment="Right" IsEnabled="True" Margin="0,258.129,108.634,0" x:Name="txtVelBajaTensionMax" Padding="8,2" Style="{DynamicResource styTxtNegro}" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="100" Factor="1" NumberFormat="0" />
+        <Button HorizontalAlignment="Left" Margin="53.488,438.347,0,418.447" Name="btnTeclado" Style="{DynamicResource styBtnVerde}" Width="115" Click="btnTeclado_Click">
+            <Grid Height="Auto" Width="Auto">
+                <TextBlock FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Center" Margin="0" Text="Teclado en Pantalla" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" /></Grid>
+        </Button>
+        <Label FlowDirection="RightToLeft" FontFamily="Myriad Pro" FontSize="20" FontWeight="Normal" Foreground="White" Height="32" HorizontalAlignment="Left" HorizontalContentAlignment="Right" IsEnabled="True" Margin="329.664,0,0,43.647" Name="lblCambiando" VerticalAlignment="Bottom" Visibility="Hidden" Width="137">Cambiando</Label>
+    </Grid>
+</Window>

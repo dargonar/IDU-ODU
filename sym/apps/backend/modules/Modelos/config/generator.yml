@@ -1,0 +1,57 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           modelos
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          modelos
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        modelos_id:                       { label: Id }
+        modelos_marca:                    { label: Marca }
+        modelos_modelo:                   { label: Modelo }
+        modelos_codigo:                   { label: Código }
+        modelos_referencia:               { label: Referencia, help: Características técnicas}
+        modelos_ean13:                    { label: EAN 13, help: Nombre de imagen - no utilizado }
+        modelos_etiqueta:                 { label: Etiqueta, help: No utilizado }
+        modelos_etiquetacaja:             { label: Etiqueta bulto, help: No utilizado }
+        modelos_logo:                     { label: Logo, help: Nombre de imagen - no utilizado }
+        modelos_conjunto:                 { label: Conjunto, help: Código de conjunto - no utilizado }
+        modelos_capacidad:                { label: Capacidad , help: Nombre de imagen - no utilizado }
+        modelos_codigoicsa:               { label: ICSA, help: Código ICSA - no utilizado }
+        modelos_descripcion:              { label: Descripción , help: No utilizado }
+        modelos_dimensiones:              { label: Dimensiones, help: Nombre de imagen - no utilizado }
+        modelos_esidu:                    { label: Línea, help: IDU=1 ODU=0}
+        es_activo:                        { label: Activo , help: Activo=1 - Inactivo=0 }
+        background_bulto:                 { label: Etiqueta Bulto , help: Código de etiqueta de bulto }
+        background_producto:              { label: Etiqueta Producto , help: Código de etiqueta de producto }
+      list:    
+        title:                    Listado de Modelos
+        sort:                     [modelos_id, asc]
+        display:                  [modelos_id, modelos_marca, modelos_modelo, _modelos_esidu, modelos_referencia]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:
+          referencia:             { label: 'Ver Referencia' }
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  []
+          #_new:                   { label: 'Crear nuevo'  }  
+      filter:  
+        display:                  [modelos_id, modelos_marca, modelos_modelo, modelos_esidu, modelos_referencia]
+      form:    ~
+      edit:    
+        title:                    Editando Modelo <strong>%%modelos_marca%% - %%modelos_modelo%% - %%modelos_referencia%%</strong>
+        # display:
+          # "":                     [title, image_banner,swf_banner,video_banner_url,description] 
+          # "":                     [slot, position, category_id, section_id]
+      new:     ~
+

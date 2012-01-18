@@ -1,0 +1,72 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+# default values
+#all:
+all:
+  sf_guard_plugin:
+    routes_register: false 
+  sf_admin_dash:
+    web_dir:                      /sfAdminDashPlugin
+    image_dir:                    /sfAdminDashPlugin/images/icons/
+    default_image:                config.png
+    resize_mode:                  thumbnail
+    site:                         CARRIER IDU ODU
+    include_path:                 true
+    include_jquery_no_conflict:   false
+    logout:                       true
+    login_route:                  @sf_guard_signin
+    logout_route:                 @sf_guard_signout
+    categories:
+      Usuarios:
+        items:
+          Listado:
+            credentials:  [superadmin]
+            url:          user_profile
+            image:        users.png
+          Nuevo:
+            credentials:  [superadmin]
+            url:          user_profile/new
+            image:        user1_add.png
+      Modelos:
+        items:
+          Listado:
+            credentials:  [superadmin]
+            url:          modelos
+            image:        index.png
+          # Nuevo:
+            # credentials:  [superadmin]
+            # url:          modelos/new
+            # image:        index_add.png
+            
+      Caract. Técnicas (referencias):
+        items:
+          Listado:
+            credentials:  [superadmin]
+            url:          caracteristicastecnicasequipos
+            image:        text_rich.png
+      Parámetros de Ensayos:
+        items:
+          IDU:
+            credentials:  [superadmin]
+            url:          parametrosensayosidu
+            image:        potion_blue.png
+          ODU:
+            credentials:  [superadmin]
+            url:          parametrosensayosodu
+            image:        potion_red.png
+      Ensayos y Logs:
+        items:
+          IDU:
+            credentials:  [superadmin]
+            url:          ensayosrealizadosidu
+            image:        bullet_triangle_blue.png
+          ODU:
+            credentials:  [superadmin]
+            url:          ensayosrealizadosodu
+            image:        bullet_triangle_red.png
+          Logs de RunTest IDU/ODU:
+            credentials:  [superadmin]
+            url:          log_idu_odu
+            image:        note_pinned.png
+      

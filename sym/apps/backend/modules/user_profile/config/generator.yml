@@ -1,0 +1,43 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           UserProfile
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          user_profile
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions:   ~
+      fields:
+        _name:          { label: Nombre}
+        name:           { label: Nombre}
+        numero_legajo:  { label: Nro. Legajo}
+        phone:          { label: Teléfono}
+        turno:          { label: Turno}
+        linea:          { label: Línea}
+      list:
+        title:    Listado de usuarios
+        display:  [_name, numero_legajo, linea, turno ]
+        batch_actions:
+          _delete : ~
+          _activar: ~
+          _desactivar:  ~
+        object_actions:
+          _delete: ~
+          _edit:   ~
+          changePassword: 
+            label: Cambiar Password
+            params: onclick=return ask_password(this);
+      filter:
+        display:  [name]
+      form:
+        class:    BackendUserProfileForm
+      edit:
+        title:  Editando usuario "%%_name%%"
+      new:     
+        title:  Nuevo usuario 

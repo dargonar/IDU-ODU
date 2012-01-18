@@ -1,0 +1,58 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Ensayosrealizadosidu
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          ensayosrealizadosidu
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        ensayosrealizadosidu_id:                        { label: Id }
+        ensayosrealizadosidu_marca:                     { label: Marca }
+        ensayosrealizadosidu_modelo:                    { label: Modelo }
+        ensayosrealizadosidu_codigo:                    { label: Código }
+        ensayosrealizadosidu_serie:                     { label: Nº de Serie }
+        ensayosrealizadosidu_fecha:                     { label: Fecha , date_format: yyyy-MM-dd }
+        ensayosrealizadosidu_aprobado:                  { label: Aprobado, help: Aprob.=1 - Desap.=0 }
+        ensayosrealizadosidu_dcf:                       { label: Estación, help: RunTest }
+        ensayosrealizadosidu_tiempoensayo:              { label: Duración, help: Segundos }
+        ensayosrealizadosidu_velocidadinicial:          { label: Velocidad Inicial }
+        ensayosrealizadosidu_velocidadbajatension:      { label: Velocidad Baja Tensión }
+        ensayosrealizadosidu_velocidadlow:              { label: Id}
+        ensayosrealizadosidu_velocidadhigh:             { label: Id}
+        ensayosrealizadosidu_corrienteinicial:          { label: Corriente Inicial }
+        ensayosrealizadosidu_corrientebajatension:      { label: Corriente Baja Tensión }
+        ensayosrealizadosidu_corrientelow:              { label: Corriente Baja Velocidad }
+        ensayosrealizadosidu_corrientehigh:             { label: Corriente Alta Velocidad }
+        ensayosrealizadosidu_corrientecalorinicial:     { label: Corriente inicial en Modo Calor}
+        ensayosrealizadosidu_hipot:                     { label: Hipot}
+        ensayosrealizadosidu_fuga:                      { label: Fuga }
+        ensayosrealizadosidu_observaciones:             { label: Observaciones }
+        ensayosrealizadosidu_cantidadreimpresion:       { label: Cantidad Impresiones }
+        ensayosrealizadosidu_usuario:                   { label: Usuario}
+        orden_fabricacion:                              { label: Orden Fabricación }
+      list:    
+        title:                    Listado de Ensayos Realizados IDU
+        sort:                     [ensayosrealizadosidu_id, desc]
+        display:                  [ensayosrealizadosidu_id, ensayosrealizadosidu_marca, ensayosrealizadosidu_modelo, ensayosrealizadosidu_codigo, ensayosrealizadosidu_serie, orden_fabricacion,  ensayosrealizadosidu_fecha, ensayosrealizadosidu_aprobado, ensayosrealizadosidu_dcf]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:
+          #referencia:             { label: 'Ver Referencia' }
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:            []
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  []
+          #_new:                   { label: 'Crear nuevo'  }  
+      filter:  
+        display:                  [ensayosrealizadosidu_id, ensayosrealizadosidu_marca, ensayosrealizadosidu_modelo, ensayosrealizadosidu_codigo, ensayosrealizadosidu_serie, orden_fabricacion,  ensayosrealizadosidu_fecha, ensayosrealizadosidu_aprobado, ensayosrealizadosidu_dcf]
+      form:    ~
+      edit:    ~
+      new:     ~

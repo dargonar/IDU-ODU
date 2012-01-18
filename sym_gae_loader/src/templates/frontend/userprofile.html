@@ -1,0 +1,9 @@
+{% for user in users %}
+  <br/>
+&nbsp;&nbsp;user_{{user.username}}:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;numero_legajo:          {{ user.legajo }}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;phone:                  002964-{{ user.legajo }}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;turno:                  {{ user.turno }}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;linea:                  {{ user.linea }}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;User:                   sfguard_{{user.username}}<br/>
+{% endfor%}

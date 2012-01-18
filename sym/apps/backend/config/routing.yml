@@ -1,0 +1,110 @@
+log_idu_odu:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                LogIduOdu
+    module:               logs
+    prefix_path:          /logs
+    column:               id
+    with_wildcard_routes: true
+
+parametrosensayosodu:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Parametrosensayosodu
+    module:               parametros_odu
+    prefix_path:          /parametros_odu
+    column:               parametrosensayosodu_id
+    with_wildcard_routes: true
+
+parametrosensayosidu:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Parametrosensayosidu
+    module:               parametros_idu
+    prefix_path:          /parametros_idu
+    column:               parametrosensayosidu_id
+    with_wildcard_routes: true
+
+ensayosrealizadosodu:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Ensayosrealizadosodu
+    module:               ensayos_odu
+    prefix_path:          /ensayos_odu
+    column:               ensayosrealizadosodu_id
+    with_wildcard_routes: true
+
+ensayosrealizadosidu:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Ensayosrealizadosidu
+    module:               ensayos_idu
+    prefix_path:          /ensayos_idu
+    column:               ensayosrealizadosidu_id
+    with_wildcard_routes: true
+
+caracteristicastecnicasequipos:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Caracteristicastecnicasequipos
+    module:               caract_tecnicas
+    prefix_path:          /caract_tecnicas
+    column:               id #TKBMUCHO
+    with_wildcard_routes: true
+
+modelos:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                modelos
+    module:               Modelos
+    prefix_path:          /Modelos
+    column:               modelos_id
+    with_wildcard_routes: true
+
+user_profile:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                UserProfile
+    module:               user_profile
+    prefix_path:          /user_profile
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+administrators:
+    url: /sf_guard_user
+
+logout:
+  url:   /signout
+  param: { module: auth, action: signout }
+
+#####################
+#   sfGuardPlugin   #
+#####################
+
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+ 
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+ 
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
+
+# default rules
+homepage:
+  url:   /
+  param: { module: sfAdminDash, action: dashboard }
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

@@ -1,0 +1,10 @@
+{% for user in users %}
+<br/>
+&nbsp;&nbsp;sfguard_{{user.username}}:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;first_name:     {{ user.name }}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;last_name:      {{ user.lastname }}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;username:       {{  user.username}}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;password:       {{ user.legajo }}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;is_super_admin: {{ '%s' % 'true' if user.is_super_admin else 'false' }}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Groups:         [{{ '%s' % 'Group_admin' if user.is_admin else 'Group_oper' }}]<br/>
+{% endfor%}

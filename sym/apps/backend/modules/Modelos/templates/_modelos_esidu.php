@@ -1,0 +1,1 @@
+<?php echo $modelos->modelos_esidu?'IDU':'ODU'; ?>

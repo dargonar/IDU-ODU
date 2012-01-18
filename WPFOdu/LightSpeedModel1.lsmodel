@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<model dslVersion="1.0.0.0" name="LightSpeedModel1" targetNamespace="WPFiDU" databaseProvider="MySql5" connectionString="server=localhost;uid=root;pwd=root;database=iduodudiventi;pooling=false;" pluralizedInDatabase="false" xmlns="http://namespaces.mindscape.co.nz/lightspeed">
+  <entities>
+    <entity name="InfoEnsayosReset" identityType="Int32" cacheExpiry="0">
+      <entityProperties>
+        <entityProperty name="Fecha" dataType="DateTime" />
+        <entityProperty name="NumeroEnsayosOK" dataType="Int32" />
+        <entityProperty name="Usuario" />
+        <entityProperty name="PC" />
+        <entityProperty name="EsIDU" dataType="Boolean" />
+      </entityProperties>
+    </entity>
+  </entities>
+</model>

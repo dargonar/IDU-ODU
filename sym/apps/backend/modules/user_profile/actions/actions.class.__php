@@ -1,0 +1,25 @@
+<?php
+
+require_once dirname(__FILE__).'/../lib/user_profileGeneratorConfiguration.class.php';
+require_once dirname(__FILE__).'/../lib/user_profileGeneratorHelper.class.php';
+
+/**
+ * user_profile actions.
+ *
+ * @package    sf_sandbox
+ * @subpackage user_profile
+ * @author     Your name here
+ * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ */
+class user_profileActions extends autoUser_profileActions
+{
+  public function executeListChangePassword(sfWebRequest $request)
+  {
+    $user = $this->getRoute()->getObject()->getUser();
+    
+    $user->password = $request->getParameter('newpass');
+    $user->save();
+  
+    return $this->renderText("OK");
+  }
+}
