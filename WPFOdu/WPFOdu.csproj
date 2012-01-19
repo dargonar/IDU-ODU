@@ -692,17 +692,6 @@
   <ItemGroup>
     <Resource Include="Images\computer_key_Backspace.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="IVRTKERNELLib.dll" />
-    <Content Include="J832.Common.dll" />
-    <Content Include="J832.Wpf.BagOTricksLib.dll" />
-    <Content Include="log4net.dll" />
-    <Content Include="Mindscape.LightSpeed.dll" />
-    <Content Include="Mindscape.LightSpeed.Linq.dll" />
-    <Content Include="Mono.Security.dll" />
-    <Content Include="MySql.Data.dll" />
-    <Content Include="OPCdotNETLib.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -55,7 +55,31 @@ namespace dcf001
       mSelectedModeloId = argModeloId;
       
     }
+
+    private void ResizeGridViewColumn(GridViewColumn column)
+    {
+      if (double.IsNaN(column.Width))
+      {
+        column.Width = column.ActualWidth;
+      }
+
+      column.Width = double.NaN;
+    }
+
+    private void autosizeColumns()
+    {
+      GridView view = this.ltvModelos.View as GridView;
+      double width=0;
+      for (int i=0; i<view.Columns.Count-1; i++)
+      {
+        GridViewColumn col =view.Columns[i];
+        width += col.ActualWidth;
         
+        //ResizeGridViewColumn(col);
+      }
+      view.Columns[view.Columns.Count - 1].Width = ltvModelos.ActualWidth - width; ;
+
+    }
         private void LlenarListView()
         {
 
@@ -74,6 +98,8 @@ namespace dcf001
                     o.Content = listamodelos[i];
                     ltvModelos.Items.Add(o);
                 }
+
+                autosizeColumns();
             }
             catch (Exception ex)
             {
@@ -282,6 +308,7 @@ namespace dcf001
                         o.Content = modelo;
                         ltvModelos.Items.Add(o);
                     }
+                    autosizeColumns();
                     //for (int i = 0; i < ltvModelos.Items.Count; i++)
                     //{
                     //    ListViewItem item = (ListViewItem)ltvModelos.Items[i];
@@ -348,6 +375,11 @@ namespace dcf001
           modmag.Dispose();
           modmag = null;
           setModeloToPLC();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+          autosizeColumns();
         }
 
         

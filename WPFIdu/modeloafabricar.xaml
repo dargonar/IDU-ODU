@@ -13,7 +13,7 @@
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
         Icon="/Idu;component/idu.ico"  
-        ShowInTaskbar="True" AllowsTransparency="False" ContentRendered="Window_ContentRendered">
+        ShowInTaskbar="True" AllowsTransparency="False" ContentRendered="Window_ContentRendered" Loaded="Window_Loaded">
     <Window.Resources>
         <Storyboard x:Key="tmlCambiando" RepeatBehavior="Forever">
             <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lblCambiando" Storyboard.TargetProperty="(UIElement.Opacity)">

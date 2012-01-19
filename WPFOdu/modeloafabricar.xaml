@@ -10,7 +10,7 @@
         Foreground="{x:Null}" 
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
-		Icon="/Odu;component/odu.ico"  ShowInTaskbar="True" AllowsTransparency="False" ContentRendered="Window_ContentRendered">
+		Icon="/Odu;component/odu.ico"  ShowInTaskbar="True" AllowsTransparency="False" ContentRendered="Window_ContentRendered" Loaded="Window_Loaded">
     <Window.Resources>
         <Storyboard x:Key="tmlCambiando" RepeatBehavior="Forever">
             <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lblCambiando" Storyboard.TargetProperty="(UIElement.Opacity)">
@@ -84,7 +84,7 @@
                 <Style TargetType="ListViewItem">
                     <Setter Property="BorderThickness" Value="0,0,0,1" />
                     <Setter Property="BorderBrush" Value="LightGray" />
-
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
