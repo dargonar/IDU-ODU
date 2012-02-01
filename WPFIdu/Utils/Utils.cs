@@ -36,5 +36,15 @@ namespace WPFiDU.Utils
 
             return path;
         }
+
+        public static bool IsValidOrdenFabricacion(string s) 
+        {
+          return (!string.IsNullOrEmpty(s) && !s.Trim().Equals("N\\A") && s.Trim().ToLower().StartsWith("f") && s.Trim().ToLower().Length == 11);
+        }
+
+        public static bool IsValidNumeroSerie(string s)
+        {
+          return (!string.IsNullOrEmpty(s) && !s.Trim().Equals("N\\A") && s.Trim().ToLower().StartsWith("s") && s.Trim().ToLower().Length == 11);
+        }
     }
 }

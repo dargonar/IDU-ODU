@@ -910,12 +910,10 @@ namespace dcf001
           , modeloinfo.BackgroundProducto
           , infoens);
 
-        //Bitmap escalada = EtiquetaManager.Escalar(ImagenTemp);
-        //System.Drawing.Image imagenaimprimir = escalada;//imgEtiqueta as System.Drawing.Image;
-
         string nombreimpresora = configurador.ObtenerImpresoraProducto();
         WPFiDU.Etiquetas.EtiquetasManagerEx oEtiquetasManagerExProd = 
           new WPFiDU.Etiquetas.EtiquetasManagerEx(false);
+        
         oEtiquetasManagerExProd.ImprimirImagen(ImagenTemp, nombreimpresora, false, modeloinfo.Nombremodelo + "-" + infoens.Serie);
       }
 
@@ -928,13 +926,11 @@ namespace dcf001
           , modeloinfo.BackgroundBulto
           , infoens);
         
-        //Bitmap escalada = EtiquetaManager.Escalar(ImagenTemp);
-        //System.Drawing.Image imagenaimprimir = escalada;//imgEtiqueta as System.Drawing.Image;
-
         string nombreimpresora = configurador.ObtenerImpresoraBulto();
 
         WPFiDU.Etiquetas.EtiquetasManagerEx oEtiquetasManagerExBulto = 
           new WPFiDU.Etiquetas.EtiquetasManagerEx(false);
+
         oEtiquetasManagerExBulto.ImprimirImagen(ImagenTemp, nombreimpresora, true, modeloinfo.Nombremodelo + "-" + infoens.Serie);
       }
 
@@ -1259,12 +1255,9 @@ namespace dcf001
         }
        
     }
-    
-    
 
-    private void btnEtiquetas_Click(object sender, RoutedEventArgs e)
-    {
-
+    private void reimprimirEtiquetas() {
+      
       //Ensayos oensayos = new Ensayos();
       //ModelosManager oModelosManager = new ModelosManager();
       //bool esIdu = true;
@@ -1298,7 +1291,61 @@ namespace dcf001
       //  }
       //}
       //return;
+
       
+      ModelosManager oModelosManager = new ModelosManager();
+      oModelosManager.EsIdu = false;
+      EnsayosManager ensmanager = new EnsayosManager();
+      int iSerieCounter = 501;
+      string file = "C:\\dago\\wdir\\carrier\\Mantenimiento\\2012\\2012-01-23_PrintLabels\\Modelos-Seriales.txt";
+      using (StreamReader sr = new StreamReader(file))
+      {
+        string line;
+        List<string> lines = new List<string>();
+        while ((line = sr.ReadLine()) != null)
+        {
+          if (line.StartsWith("--"))
+            continue;
+
+          string[] datu = line.Split(',');
+          
+          int cantidad = Convert.ToInt32(datu[0].Trim());
+          modeloinfo = oModelosManager.ObtenerModeloPorNombre(datu[1].Trim());
+
+          for(int i = 0; i<cantidad;i++)
+          {
+            //Serie Starts	4811A99000
+            //Date	12/4/2011 23:59
+            EnsayosODU ensayoaprobado = accesoplc.LeerValoresEnsayo() as EnsayosODU; 
+            
+            ensayoaprobado.Fecha = new DateTime(2011, 12, 4, 23, 59, 59);
+            ensayoaprobado.Serie = string.Format("4811A{0}", iSerieCounter.ToString("99000"));
+
+            ensayoaprobado.Aprobado = true;
+            ensayoaprobado.Marca = modeloinfo.Marca;
+            ensayoaprobado.Modelo = modeloinfo.Nombremodelo;
+            ensayoaprobado.Tiempoensayo = 99;
+            ensayoaprobado.Codigo = "0";
+            ensayoaprobado.OrdenFabricacion = "reimpresion_2012-01-26";
+
+            ensmanager.GuardarValoresEnsayo(ensayoaprobado, ensayoaprobado.Serie);
+            
+            this.ImpresionEtiquetas(ensayoaprobado, null, false);
+            iSerieCounter++;
+          }
+        }
+      }
+      return;
+
+      
+    }    
+
+    private void btnEtiquetas_Click(object sender, RoutedEventArgs e)
+    {
+      //reimprimirEtiquetas();
+      //MessageBox.Show("Listo");
+      //return;
+
       try
       {
         Consultaxaml formconsultaetiquetas = new Consultaxaml();

@@ -902,9 +902,8 @@ namespace iDU.DAO
             eidu.Observaciones = "ninguna";
 
             eidu.DCF = System.Environment.MachineName;
-
-            //init trans
-
+            //eidu.DCF = "PCTDF007"; // HACK
+            
 
             //ObtenerCaracteristicasTecnicas nro serie llamada al sp
             //guardar llamada al sp

@@ -1174,12 +1174,13 @@ namespace dcf001
       }
     }
 
-    private void btnEtiquetas_Click(object sender, RoutedEventArgs e)
+    private void reimprimirEtiquetas()
     {
+
       //Ensayos oensayos = new Ensayos();
       //ModelosManager oModelosManager = new ModelosManager();
       //bool esIdu = true;
-      //string file="W:\\wdir\\iduodu\\Mantenimiento\\2011\\2011-10-20_reimprimir_etiquetas\\Modelos-Seriales.txt";
+      //string file = "W:\\wdir\\iduodu\\Mantenimiento\\2011\\2011-10-20_reimprimir_etiquetas\\Modelos-Seriales.txt";
       //using (StreamReader sr = new StreamReader(file))
       //{
       //  string line;
@@ -1192,22 +1193,77 @@ namespace dcf001
       //      continue;
       //    if (line.StartsWith("#"))
       //    {
-      //      esIdu =true;
+      //      esIdu = true;
       //      if (line.Contains("Conden"))
-      //        esIdu =false;
-      //      oModelosManager.EsIdu=esIdu;
+      //        esIdu = false;
+      //      oModelosManager.EsIdu = esIdu;
       //      continue;
       //    }
-          
-      //    string[] datu     = line.Split(',');
+
+      //    string[] datu = line.Split(',');
       //    oensayos.Aprobado = true;
-      //    oensayos.Serie    = datu[1].Trim();
-            
-      //    modeloinfo        = oModelosManager.ObtenerModeloPorNombre(datu[0].Trim());
-          
+      //    oensayos.Serie = datu[1].Trim();
+
+      //    modeloinfo = oModelosManager.ObtenerModeloPorNombre(datu[0].Trim());
+
       //    this.ImpresionEtiquetas(oensayos, null, false);
       //  }
       //}
+      //return;
+
+
+      ModelosManager oModelosManager = new ModelosManager();
+      oModelosManager.EsIdu = true;
+      EnsayosManager ensmanager = new EnsayosManager();
+      ensmanager.EsIdu = true;
+      int iSerieCounter = 401;
+      string file = "C:\\dago\\wdir\\carrier\\Mantenimiento\\2012\\2012-01-23_PrintLabels\\Modelos-Seriales_IDU.txt";
+      using (StreamReader sr = new StreamReader(file))
+      {
+        string line;
+        List<string> lines = new List<string>();
+        while ((line = sr.ReadLine()) != null)
+        {
+          if (line.StartsWith("--"))
+            continue;
+
+          string[] datu = line.Split(',');
+
+          int cantidad = Convert.ToInt32(datu[0].Trim());
+          modeloinfo = oModelosManager.ObtenerModeloPorNombre(datu[1].Trim());
+
+          for (int i = 0; i < cantidad; i++)
+          {
+            //Serie Starts	4811A99000
+            //Date	12/4/2011 23:59
+            EnsayosIDU ensayoaprobado = accesoplc.LeerValoresEnsayo() as EnsayosIDU;
+
+            ensayoaprobado.Fecha = new DateTime(2011, 12, 4, 23, 59, 59);
+            ensayoaprobado.Serie = string.Format("4811A{0}", iSerieCounter.ToString("99000"));
+
+            ensayoaprobado.Aprobado = true;
+            ensayoaprobado.Marca = modeloinfo.Marca;
+            ensayoaprobado.Modelo = modeloinfo.Nombremodelo;
+            ensayoaprobado.TiempoEnsayo= 99;
+            ensayoaprobado.Codigo = "0";
+            ensayoaprobado.OrdenFabricacion = "reimpresion_2012-01-26";
+
+            ensmanager.GuardarValoresEnsayo(ensayoaprobado, ensayoaprobado.Serie);
+
+            this.ImpresionEtiquetas(ensayoaprobado, null, false);
+            iSerieCounter++;
+          }
+        }
+      }
+      return;
+
+
+    }
+
+    private void btnEtiquetas_Click(object sender, RoutedEventArgs e)
+    {
+      //reimprimirEtiquetas();
+      //MessageBox.Show("Listo");
       //return;
       try
       {
@@ -1437,10 +1493,11 @@ namespace dcf001
     
     private void txtOrdenFabricacion_TextChanged(object sender, TextChangedEventArgs e)
     {
-      if (string.IsNullOrEmpty(txtOrdenFabricacion.Text)
-        || txtOrdenFabricacion.Text.Trim().Equals("N\\A")
-        || !txtOrdenFabricacion.Text.Trim().ToLower().StartsWith("f")
-        || txtOrdenFabricacion.Text.Trim().ToLower().Length != 11)
+      if (!WPFiDU.Utils.Utils.IsValidOrdenFabricacion(txtOrdenFabricacion.Text))
+      //if (string.IsNullOrEmpty(txtOrdenFabricacion.Text)
+      //  || txtOrdenFabricacion.Text.Trim().Equals("N\\A")
+      //  || !txtOrdenFabricacion.Text.Trim().ToLower().StartsWith("f")
+      //  || txtOrdenFabricacion.Text.Trim().ToLower().Length != 11)
       {
         lblOrdenFabricacion.Foreground = mForegroundBrushRed;
         //this.lblSerialNumberMessage.Visibility = Visibility.Visible;
@@ -1452,7 +1509,13 @@ namespace dcf001
       {
         lblOrdenFabricacion.Foreground = mForegroundBrushGreen;
         //this.lblSerialNumberMessage.Visibility = Visibility.Hidden;
-        if (modeloinfo != null)
+        if (!WPFiDU.Utils.Utils.IsValidNumeroSerie(txtUltimo.Text))
+        {
+          if (Convert.ToInt32(accesoplc.LeerItem("IDU_SP_VModelo")) != 0)
+            accesoplc.Escribir("IDU_SP_VModelo", 0);
+          return;
+        }
+        if (modeloinfo != null)  
           if (Convert.ToInt32(accesoplc.LeerItem("IDU_SP_VModelo")) != modeloinfo.ID)
             accesoplc.Escribir("IDU_SP_VModelo", modeloinfo.ID);
       }
@@ -1479,10 +1542,11 @@ namespace dcf001
         if (!ReadSerialNumberFromScanner)
           return;
 
-        if (string.IsNullOrEmpty(txtUltimo.Text)
-            || txtUltimo.Text.Trim().Equals("N\\A")
-            || !txtUltimo.Text.Trim().ToLower().StartsWith("s")
-            || txtUltimo.Text.Trim().ToLower().Length != 11)
+        //if (string.IsNullOrEmpty(txtUltimo.Text)
+        //    || txtUltimo.Text.Trim().Equals("N\\A")
+        //    || !txtUltimo.Text.Trim().ToLower().StartsWith("s")
+        //    || txtUltimo.Text.Trim().ToLower().Length != 11)
+        if (!WPFiDU.Utils.Utils.IsValidNumeroSerie(txtUltimo.Text))
         {
           lblUltimo.Foreground = mForegroundBrushRed;
           this.lblSerialNumberMessage.Visibility = Visibility.Visible;
@@ -1512,8 +1576,14 @@ namespace dcf001
               return;
             }
           }
+
           if (!isSerialnumberAvailable)
+          {
+            if (Convert.ToInt32(accesoplc.LeerItem("IDU_SP_VModelo")) != 0)
+              accesoplc.Escribir("IDU_SP_VModelo", 0);
             return;
+          }
+          
           lblUltimo.Foreground = mForegroundBrushGreen;
           this.lblSerialNumberMessage.Visibility = Visibility.Hidden;
           if (modeloinfo != null)

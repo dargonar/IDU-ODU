@@ -510,6 +510,7 @@ namespace iDU.DAO
             eodu.Hipot = "OK";
             eodu.Vacio = "OK";
             eodu.Observaciones = "ninguna";
+            //eodu.DCF = "PCTDF007"; // HACK UNHACK System.Environment.MachineName;
             eodu.DCF = System.Environment.MachineName;
 
             int aprobado = 0;
