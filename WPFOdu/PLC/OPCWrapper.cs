@@ -22,7 +22,6 @@ namespace iDU.PLC
                 
         public void Write(ParametrosEnsayo parametros)
         {
-          string[] tagnames; double[] valores;
 
             List<OPCItemDef> itemDefsList = new List<OPCItemDef>();
             List<int> handlesSrvList = new List<int>();

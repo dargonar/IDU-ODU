@@ -45,7 +45,7 @@ namespace dcf001
     private int desconexion=0;
 
     private static readonly ILog logger = LogManager.GetLogger(typeof(homeIDU2));
-
+    
     private bool fallaconexion = true;
 
     private bool EnsayoEnCursoIDU = false;

@@ -297,9 +297,8 @@ namespace dcf001
       //Modelo mModseloSeleccionado = getSelectedModelo();
       //if (mModseloSeleccionado == null)
       //  return;
-      EtiquetasManagerEx oEtiquetasManagerEx = new EtiquetasManagerEx(false);
-      oEtiquetasManagerEx.ImprimirImagen(ImagenTemp
-        , cmbImpresora1.SelectedItem.ToString(), EsBulto);
+      EtiquetasManagerEx oEtiquetasManagerEx = new EtiquetasManagerEx(true);
+      oEtiquetasManagerEx.ImprimirImagen(ImagenTemp, cmbImpresora1.SelectedItem.ToString(), EsBulto);
     }
 
     private void btnImportar_Click(object sender, RoutedEventArgs e)

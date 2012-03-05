@@ -20,6 +20,7 @@ generator:
         phone:          { label: Teléfono}
         turno:          { label: Turno}
         linea:          { label: Línea}
+        last_name:      { label: Apellido}
       list:
         title:    Listado de usuarios
         display:  [_name, numero_legajo, linea, turno ]
@@ -34,7 +35,7 @@ generator:
             label: Cambiar Password
             params: onclick=return ask_password(this);
       filter:
-        display:  [name]
+        display:  [last_name, numero_legajo]
       form:
         class:    BackendUserProfileForm
       edit:

@@ -15,129 +15,100 @@ using iDU.CommonObjects;
 using log4net;
 using System.Configuration;
 
+using WPFiDU.Etiquetas;
 
 namespace dcf001
 {
 	public partial class vistaprevia
 	{
 
-        private static readonly ILog logger = LogManager.GetLogger(typeof(vistaprevia));
-        private Bitmap ImagenTemp = null;
-        private EtiquetaManager ManejadorEtiquetas;
-        private Ensayos mEnsayo = null;
-        private bool mProducto = true;
-        private bool mImprimirIDU = true;
-
-        public bool Producto
-        {
-            get { return mProducto; }
-            set { mProducto = value; }
-
-        }
-
-        public bool ImprimirIDU
-        {
-            get { return mImprimirIDU; }
-            set { mImprimirIDU = value; }
-        }
-
-
-		public vistaprevia(Etiqueta e, Modelo m , CaracteristicasTecnicas ct,Ensayos ens , bool esProducto)
+    private static readonly ILog logger = LogManager.GetLogger(typeof(vistaprevia));
+    private Bitmap ImagenTemp = null;
+    private bool esProducto = false;
+    private Modelo mPrintedModelo;
+    private Ensayos mPrintedEnsayo;
+    public vistaprevia(Modelo mModelo, Ensayos mEnsayo, bool esProducto)
 		{
-            try
-            {
-                
-                this.InitializeComponent();
-                ManejadorEtiquetas = new EtiquetaManager();
-                mEnsayo = ens;
-                ImagenTemp = ManejadorEtiquetas.GenerarBitmapDeEtiqueta(e, m, ct,ens);
-                float c1 = (float)(imgEtiqueta.Height / ImagenTemp.Height);
-                Bitmap escalada = EtiquetaManager.Escalar(ImagenTemp,c1);
-                imgEtiqueta.Source = EtiquetaManager.loadBitmap(escalada);
-                Producto = esProducto;
+      mPrintedModelo = mModelo;
+      mPrintedEnsayo = mEnsayo;
 
-                if (!m.EsIdu)
-                    ImprimirIDU = false;
+      try
+      {
+        this.InitializeComponent();
+        this.esProducto = esProducto;
 
-                /* ImagenTemp = ManejadorEtiquetas.GenerarBitmapDeEtiqueta(etiquetaseleccionada, modeloseleccionado, caracteristicas);
-                float c1 = (float)(imgEtiqueta.Height / ImagenTemp.Height);
-                Bitmap escalada = EtiquetaManager.Escalar(ImagenTemp, c1);
-                imgEtiqueta.Source = EtiquetaManager.loadBitmap(escalada);
-               */
-            }
-            catch (Exception ex)
-            {
-                logger.ErrorFormat("vistaprevia(Etiqueta e, Modelo m, CaracteristicasTecnicas ct, Ensayos ens):: Message:'{0}', StackTrace:'{1}', InnerException:'{2}' "
-                 , ex.Message
-                 , ex.StackTrace
-                 , ex.InnerException != null ? ex.InnerException.Message : "");
-                excepcion formexepcion = new excepcion(ex);
-                excepcion formexcepciones = new excepcion(ex);
-                formexcepciones.ShowDialog();
-            }
-			
+        string mEtiquetaKey = mModelo.BackgroundBulto;
+        if(esProducto)
+          mEtiquetaKey = mModelo.BackgroundProducto;
+
+        EtiquetasManagerEx oEtiquetasManagerEx = new EtiquetasManagerEx(mModelo.EsIdu);
+
+        ImagenTemp = oEtiquetasManagerEx.GenerarBitmapDeEtiqueta(
+          mModelo
+          , mEtiquetaKey.Trim()
+          , mEnsayo);
+
+        imgEtiqueta.Source = EtiquetaManager.loadBitmap(ImagenTemp);
+        imgEtiqueta.Stretch = Stretch.Uniform;
+
+        btnImprimir.IsEnabled = true;
+      }
+      catch (Exception ex)
+      {
+        logger.ErrorFormat("vistaprevia(Etiqueta e, Modelo m, CaracteristicasTecnicas ct, Ensayos ens):: Message:'{0}', StackTrace:'{1}', InnerException:'{2}' "
+          , ex.Message
+          , ex.StackTrace
+          , ex.InnerException != null ? ex.InnerException.Message : "");
+        excepcion formexepcion = new excepcion(ex);
+        excepcion formexcepciones = new excepcion(ex);
+        formexcepciones.ShowDialog();
+        btnImprimir.IsEnabled = false;
+      }
 		}
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+    private void btnClose_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+
+    private void btnImprimir_Click(object sender, RoutedEventArgs e)
+    {
+      try
+      {
+        if (ImagenTemp == null)
+          return;
+        
+        System.Drawing.Image imagenaimprimir = ImagenTemp;
+        
+        string nombreimpresora = ConfigurationManager.AppSettings["ImpresoraProducto"];
+        
+        if (!this.esProducto)
         {
-            this.Close();
+          nombreimpresora = ConfigurationManager.AppSettings["ImpresoraBulto"];
         }
 
-        private void btnImprimir_Click(object sender, RoutedEventArgs e)
+        EtiquetasManagerEx oEtiquetasManagerEx = new EtiquetasManagerEx(true);
+        oEtiquetasManagerEx.ImprimirImagen(ImagenTemp , nombreimpresora, !this.esProducto);
+
+        logger.InfoFormat("Reimpresión de Etiqueta. {0}; Nro de Serie:'{1}'; Fecha Ensayo:'{2}';", mPrintedModelo.ToString2(), mPrintedEnsayo.Serie, mPrintedEnsayo.Fecha.ToString("yyyy-MM-dd HH:mm:ss"));
+        
+        this.Close();
+
+        }
+        catch (Exception ex)
         {
 
-            try
-            {
-
-                 if (ImagenTemp == null)
-                    return;
-
-
-                System.Drawing.Image imagenaimprimir = ImagenTemp;
-                ImpresorEtiqueta imp = new ImpresorEtiqueta();
-                int ALTO = int.Parse(ConfigurationManager.AppSettings["ALTURA_ETIQUETA_PRODUCTO_IDU"]);
-                int ANCHO =int.Parse(ConfigurationManager.AppSettings["ANCHO_ETIQUETA_PRODUCTO_IDU"]);
-                string nombreimpresora = ConfigurationManager.AppSettings["ImpresoraProducto"];
-
-
-                if (!ImprimirIDU)
-                {
-
-                    ALTO =int.Parse(ConfigurationManager.AppSettings["ALTURA_ETIQUETA_PRODUCTO_ODU"]);
-                    ANCHO =int.Parse(ConfigurationManager.AppSettings["ANCHO_ETIQUETA_PRODUCTO_ODU"]);
-                }
-                
-                if (!Producto)
-                {
-
-                    nombreimpresora = ConfigurationManager.AppSettings["ImpresoraBulto"];
-
-                }     
-                
-
-                //UNDO
-                //imp.ImprimirImagen(imagenaimprimir, nombreimpresora);
-                
-                //ManejadorEtiquetas.AgregarEnsayoReimpresiones(mEnsayo);
-                
-
-                this.Close();
-
-            }
-            catch (Exception ex)
-            {
-
-                logger.ErrorFormat("btnImprimir_Click(object sender, RoutedEventArgs e):: Message:'{0}', StackTrace:'{1}', InnerException:'{2}' "
-                 , ex.Message
-                 , ex.StackTrace
-                 , ex.InnerException != null ? ex.InnerException.Message : "");
-                excepcion formexepcion = new excepcion(ex);
-                excepcion formexcepciones = new excepcion(ex);
-                formexcepciones.ShowDialog();
-            }
+            logger.ErrorFormat("btnImprimir_Click(object sender, RoutedEventArgs e):: Message:'{0}', StackTrace:'{1}', InnerException:'{2}' "
+              , ex.Message
+              , ex.StackTrace
+              , ex.InnerException != null ? ex.InnerException.Message : "");
+            excepcion formexepcion = new excepcion(ex);
+            excepcion formexcepciones = new excepcion(ex);
+            formexcepciones.ShowDialog();
+        }
 
        
-        }
+    }
 
       
 	}

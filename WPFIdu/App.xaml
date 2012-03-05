@@ -725,7 +725,7 @@
                         <ToggleButton Style="{StaticResource ComboBoxTransparentButtonStyle}" Background="{x:Null}" Grid.ColumnSpan="3" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
                     </Grid>
                 </Border>
-                <Popup Focusable="false" AllowsTransparency="true" IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" x:Name="PART_Popup">
+                <Popup Focusable="false" AllowsTransparency="False" IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" x:Name="PART_Popup">
                     <Microsoft_Windows_Themes:SystemDropShadowChrome MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{TemplateBinding ActualWidth}" x:Name="Shdw" Color="Transparent">
                         <Border x:Name="DropDownBorder" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1">
                             <ScrollViewer>
@@ -913,7 +913,7 @@
                   </Border>
                 </Grid>
                             </Border>
-                            <Popup Focusable="False" AllowsTransparency="True" IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" x:Name="PART_Popup" RenderTransformOrigin="0.5,0.5">
+                            <Popup Focusable="False" AllowsTransparency="False" IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" x:Name="PART_Popup" RenderTransformOrigin="0.5,0.5">
                                 <Popup.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform ScaleX="2" ScaleY="2" />

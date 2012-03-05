@@ -150,6 +150,11 @@ namespace iDU.CommonObjects
         return mNombremodelo;
     }
 
+    public string ToString2()
+    {
+      return string.Format("Modelo:'{0}'; Marca:'{1}'; Referencia:'{2}'", this.mNombremodelo, this.mMarca, this.mReferencia);
+
+    }
     public string ReferenciaDescripcion 
     {
       get
