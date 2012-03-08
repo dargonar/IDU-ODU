@@ -38,17 +38,17 @@ class parametros_iduActions extends autoParametros_iduActions
     "parametrosensayosidu_final"=>0.1,
     "parametrosensayosidu_temperatura"=>0.1,
     "parametrosensayosidu_velocidadbajatensionmin"=>0.1,
-    "parametrosensayosidu_corrientebajatensionmin"=>0.1,
+    "parametrosensayosidu_corrientebajatensionmin"=>0.01,
     "parametrosensayosidu_velocidadminmodovelbaja"=>0.1,
-    "parametrosensayosidu_corrienteminmodovelbaja"=>0.1,
+    "parametrosensayosidu_corrienteminmodovelbaja"=>0.01,
     "parametrosensayosidu_velocidadminmodovelalta"=>0.1,
-    "parametrosensayosidu_corrienteminmodovelalta"=>0.1,
+    "parametrosensayosidu_corrienteminmodovelalta"=>0.01,
     "parametrosensayosidu_velocidadbajatensionmax"=>0.1,
-    "parametrosensayosidu_corrientebajatensionmax"=>0.1,
+    "parametrosensayosidu_corrientebajatensionmax"=>0.01,
     "parametrosensayosidu_velocidadmaxmodovelbaja"=>0.1,
-    "parametrosensayosidu_corrientemaxmodovelbaja"=>0.1,
+    "parametrosensayosidu_corrientemaxmodovelbaja"=>0.01,
     "parametrosensayosidu_velocidadmaxmodovelalta"=>0.1,
-    "parametrosensayosidu_corrientemaxmodovelalta"=>0.1,
+    "parametrosensayosidu_corrientemaxmodovelalta"=>0.01,
     "parametrosensayosidu_timeoutbajatension"=>0.1);
 
 
@@ -60,7 +60,7 @@ class parametros_iduActions extends autoParametros_iduActions
     foreach (array_keys($this->config) as $attr) 
     {
       $new_value                          = $this->parametrosensayosidu->$attr * $this->config[$attr];
-      $this->parametrosensayosidu->$attr  = (int)$new_value; 
+      $this->parametrosensayosidu->$attr  = (double)$new_value; 
     }
     $this->form = $this->configuration->getForm($this->parametrosensayosidu);
   }

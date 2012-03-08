@@ -91,7 +91,7 @@ class parametros_oduActions extends autoParametros_oduActions
     foreach (array_keys($this->config) as $attr) 
     {
       $new_value      = $values[$attr] / $this->config[$attr];
-      $values[$attr]  = (int)$new_value; 
+      $values[$attr]  = (double)$new_value; 
     }
     
     $form->bind($values, $request->getFiles($form->getName()));
