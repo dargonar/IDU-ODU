@@ -2,18 +2,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2006" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        mc:Ignorable="d" 
-        x:Class="dcf001.modeloafabricar" 
+        mc:Ignorable="d" x:Class="dcf001.modeloafabricar" 
         x:Name="Window" 
-        Title="Modelo a fabricar" 
+        Title="Modelo a Fabricar" 
         WindowStyle="None" 
-        Background="Transparent" 
-        Width="875" Height="733.333" 
+        Width="960" Height="847" 
         Foreground="{x:Null}" 
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
-        Icon="/Idu;component/idu.ico"  
-        ShowInTaskbar="True" AllowsTransparency="False" ContentRendered="Window_ContentRendered" Loaded="Window_Loaded">
+		Icon="/Idu;component/idu.ico"  ShowInTaskbar="True" AllowsTransparency="False" ContentRendered="Window_ContentRendered" Loaded="Window_Loaded">
     <Window.Resources>
         <Storyboard x:Key="tmlCambiando" RepeatBehavior="Forever">
             <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lblCambiando" Storyboard.TargetProperty="(UIElement.Opacity)">
@@ -27,8 +24,18 @@
             <BeginStoryboard Storyboard="{StaticResource tmlCambiando}" />
         </EventTrigger>
     </Window.Triggers>
-    <Grid x:Name="LayoutRoot" Width="856" Height="733.333" >
-    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" x:Name="rctPopUpBack" d:IsLocked="True" Margin="12.5,13.333,12.5,13.333">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,0.982" StartPoint="0.5,0.018">
+            <GradientStop Color="#FF0A0A0A" Offset="0" />
+            <GradientStop Color="#FF191919" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid x:Name="LayoutRoot" Width="892" Height="733.333" >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="731*" />
+      <RowDefinition Height="2*" />
+    </Grid.RowDefinitions>
+    <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" x:Name="rctPopUpBack" d:IsLocked="True" Margin="12.5,13,12.5,-28" Grid.RowSpan="2">
       <Rectangle.Fill>
         <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
           <GradientStop Color="#FF000000" Offset="0.197" />
@@ -39,8 +46,8 @@
         <OuterGlowBitmapEffect GlowColor="#FF000000" GlowSize="8" />
       </Rectangle.BitmapEffect>
     </Rectangle>
-    <Label Width="Auto" Height="Auto" Content="Seleccione modelo a fabricar" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleNuevo" d:LayoutOverrides="Width" Margin="50,37.333,367.2,0" VerticalAlignment="Top" />
-    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathNuevo" Margin="34.664,85.984,132.836,0" VerticalAlignment="Top">
+    <Label Width="Auto" Height="Auto" Content="Seleccione modelo a fabricar" FontFamily="Myriad Pro" FontSize="20" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblTitleNuevo" d:LayoutOverrides="Width" Margin="50,37,367.2,0" VerticalAlignment="Top" />
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Height="1.359" Data="M202,141 L836,141" x:Name="pathNuevo" Margin="34.664,86,132.836,0" VerticalAlignment="Top">
       <Path.Stroke>
         <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
           <GradientStop Color="#00FFFFFF" Offset="0" />
@@ -50,7 +57,7 @@
         </LinearGradientBrush>
       </Path.Stroke>
     </Path>
-    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnClose" Width="75" Height="80" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" Margin="0,45.649,43.21,0" VerticalAlignment="Top" Click="btnClose_Click">
+    <Button Style="{DynamicResource styBtnRojo}" x:Name="btnClose" Width="75" Height="80" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" Margin="0,46,43.21,0" VerticalAlignment="Top" Click="btnClose_Click">
       <Grid RenderTransformOrigin="0.5,0.5" Width="40.313" Height="7">
         <Grid.RenderTransform>
           <TransformGroup>
@@ -73,22 +80,19 @@
         </Rectangle>
       </Grid>
     </Button>
-    <Label Width="74.61" Height="28" Content="Busqueda" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblBusqueda" IsEnabled="True" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="55,144,0,0" VerticalAlignment="Top" />
-    <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtBusqueda" IsEnabled="True" Height="44" Margin="151,141,193,0" VerticalAlignment="Top" KeyUp="txtBusqueda_KeyUp" TextChanged="txtBusqueda_TextChanged" />
-    <ListView x:Name="ltvModelos" Background="{x:Null}" 
-              FontFamily="Myriad Pro" FontSize="14" Foreground="#FFFFFFFF" 
-              IsSynchronizedWithCurrentItem="True" 
-              Margin="53.75,214.667,55,214" ItemsSource="{Binding}" 
-              Tag="{Binding}">
+    <Label Width="74.61" Height="28" Content="Busqueda" FontFamily="Myriad Pro" FontSize="15" FontWeight="Normal" Foreground="#FFFFFFFF" x:Name="lblBusqueda" IsEnabled="True" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="50,111,0,0" VerticalAlignment="Top" />
+    <TextBox Style="{DynamicResource styTxtNegro}" FontSize="16" Foreground="#FFFFFFFF" Padding="8,2,8,2" VerticalContentAlignment="Center" Text="" TextWrapping="Wrap" x:Name="txtBusqueda" IsEnabled="True" Height="44" Margin="138,103,342,0" VerticalAlignment="Top" KeyUp="txtBusqueda_KeyUp" TextChanged="txtBusqueda_TextChanged" />
+    <ListView x:Name="ltvModelos" Background="{x:Null}" FontFamily="Myriad Pro" FontSize="14" Foreground="#FFFFFFFF" IsSynchronizedWithCurrentItem="True" Margin="53.75,170,191,160" ItemsSource="{Binding}" Tag="{Binding}">
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="BorderThickness" Value="0,0,0,1" />
                     <Setter Property="BorderBrush" Value="LightGray" />
-
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
+
                                 <Border Background="{TemplateBinding Background}"
 								BorderBrush="{TemplateBinding BorderBrush}"
 								BorderThickness="{TemplateBinding BorderThickness}"
@@ -120,15 +124,15 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
         <GridView>
-          <GridViewColumn Header="Descripcion" DisplayMemberBinding="{Binding Descripcion}" Width="Auto" />
-          <GridViewColumn Header="Modelo" DisplayMemberBinding="{Binding Nombremodelo}" Width="Auto"/>
-          <GridViewColumn Header="Codigo" DisplayMemberBinding="{Binding Codigo}" Width="Auto"/>
-          <GridViewColumn Header="Referencia" DisplayMemberBinding="{Binding Referencia}" Width="Auto"/>
-          <!--GridViewColumn Header="Marca" DisplayMemberBinding="{Binding Marca}" /-->
-        </GridView>
+          <!--GridViewColumn Header="Descripcion" DisplayMemberBinding="{Binding Descripcion}" Width="Auto" / -->          
+          <GridViewColumn Header="Modelo" DisplayMemberBinding="{Binding Nombremodelo}" Width="Auto" />
+          <!--GridViewColumn Header="Codigo" DisplayMemberBinding="{Binding Codigo}" Width="Auto" /-->
+          <GridViewColumn Header="Referencia" DisplayMemberBinding="{Binding Referencia}"  Width="Auto"/>
+		  <!--GridViewColumn Header="Marca" DisplayMemberBinding="{Binding Marca}" /-->
+		</GridView>
       </ListView.View>
     </ListView>
-    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Data="M202,141 L836,141" x:Name="pathEnd" TextElement.FontSize="12" TextElement.Foreground="#FFFFFFFF" Height="1.359" Margin="34.664,0,35.336,171.324" VerticalAlignment="Bottom">
+    <Path Fill="{x:Null}" Stretch="Fill" StrokeThickness="0.5" Data="M202,141 L836,141" x:Name="pathEnd" TextElement.FontSize="12" TextElement.Foreground="#FFFFFFFF" Height="1.359" Margin="34.664,0,35.336,118" VerticalAlignment="Bottom">
       <Path.Stroke>
         <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
           <GradientStop Color="#00FFFFFF" Offset="0" />
@@ -138,20 +142,41 @@
         </LinearGradientBrush>
       </Path.Stroke>
     </Path>
-    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnCancelar" Width="225" Height="93.333" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,0,119.259,51.844" VerticalAlignment="Bottom" Click="btnCancelar_Click">
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnCancelar" Width="225" Height="93.333" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,0,119.259,1" VerticalAlignment="Bottom" Click="btnCancelar_Click" Grid.RowSpan="2">
       <Grid Width="Auto" Height="Auto">
         <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Cancelar" />
       </Grid>
     </Button>
-    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnSeleccionar" Width="225" Height="93.333" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="118.241,0,0,51.844" VerticalAlignment="Bottom" Click="btnSeleccionar_Click">
+    <Button Style="{DynamicResource styBtnVerde}" x:Name="btnSeleccionar" Width="225" Height="93.333" d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="118.241,0,0,1" VerticalAlignment="Bottom" Click="btnSeleccionar_Click" Grid.RowSpan="2">
       <Grid Width="Auto" Height="Auto">
         <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Seleccionar" />
       </Grid>
     </Button>
-        <Label FontFamily="Myriad Pro" FontSize="20" FontWeight="Normal" Foreground="White" Height="37" HorizontalAlignment="Right" HorizontalContentAlignment="Right" IsEnabled="True" Margin="0,0,55,171.324" Name="lblCambiando" VerticalAlignment="Bottom" Width="134">Cambiando...</Label>
-        <Button Height="46" HorizontalAlignment="Right" Margin="0,139,43.21,0" Name="btnTeclado" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Top" Width="115" Click="btnTeclado_Click">
+        <Label FontFamily="Myriad Pro" FontSize="20" FontWeight="Normal" Foreground="White" Height="38" HorizontalAlignment="Right" HorizontalContentAlignment="Right" IsEnabled="True" Margin="0,0,55,118" Name="lblCambiando" VerticalAlignment="Bottom" Width="134">Cambiando...</Label>
+        <Button Height="46" HorizontalAlignment="Right" Margin="0,101,196,0" Name="btnTeclado" Style="{DynamicResource styBtnNegro}" VerticalAlignment="Top" Width="122" Click="btnTeclado_Click">
             <Grid Height="Auto" Width="Auto">
                 <TextBlock FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Center" Margin="0" Text="Teclado en Pantalla" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" /></Grid>
         </Button>
-    </Grid>
+    <ToggleButton FontFamily="Myriad Pro" FontSize="16" Height="80" HorizontalAlignment="Left" HorizontalContentAlignment="Center" IsEnabled="True" Margin="715,220,0,0" Name="tgbModelos2012" Style="{StaticResource styTBVerde}" VerticalAlignment="Top" Width="122" Checked="tgbModelos2012_Checked">
+      <Grid Height="74.813" Width="95.261">
+        <TextBlock FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Text="2012" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+    </ToggleButton>
+    <TextBlock FontFamily="Myriad Pro" FontSize="15" Foreground="White" Height="41.976" HorizontalAlignment="Left" Margin="715,172,0,0" Name="lblOrdenFabricacion" Text="Seleccione versión de los modelos:" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" />
+    <ToggleButton FontFamily="Myriad Pro" FontSize="16" Height="80" HorizontalAlignment="Left" HorizontalContentAlignment="Center" IsEnabled="True" Margin="715,308,0,0" Name="tgbModelos2011" Style="{StaticResource styTBVerde}" VerticalAlignment="Top" Width="122" Checked="tgbModelos2011_Checked">
+      <Grid Height="74.813" Width="95.261">
+        <TextBlock FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Text="2011" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+    </ToggleButton>
+    <ToggleButton FontFamily="Myriad Pro" FontSize="16" Height="80" HorizontalAlignment="Left" HorizontalContentAlignment="Center" IsEnabled="True" Margin="715,396,0,0" Name="tgbModelos2010" Style="{StaticResource styTBVerde}" VerticalAlignment="Top" Width="122" Checked="tgbModelos2010_Checked">
+      <Grid Height="74.813" Width="95.261">
+        <TextBlock FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Text="2010 ~" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+    </ToggleButton>
+    <ToggleButton FontFamily="Myriad Pro" FontSize="16" Height="80" HorizontalAlignment="Left" HorizontalContentAlignment="Center" IsEnabled="True" Margin="715,484,0,0" Name="tgbModelosTodos" Style="{StaticResource styTBNegro}" VerticalAlignment="Top" Width="122" IsChecked="True" Checked="tgbModelosTodos_Checked">
+      <Grid Height="74.813" Width="95.261">
+        <TextBlock FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Text="Todos" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+      </Grid>
+    </ToggleButton>
+  </Grid>
 </Window>

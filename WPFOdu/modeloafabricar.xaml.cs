@@ -154,8 +154,8 @@ namespace dcf001
             btnClose.IsEnabled = false;
             btnSeleccionar.IsEnabled = false;
             btnTeclado.IsEnabled = false;
-          
-          
+
+            tgbModelos2010.IsEnabled = tgbModelos2011.IsEnabled = tgbModelos2012.IsEnabled = tgbModelosTodos.IsEnabled = false;
 
             try
             {
@@ -272,6 +272,7 @@ namespace dcf001
 
         }
 
+        private string tgbSelectedSearchString = "";
         private void searchModelo() 
         {
             try
@@ -282,8 +283,8 @@ namespace dcf001
 
                 ltvModelos.Items.Clear();
 
-                
-                if (txt == string.Empty)
+
+                if (txt == string.Empty && tgbSelectedSearchString == "")
                 {
                     ltvModelos.Items.Clear();
 
@@ -296,17 +297,34 @@ namespace dcf001
                     for (int i = 0; i < listamodelos.Count; i++)
                     {
 
-                        ListViewItem o = new ListViewItem();
-                        Modelo modelo = listamodelos[i];
-                        if (!(modelo.Marca.ToLower().IndexOf(txt) >= 0
-                            || modelo.Descripcion.ToLower().IndexOf(txt) >= 0
-                            || modelo.Nombremodelo.ToLower().IndexOf(txt) >= 0
-                            || modelo.Codigo.ToLower().IndexOf(txt) >= 0
-                            || modelo.Referencia.ToLower().IndexOf(txt) >= 0))
+                      ListViewItem o = new ListViewItem();
+                      Modelo modelo = listamodelos[i];
+                      bool bMatchUserInput = (modelo.Marca.ToLower().IndexOf(txt) >= 0
+                           || modelo.Descripcion.ToLower().IndexOf(txt) >= 0
+                           || modelo.Nombremodelo.ToLower().IndexOf(txt) >= 0
+                           || modelo.Codigo.ToLower().IndexOf(txt) >= 0
+                           || modelo.Referencia.ToLower().IndexOf(txt) >= 0);
+  
+                      if (!string.IsNullOrEmpty(tgbSelectedSearchString))
+                      {
+                        bool bMatchVersion = (modelo.Marca.ToLower().IndexOf(tgbSelectedSearchString) >= 0);
+                        if (tgbSelectedSearchString == "2010")
+                        {
+                          if((modelo.Marca.ToLower().IndexOf("2012") >= 0)||(modelo.Marca.ToLower().IndexOf("2011") >= 0))
                             continue;
+                        }
+                        else
+                        {
+                          if (!bMatchVersion)
+                            continue;
+                        }
+                      }
 
-                        o.Content = modelo;
-                        ltvModelos.Items.Add(o);
+                      if (!bMatchUserInput)
+                        continue;
+                      
+                      o.Content = modelo;
+                      ltvModelos.Items.Add(o);
                     }
                     autosizeColumns();
                     //for (int i = 0; i < ltvModelos.Items.Count; i++)
@@ -380,6 +398,42 @@ namespace dcf001
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
           autosizeColumns();
+        }
+
+        private void tgbModelos2012_Checked(object sender, RoutedEventArgs e)
+        {
+          tgbSelectedSearchString = "2012";
+          tgbModelos2010.IsChecked = false;
+          tgbModelos2011.IsChecked = false;
+          tgbModelosTodos.IsChecked = false;
+          searchModelo();
+        }
+
+        private void tgbModelos2011_Checked(object sender, RoutedEventArgs e)
+        {
+          tgbSelectedSearchString = "2011";
+          tgbModelos2010.IsChecked = false;
+          tgbModelos2012.IsChecked = false;
+          tgbModelosTodos.IsChecked = false;
+          searchModelo();
+        }
+
+        private void tgbModelos2010_Checked(object sender, RoutedEventArgs e)
+        {
+          tgbSelectedSearchString = "2010";
+          tgbModelos2012.IsChecked = false;
+          tgbModelos2011.IsChecked = false;
+          tgbModelosTodos.IsChecked = false; 
+          searchModelo();
+        }
+
+        private void tgbModelosTodos_Checked(object sender, RoutedEventArgs e)
+        {
+          tgbModelos2010.IsChecked = false;
+          tgbModelos2011.IsChecked = false;
+          tgbModelos2012.IsChecked = false;
+          tgbSelectedSearchString = "";
+          searchModelo();
         }
 
         

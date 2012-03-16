@@ -1175,6 +1175,8 @@
             </Setter>
             <Setter Property="FontSize" Value="12" />
         </Style>
+      
+      
         <ControlTemplate x:Key="tmpTBVerde" TargetType="{x:Type ToggleButton}">
             <ControlTemplate.Resources>
                 <Storyboard x:Key="tmlMouseEnter">
@@ -1248,7 +1250,10 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        <Style x:Key="styTBVerde" TargetType="{x:Type ToggleButton}">
+
+   
+      
+    <Style x:Key="styTBVerde" TargetType="{x:Type ToggleButton}">
             <Setter Property="Template" Value="{StaticResource tmpTBVerde}" />
             <Setter Property="Foreground" Value="sc#1, 1, 1, 1" />
             <Style.Triggers>
@@ -1257,5 +1262,102 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-    </Application.Resources>
+
+    <ControlTemplate x:Key="tmpTBNegro" TargetType="{x:Type ToggleButton}">
+      <ControlTemplate.Resources>
+        <Storyboard x:Key="tmlMouseEnter">
+          <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" RepeatBehavior="Forever">
+            <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF646464" />
+            <SplineColorKeyFrame KeyTime="00:00:00.5000000" Value="#FF00B3FF" />
+            <SplineColorKeyFrame KeyTime="00:00:01" Value="#FF646464" />
+          </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="tmlMouseLeave">
+          <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+            <SplineColorKeyFrame KeyTime="00:00:01" Value="#FFFFFFFF" />
+          </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <!--Storyboard x:Key="tmlGotFocus">
+          <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" RepeatBehavior="Forever">
+            <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF646464" />
+            <SplineColorKeyFrame KeyTime="00:00:00.5000000" Value="#FF00B3FF" />
+            <SplineColorKeyFrame KeyTime="00:00:01" Value="#FF646464" />
+          </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="mlLostFocus">
+          <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)">
+            <SplineColorKeyFrame KeyTime="00:00:01" Value="#FFF8F8F8" />
+          </ColorAnimationUsingKeyFrames>
+        </Storyboard -->
+      </ControlTemplate.Resources>
+
+
+      <Grid Width="Auto" Height="Auto" x:Name="Grid">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <Rectangle Stroke="#FFFFFFFF" RadiusX="10" RadiusY="10" Width="Auto" Height="Auto" IsEnabled="True" x:Name="rectangle" StrokeThickness="2" Margin="0,0,0,0">
+          <Rectangle.Fill>
+            <LinearGradientBrush EndPoint="0.527,0.945" StartPoint="0.528,0.01">
+              <GradientStop Color="#FF474747" Offset="0" />
+              <GradientStop Color="#FF242424" Offset="1" />
+              <GradientStop Color="#FF1E1E1E" Offset="0.507" />
+              <GradientStop Color="#FF000000" Offset="0.514" />
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+        <ContentPresenter HorizontalAlignment="Center" Margin="0,0,0,0" x:Name="contentPresenter" VerticalAlignment="Center" />
+      </Grid>
+
+      <ControlTemplate.Triggers>
+        <Trigger Property="IsKeyboardFocused" Value="true" />
+        <Trigger Property="IsChecked" Value="true">
+          <Setter Property="Fill" TargetName="rectangle">
+            <Setter.Value>
+              <LinearGradientBrush EndPoint="0.527,0.945" StartPoint="0.528,0.01">
+                <GradientStop Color="#FF696969" Offset="0" />
+                <GradientStop Color="#FF464646" Offset="1" />
+                <GradientStop Color="#FF3F3F3F" Offset="0.507" />
+                <GradientStop Color="#FF222222" Offset="0.514" />
+              </LinearGradientBrush>
+            </Setter.Value>
+          </Setter>
+        </Trigger>
+        <Trigger Property="IsEnabled" Value="false">
+          <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+          <Setter Property="Fill" TargetName="rectangle">
+            <Setter.Value>
+              <LinearGradientBrush EndPoint="0.527,0.945" StartPoint="0.528,0.01">
+                <GradientStop Color="#FFD7D7D7" Offset="0" />
+                <GradientStop Color="#FF828282" Offset="1" />
+                <GradientStop Color="#FF767676" Offset="0.507" />
+                <GradientStop Color="#FF5D5D5D" Offset="0.514" />
+              </LinearGradientBrush>
+            </Setter.Value>
+          </Setter>
+        </Trigger>
+        <Trigger Property="IsMouseOver" SourceName="Grid" Value="True">
+          <Trigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource tmlMouseEnter}" />
+          </Trigger.EnterActions>
+          <Trigger.ExitActions>
+            <BeginStoryboard x:Name="tmlMouseLeave_BeginStoryboard" Storyboard="{StaticResource tmlMouseLeave}" />
+          </Trigger.ExitActions>
+        </Trigger>
+      </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="styTBNegro" TargetType="{x:Type ToggleButton}">
+      <Setter Property="Template" Value="{StaticResource tmpTBNegro}" />
+      <Setter Property="Foreground" Value="sc#1, 1, 1, 1" />
+      <Style.Triggers>
+        <Trigger Property="IsEnabled" Value="False">
+          <Setter Property="Foreground" Value="sc#1, 1, 1, 1" />
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+  </Application.Resources>
 </Application>

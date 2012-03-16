@@ -70,9 +70,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AnimatedGif">
-      <HintPath>..\AnimatedGif\AnimatedGif\bin\Debug\AnimatedGif.exe</HintPath>
-    </Reference>
     <Reference Include="IVRTKERNELLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dlls\IVRTKERNELLib.dll</HintPath>
@@ -88,9 +85,6 @@
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dlls\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\Profile\Client\Microsoft.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Mindscape.LightSpeed, Version=2.1.762.9425, Culture=neutral, PublicKeyToken=360c8f37b466ebb2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -126,9 +120,6 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\Profile\Client\System.Xaml.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -158,8 +149,6 @@
       <DependentUpon>ajusteparametrosidu.xaml</DependentUpon>
     </Compile>
     <Compile Include="AnimatedImageControl.cs" />
-    <Compile Include="AnimGif\ExtensionMethods.cs" />
-    <Compile Include="AnimGif\ImageBehavior.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
