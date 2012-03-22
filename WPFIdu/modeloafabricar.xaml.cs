@@ -154,6 +154,8 @@ namespace dcf001
         btnSeleccionar.IsEnabled = false;
         btnTeclado.IsEnabled = false;
 
+        tgbModelos2010.IsEnabled = tgbModelos2011.IsEnabled = tgbModelos2012.IsEnabled = tgbModelosTodos.IsEnabled = false;
+
         try
         {
             System.Windows.Forms.Application.DoEvents();
