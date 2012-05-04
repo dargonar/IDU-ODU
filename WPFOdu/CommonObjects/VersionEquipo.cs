@@ -6,27 +6,34 @@ namespace iDU.CommonObjects
 {
     public class VersionEquipo
     {
+      public VersionEquipo() { }
 
-        private int mID;
+      public VersionEquipo(int id, string description)
+      {
+        this.Descripcion = description;
+        this.ID = id;
+      }
 
-        public int ID
-        {
-            get { return mID; }
-            set { mID = value; }
-        }
+      private int mID;
 
-        private string mDescripcion;
+      public int ID
+      {
+          get { return mID; }
+          set { mID = value; }
+      }
 
-        public string Descripcion
-        {
-            get { return mDescripcion; }
-            set { mDescripcion = value; }
-        }
+      private string mDescripcion;
 
-        public override string ToString()
-        {
-            return mDescripcion;
-        }
+      public string Descripcion
+      {
+          get { return mDescripcion; }
+          set { mDescripcion = value; }
+      }
+
+      public override string ToString()
+      {
+          return mDescripcion;
+      }
     
 
 

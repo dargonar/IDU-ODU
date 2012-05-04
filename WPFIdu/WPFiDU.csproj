@@ -310,6 +310,9 @@
     <Compile Include="vistaprevia.xaml.cs">
       <DependentUpon>vistaprevia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="wndInterrControlada.xaml.cs">
+      <DependentUpon>wndInterrControlada.xaml</DependentUpon>
+    </Compile>
     <Compile Include="wndComunicacion.xaml.cs">
       <DependentUpon>wndComunicacion.xaml</DependentUpon>
     </Compile>
@@ -692,6 +695,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="wndInterrControlada.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="wndComunicacion.xaml">
       <Generator>MSBuild:Compile</Generator>

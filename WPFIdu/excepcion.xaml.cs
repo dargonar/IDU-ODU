@@ -30,6 +30,14 @@ namespace dcf001
       // Insert code required on object creation below this point.
     }
 
+    public excepcion(string title, string message, bool isOk)
+    {
+      this.InitializeComponent();
+      lblTexto.Content = message;
+      lblTitleEliminar.Content = title;
+
+      this.btnClose.Style = (Style)this.btnClose.FindResource("styBtnVerde");
+    }
         public excepcion(MySql.Data.MySqlClient.MySqlException ex)
         {
             this.InitializeComponent();

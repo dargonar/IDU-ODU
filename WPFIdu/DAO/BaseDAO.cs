@@ -174,6 +174,7 @@ namespace iDU.DAO
             }
 
         }
+  
 
         public List<string> ListUsers()
         {
@@ -1012,6 +1013,46 @@ namespace iDU.DAO
 
         }
 
+        #region Interrupciones controladas
+        public List<Dictionary<string, string>> ListFallasControladas()
+        {
+          List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
+
+          using (MySqlConnection conn = ConectarBaseDeDatos())
+          {
+
+            string sql = "SELECT id, descripcion FROM falla_controlada;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+              Dictionary<string, string> item = new Dictionary<string, string>();
+              item.Add("id", reader.GetInt32("id").ToString());
+              item.Add("descripcion", reader.GetString("descripcion"));
+
+              list.Add(item);
+            }
+            reader.Close();
+            return list;
+          }
+        }
+
+        public bool GuardarInterrupcionControlada(string argSerialNumber, int argIntControladaId, int user_id, string dcf)
+        {
+          using (MySqlConnection conn = ConectarBaseDeDatos())
+          {
+
+            string sql = " INSERT INTO ensayo_falla_controlada(ensayo_nro_serie, falla_controlada_id, fecha, linea, usuario_id, dcf)";
+            sql += " VALUES('" + argSerialNumber + "', " + argIntControladaId + ", now(), 'IDU', " + user_id.ToString() + ", '" + dcf + "')";
+            
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            int insertedRows = cmd.ExecuteNonQuery();
+            return insertedRows>0;
+          }
+          
+        }
+        #endregion Interrupciones controladas
 
         #region IDisposable Members
 

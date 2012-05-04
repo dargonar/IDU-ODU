@@ -307,6 +307,9 @@
     <Compile Include="wndComunicacion.xaml.cs">
       <DependentUpon>wndComunicacion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="wndInterrControlada.xaml.cs">
+      <DependentUpon>wndInterrControlada.xaml</DependentUpon>
+    </Compile>
     <Compile Include="wndServicesManager.xaml.cs">
       <DependentUpon>wndServicesManager.xaml</DependentUpon>
     </Compile>
@@ -690,6 +693,10 @@
     <Page Include="wndComunicacion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="wndInterrControlada.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

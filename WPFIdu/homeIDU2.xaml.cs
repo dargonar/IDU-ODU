@@ -1059,11 +1059,7 @@ namespace dcf001
       catch (Exception ex)
       {
         logger.Error("btnConexion_Click()", ex);
-       // logger.ErrorFormat("btnConexion_Click(object sender, RoutedEventArgs e):: Message:'{0}', StackTrace:'{1}', InnerException:'{2}' "
-       //, ex.Message
-       //, ex.StackTrace
-       //, ex.InnerException != null ? ex.InnerException.Message : "");
-
+       
         excepcion formularioexcepciones = new excepcion(ex);
         formularioexcepciones.ShowDialog();
       }
@@ -1653,6 +1649,52 @@ namespace dcf001
     private void btnCleanNroSerie_Click(object sender, RoutedEventArgs e)
     {
       this.txtUltimo.Text="";
+    }
+
+    private void btnInterrControlada_Click(object sender, RoutedEventArgs e)
+    {
+      if (!ManagerUsuarios.sfUser.IsInRole(Role.Operador))
+      {
+        excepcion exc = new excepcion("Seguridad", "Usted no está autorizado a acceder a esta sección.");
+        exc.ShowDialog();
+        exc = null;
+        return;
+      }
+
+      string mSerialNumber = txtUltimo.Text.Trim();
+
+      if (ReadSerialNumberFromScanner)
+      {
+        if (mSerialNumber.ToLower().StartsWith("s") && mSerialNumber.Length == 11)
+          mSerialNumber = mSerialNumber.Trim().Substring(1);
+        else
+        {
+          excepcion formexcepciones = new excepcion("Interrupción Controlada", "El número de serie es incorrecto. No se puede registrar la Interrupción.");
+          formexcepciones.ShowDialog();
+          return;
+        }
+      }
+      else
+      {
+        excepcion formexcepciones = new excepcion("Interrupción Controlada", "Imposible obtener el número de serie. No se puede registrar la Interrupción.");
+        formexcepciones.ShowDialog();
+        return;
+      }
+
+      try
+      {
+
+        wndInterrupcionControlada owndInterrupcionControlada = new wndInterrupcionControlada(mSerialNumber);
+        owndInterrupcionControlada.ShowDialog();
+
+      }
+      catch (Exception ex)
+      {
+        logger.Error("btnInterrControlada_Click()", ex);
+        
+        excepcion formularioexcepciones = new excepcion(ex);
+        formularioexcepciones.ShowDialog();
+      }
     }
 
     

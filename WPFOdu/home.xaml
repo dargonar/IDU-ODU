@@ -56,7 +56,7 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" Height="323.336" StrokeThickness="3" HorizontalAlignment="Right" Margin="0,126.664,26.203,0" VerticalAlignment="Top" Width="160.265" x:Name="rctHabilitar">
+        <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" Height="347" StrokeThickness="3" HorizontalAlignment="Right" Margin="0,126.664,26.203,0" VerticalAlignment="Top" Width="160.265" x:Name="rctHabilitar">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
                     <GradientStop Color="#FF000000" Offset="0.197" />
@@ -133,12 +133,12 @@
                 </LinearGradientBrush>
             </Path.Stroke>
         </Path>
-        <Button Style="{DynamicResource styBtnRojo}" Height="126.667" x:Name="btnHabilitar" Width="118.75" HorizontalAlignment="Right" Margin="0,149.756,46.96,0" VerticalAlignment="Top" IsEnabled="True" IsCancel="False" Click="btnHabilitar_Click">
+        <Button Style="{DynamicResource styBtnRojo}" Height="91" x:Name="btnHabilitar" Width="118.75" HorizontalAlignment="Right" Margin="0,149.756,46.96,0" VerticalAlignment="Top" IsEnabled="True" IsCancel="False" Click="btnHabilitar_Click">
             <Grid Width="Auto" Height="Auto">
                 <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro">Habilitar<LineBreak />Acceso</TextBlock>
             </Grid>
         </Button>
-        <Button Style="{DynamicResource styBtnVerde}" Height="126.667" x:Name="btnEtiquetas" Width="118.75" HorizontalAlignment="Right" Margin="0,300.316,46.96,0" VerticalAlignment="Top" Click="btnEtiquetas_Click">
+        <Button Style="{DynamicResource styBtnVerde}" Height="89" x:Name="btnEtiquetas" Width="118.75" HorizontalAlignment="Right" Margin="0,256,49,0" VerticalAlignment="Top" Click="btnEtiquetas_Click">
             <Grid Width="Auto" Height="Auto">
                 <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro">Etiquetas</TextBlock>
             </Grid>
@@ -308,5 +308,10 @@
                 <TextBlock FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Center" Margin="0" Text="DEL" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
             </Grid>
         </Button>
-    </Grid>
+    <Button Height="91" HorizontalAlignment="Right" IsCancel="False" IsEnabled="True" Margin="0,360,48,0" Name="btnInterrControlada" Style="{DynamicResource styBtnRojo}" VerticalAlignment="Top" Width="118.75" Click="btnInterrControlada_Click">
+      <Grid Height="Auto" Width="Auto">
+        <TextBlock FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center">Interrupción<LineBreak />Controlada</TextBlock>
+      </Grid>
+    </Button>
+  </Grid>
 </Window>

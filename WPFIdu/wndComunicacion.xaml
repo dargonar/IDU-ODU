@@ -5,7 +5,7 @@
         Title="Comunicación" 
         WindowStyle="None" 
         Background="Transparent" 
-        Width="775" Height="490.667" Foreground="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
+        Width="790" Height="490.667" Foreground="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
 		Icon="/Idu;component/idu.ico"  ShowInTaskbar="True" AllowsTransparency="False">
   <Grid x:Name="LayoutRoot" Width="775" Height="466.667">
     <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" 
