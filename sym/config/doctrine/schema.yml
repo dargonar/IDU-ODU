@@ -217,7 +217,7 @@ Caracteristicastecnicasequipos:
       fixed: false
       unsigned: false
       primary: false
-      default: '1'
+      default: '0'
       notnull: true
       autoincrement: false
     id:
@@ -236,6 +236,10 @@ Caracteristicastecnicasequipos:
       local: caracteristicastecnicasequipos_idparametros_odu
       foreign: parametrosensayosodu_id
       type: one
+
+      
+      
+      
 Componentesetiquetas:
   connection: doctrine
   tableName: componentesetiquetas
@@ -356,6 +360,106 @@ Componentesetiquetas:
       primary: false
       notnull: true
       autoincrement: false
+EnsayoAltoPotencial:
+  connection: doctrine
+  tableName: ensayo_alto_potencial
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    nro_serie:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    orden_fabricacion:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    resultado:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+EnsayoFallaControlada:
+  connection: doctrine
+  tableName: ensayo_falla_controlada
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    ensayo_nro_serie:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    falla_controlada_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    usuario_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    linea:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    dcf:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    FallaControlada:
+      local: falla_controlada_id
+      foreign: id
+      type: one
+    SfGuardUser:
+      local: usuario_id
+      foreign: id
+      type: one
 Ensayosrealizadosidu:
   connection: doctrine
   tableName: ensayosrealizadosidu
@@ -913,6 +1017,35 @@ Etiquetas:
       default: '1'
       notnull: true
       autoincrement: false
+FallaControlada:
+  connection: doctrine
+  tableName: falla_controlada
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    descripcion:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    es_idu:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    EnsayoFallaControlada:
+      local: id
+      foreign: falla_controlada_id
+      type: many
 Fallasidu:
   connection: doctrine
   tableName: fallasidu
@@ -2000,7 +2133,6 @@ Serie:
       default: '0'
       notnull: true
       autoincrement: false
-
 UserProfile:
   connection: doctrine
   tableName: user_profile

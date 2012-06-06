@@ -392,9 +392,9 @@ abstract class BaseCaracteristicastecnicasequipos extends sfDoctrineRecord
         $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'fixed' => 0,
-             'unsigned' => false,
+             'unsigned' => true,
              'primary' => false,
-             'notnull' => false,
+             'notnull' => true,
              'autoincrement' => false,
              'length' => 4,
              'default' => '0',

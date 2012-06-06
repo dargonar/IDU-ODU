@@ -10,7 +10,7 @@ namespace iDU.BL
     public class ConfiguracionManager : Manager 
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(ConfiguracionManager));
-        private Configuracion config;
+        public Configuracion config;
         
         public Configuracion LeerConfiguracion()
         {
@@ -22,13 +22,15 @@ namespace iDU.BL
         {
 
             config = new Configuracion();
-            
+
+            config.ValidarHipot = ConfigurationManager.AppSettings["CHECK_HIPOT"];
             config.CadenaDeConexion = ConfigurationManager.AppSettings["DDBBConnString"];
             config.ImpresoraBulto = ConfigurationManager.AppSettings["ImpresoraBulto"];
             config.ImpresoraProducto = ConfigurationManager.AppSettings["ImpresoraProducto"];
             config.ImpresoraProductoHabilitada = Convert.ToInt32(ConfigurationManager.AppSettings["ImpresoraProductoHabilitada"])!=0;
             config.ImpresoraBultoHabilitada = Convert.ToInt32(ConfigurationManager.AppSettings["ImpresoraBultoHabilitada"]) != 0;
             config.ReadSerialNumberFromScanner = Convert.ToInt32(ConfigurationManager.AppSettings["ReadSerialNumberFromScanner"]) == 1;
+            
             config.PrintErrorTests = Convert.ToInt32(ConfigurationManager.AppSettings["PrintErrorTests"]) == 1;
             
             logger.DebugFormat("ConfiguracionManager():: Se levanto la config. CadenaDeConexion:'{0}', ImpresoraBulto:'{1}', ImpresoraProducto:'{2}' "
@@ -49,7 +51,6 @@ namespace iDU.BL
             return config.CadenaDeConexion;
             
         }
-
 
         public bool ProbarConexion(string cadena)
         {
@@ -72,18 +73,9 @@ namespace iDU.BL
             }
         }
 
-
-
         public void SetearCadenaDeConexion(string nuevacadena)
         {
             config.CadenaDeConexion = nuevacadena;
-        }
-
-
-        public bool ReadSerialNumberFromScanner
-        {
-          get { return config.ReadSerialNumberFromScanner; }
-          set { config.ReadSerialNumberFromScanner = value; }
         }
 
         public string ObtenerImpresoraProducto()
@@ -109,7 +101,7 @@ namespace iDU.BL
 
         public void SetearImpresoraProductoHabilitada(bool b)
         {
-          config.ImpresoraProductoHabilitada = b;
+          config.ImpresoraProductoHabilitada= b;
         }
 
         public void SetearImpresoraBultoHabilitada(bool b)
@@ -139,24 +131,27 @@ namespace iDU.BL
 
         }
 
+        public bool ReadSerialNumberFromScanner
+        {
+          get { return config.ReadSerialNumberFromScanner; }
+          set { config.ReadSerialNumberFromScanner = value; }
+        }
 
         public bool ObtenerPrintErrorTests()
         {
           return config.PrintErrorTests;
         }
 
-
         public void SetearPrintErrorTests(bool b)
         {
           config.PrintErrorTests = b;
         }
-
+        
         public void GuardarConfiguracion()
         {
             // Get the configuration file.
             System.Configuration.Configuration config2 =
-            ConfigurationManager.OpenExeConfiguration(
-            System.Reflection.Assembly.GetExecutingAssembly().Location);
+            ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             AppSettingsSection app = (AppSettingsSection)config2.GetSection("appSettings");
 
@@ -183,14 +178,19 @@ namespace iDU.BL
             app.Settings.Add("TEMP_MAX", config.TempMax);
 
             app.Settings.Remove("ReadSerialNumberFromScanner");
-            app.Settings.Add("ReadSerialNumberFromScanner", config.ReadSerialNumberFromScanner ? "1" : "0");
+            app.Settings.Add("ReadSerialNumberFromScanner", config.ReadSerialNumberFromScanner?"1":"0" );
 
             app.Settings.Remove("PrintErrorTests");
-            app.Settings.Add("PrintErrorTests", config.PrintErrorTests? "1" : "0");
+            app.Settings.Add("PrintErrorTests", config.PrintErrorTests ? "1" : "0");
+
+            app.Settings.Remove("CHECK_HIPOT");
+            app.Settings.Add("CHECK_HIPOT", config.ValidarHipot);
+            //config.ValidarHipot = ConfigurationManager.AppSettings["CHECK_HIPOT"];
 
             // Save the configuration file.
             config2.Save(ConfigurationSaveMode.Modified);
 
+            
             // Force a reload of the changed section.
             ConfigurationManager.RefreshSection("appSettings");
 

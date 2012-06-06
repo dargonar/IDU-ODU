@@ -3,4 +3,3 @@
 @call symfony doctrine:build-model
 @call symfony doctrine:build-forms
 @call symfony doctrine:build-filters
-@call symfony doctrine:data-load

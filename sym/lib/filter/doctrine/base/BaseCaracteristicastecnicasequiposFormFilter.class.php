@@ -40,7 +40,7 @@ abstract class BaseCaracteristicastecnicasequiposFormFilter extends BaseFormFilt
       'caracteristicastecnicasequipos_idparametros_idu'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Parametrosensayosidu'), 'add_empty' => true)),
       'caracteristicastecnicasequipos_idparametros_odu'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Parametrosensayosodu'), 'add_empty' => true)),
       'es_activo'                                            => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'id'                                                   => new sfWidgetFormFilterInput(),
+      'id'                                                   => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(

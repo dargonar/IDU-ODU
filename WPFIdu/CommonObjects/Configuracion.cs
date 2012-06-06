@@ -14,13 +14,21 @@ namespace iDU.CommonObjects
             get { return mCadenaDeConexion; }
             set { mCadenaDeConexion = value; }
         }
-        private bool mReadSerialNumberFromScanner = false;
 
-        public bool ReadSerialNumberFromScanner
+        private string mValidarHipot;
+        public string ValidarHipot
         {
-          get { return mReadSerialNumberFromScanner; }
-          set { mReadSerialNumberFromScanner = value; }
+          get { return mValidarHipot; }
+          set { mValidarHipot = value; }
         }
+
+      private bool mReadSerialNumberFromScanner=false;
+
+      public bool ReadSerialNumberFromScanner{
+        get { return mReadSerialNumberFromScanner; }
+        set { mReadSerialNumberFromScanner = value; }
+      }
+        
 
         private bool mImpresoraProductoHabilitada;
 
@@ -72,14 +80,13 @@ namespace iDU.CommonObjects
             set { mTempMax = value; }
 
         }
-        
+
         bool mPrintErrorTests = false;
         public bool PrintErrorTests
         {
-          get { return mPrintErrorTests ; }
+          get { return mPrintErrorTests; }
           set { mPrintErrorTests = value; }
 
         }
-    
     }
 }

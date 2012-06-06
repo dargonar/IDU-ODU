@@ -1571,6 +1571,25 @@ namespace dcf001
               
               return;
             }
+
+            if (ConfigurationManager.AppSettings["CHECK_HIPOT"] == "1")
+            {
+              mIDUDb = new iDU.DAO.IDUDb();
+              bool misValidHiPot = mIDUDb.isValidHiPot(txtUltimo.Text.Trim());
+              mIDUDb  = null; 
+              if (!misValidHiPot)
+              {
+                lblUltimo.Foreground = mForegroundBrushRed;
+                this.lblSerialNumberMessage.Visibility = Visibility.Visible;
+                if (modeloinfo != null)
+                  if (Convert.ToInt32(accesoplc.LeerItem("IDU_SP_VModelo")) != 0)
+                    accesoplc.Escribir("IDU_SP_VModelo", 0);
+                excepcion mExcepcion = new excepcion("Número de Serie", String.Format("El número de serie no presenta ensayo aprobado de HiPot.{0} No puede ser utilizado para un ensayo.", Environment.NewLine));
+                mExcepcion.ShowAndDie(3);
+                return;
+              }
+            }
+        
           }
 
           if (!isSerialnumberAvailable)

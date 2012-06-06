@@ -1021,7 +1021,7 @@ namespace iDU.DAO
           using (MySqlConnection conn = ConectarBaseDeDatos())
           {
 
-            string sql = "SELECT id, descripcion FROM falla_controlada;";
+            string sql = "SELECT id, descripcion FROM falla_controlada where es_idu = 1;";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -1054,6 +1054,23 @@ namespace iDU.DAO
         }
         #endregion Interrupciones controladas
 
+        #region HiPot
+        public bool isValidHiPot(string nro_serie)
+        {
+          using (MySqlConnection conn = ConectarBaseDeDatos())
+          {
+            string sql = "select id from ensayo_alto_potencial where (nro_serie = '" + nro_serie.Trim() + "' or nro_serie = '" + nro_serie.Trim().Substring(1) + "' ) and resultado = 1";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            if (cmd.ExecuteScalar() == null)
+              return false;
+            else
+              return true;
+
+          }
+
+        }
+        #endregion HiPot
         #region IDisposable Members
 
         public void Dispose()

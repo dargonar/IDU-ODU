@@ -217,11 +217,6 @@ namespace dcf001
               {
                 dotFalla.Tag = "red";
               }
-              //NEW
-              //else
-              //{
-              //  dotFalla.Tag = "null";
-              //}
             }
             else
               if (tags[i] == PLC.ResolverItem("ODU_I_PulsadorStop") ) //|| tags[i] == PLC.ResolverItem("ODU_I_PulsadorFallaManual"))
@@ -420,132 +415,127 @@ namespace dcf001
         return;
       }
       
-        // 1.1.- Ensayo aprobado, termino test.
-          if (EnsayoAprobadoODU == true)
-          {
-            // Logeo.
-            // Obtengo objeto con los resultados del ensayo.
-            EnsayosODU ensayoaprobado = accesoplc.LeerValoresEnsayo() as EnsayosODU;
-            ensayoaprobado.Aprobado = true;
-            ensayoaprobado.Marca = txtMarca.Text;
-            ensayoaprobado.Modelo = txtModelo.Text;
-            ensayoaprobado.Tiempoensayo = Convert.ToInt32(TiempoTranscurrido.TotalSeconds);
-            ensayoaprobado.Fecha = DateTime.Now;
-            ensayoaprobado.Codigo = "0";
-            ensayoaprobado.OrdenFabricacion = mOrdenFabricacion;
+      // 1.1.- Ensayo aprobado, termino test.
+      if (EnsayoAprobadoODU == true)
+      {
+        // Logeo.
+        // Obtengo objeto con los resultados del ensayo.
+        EnsayosODU ensayoaprobado = accesoplc.LeerValoresEnsayo() as EnsayosODU;
+        ensayoaprobado.Aprobado = true;
+        ensayoaprobado.Marca = txtMarca.Text;
+        ensayoaprobado.Modelo = txtModelo.Text;
+        ensayoaprobado.Tiempoensayo = Convert.ToInt32(TiempoTranscurrido.TotalSeconds);
+        ensayoaprobado.Fecha = DateTime.Now;
+        ensayoaprobado.Codigo = "0";
+        ensayoaprobado.OrdenFabricacion = mOrdenFabricacion;
             
-            if (ManagerUsuarios.sfUser == null)
-              ensayoaprobado.Usuario = HomeOdu.USUARIO;
-            else
-              ensayoaprobado.Usuario = ManagerUsuarios.sfUser.sgu__username;
+        if (ManagerUsuarios.sfUser == null)
+          ensayoaprobado.Usuario = HomeOdu.USUARIO;
+        else
+          ensayoaprobado.Usuario = ManagerUsuarios.sfUser.sgu__username;
 
+        // Salvo el resultado del ensayo.
+        EnsayosManager ensmanager = new EnsayosManager();
+        if (!ReadSerialNumberFromScanner)
+          ensmanager.GuardarValoresEnsayo(ensayoaprobado,null);
+        else
+        {
+          ensmanager.GuardarValoresEnsayo(ensayoaprobado,mSerialNumber);
+        }
             
-            
-            // Salvo el resultado del ensayo.
-            EnsayosManager ensmanager = new EnsayosManager();
-            if (!ReadSerialNumberFromScanner)
-              ensmanager.GuardarValoresEnsayo(ensayoaprobado,null);
-            else
-            {
-              ensmanager.GuardarValoresEnsayo(ensayoaprobado,mSerialNumber);
-            }
-            
-            // Formateo Form acorde al resutado positivo.
-            txtblckInfo.Foreground = mForegroundBrushGreen;
-            txtblckInfo.Text = "Se terminó el ensayo con éxito";
-            //NEW
-            dotFalla.Tag = "green";
+        // Formateo Form acorde al resutado positivo.
+        txtblckInfo.Foreground = mForegroundBrushGreen;
+        txtblckInfo.Text = "Se terminó el ensayo con éxito";
+        //NEW
+        dotFalla.Tag = "green";
 
-            txtblckInfoFalla.Foreground = mForegroundBrushWhite;
-            txtblckInfoFalla.Text = "Equipo listo para próximo ensayo.";
+        txtblckInfoFalla.Foreground = mForegroundBrushWhite;
+        txtblckInfoFalla.Text = "Equipo listo para próximo ensayo.";
 
-            // Agrego una pieza OK al resultado parcial de peizas OK.
-            WPFiDU.Utils.PiezasOkManager.addPiezaOk();
-            txtEnsayosOK.Text = WPFiDU.Utils.PiezasOkManager.getPiezasOk().ToString();
+        // Agrego una pieza OK al resultado parcial de peizas OK.
+        WPFiDU.Utils.PiezasOkManager.addPiezaOk();
+        txtEnsayosOK.Text = WPFiDU.Utils.PiezasOkManager.getPiezasOk().ToString();
             
-            Ensayos infoens = ensayoaprobado;
+        Ensayos infoens = ensayoaprobado;
 
-            if (modeloinfo == null)
-            {
-              excepcion form_msg= new excepcion("Selección de Modelo", "Usted no seleccionó ningun modelo al iniciar el ensayo");
-              form_msg.ShowDialog();
-              form_msg = null;
-            }
-            else
-              ImpresionEtiquetas(infoens, null, false);
+        if (modeloinfo == null)
+        {
+          excepcion form_msg= new excepcion("Selección de Modelo", "Usted no seleccionó ningun modelo al iniciar el ensayo");
+          form_msg.ShowDialog();
+          form_msg = null;
+        }
+        else
+          ImpresionEtiquetas(infoens, null, false);
             
-            // Reseteo fallas.
-            LimiteFallas = 0;
+        // Reseteo fallas.
+        LimiteFallas = 0;
 
-            // Mando a imprimir etiqueta.
+        // Mando a imprimir etiqueta.
             
 
-          }
-          // 1.2.- Ensayo NO aprobado, termino test.
-          else
-          {
+      }
+      // 1.2.- Ensayo NO aprobado, termino test.
+      else
+      {
             
-            // Obtengo objeto con los resultados del ensayo.
-            EnsayosODU ensayofalla = accesoplc.LeerValoresEnsayo() as EnsayosODU;
-            ensayofalla.Aprobado = false;
-            ensayofalla.Marca = txtMarca.Text;
-            ensayofalla.Modelo = txtModelo.Text;
-            ensayofalla.Tiempoensayo = Convert.ToInt32(TiempoTranscurrido.TotalSeconds);
-            ensayofalla.OrdenFabricacion = mOrdenFabricacion;
+        // Obtengo objeto con los resultados del ensayo.
+        EnsayosODU ensayofalla = accesoplc.LeerValoresEnsayo() as EnsayosODU;
+        ensayofalla.Aprobado = false;
+        ensayofalla.Marca = txtMarca.Text;
+        ensayofalla.Modelo = txtModelo.Text;
+        ensayofalla.Tiempoensayo = Convert.ToInt32(TiempoTranscurrido.TotalSeconds);
+        ensayofalla.OrdenFabricacion = mOrdenFabricacion;
             
-            if (ManagerUsuarios.sfUser == null)
-              ensayofalla.Usuario = USUARIO;
-            else
-              ensayofalla.Usuario = ManagerUsuarios.sfUser.sgu__username;
+        if (ManagerUsuarios.sfUser == null)
+          ensayofalla.Usuario = USUARIO;
+        else
+          ensayofalla.Usuario = ManagerUsuarios.sfUser.sgu__username;
               
-            ensayofalla.Fecha = DateTime.Now;
-            ensayofalla.Codigo = accesoplc.LeerItem("ODU_ST_CodigoDeFalla") ;
+        ensayofalla.Fecha = DateTime.Now;
+        ensayofalla.Codigo = accesoplc.LeerItem("ODU_ST_CodigoDeFalla") ;
 
-            if (ensayofalla.Codigo.Trim().Equals("0"))
-            {
-              if (iErrorNumberChecker < iAppCfgTestEndDelayTicks)
-              {
-                iErrorNumberChecker = iErrorNumberChecker + 1;
-                esperarResultadosTimer.Start();
-                return;
-              }
-            }
-            iErrorNumberChecker = 0;
-            // Salvo el ensayo fallado en BBDD.
-            EnsayosManager ensmanager = new EnsayosManager();
-
-            if (!ReadSerialNumberFromScanner)
-              ensmanager.GuardarValoresEnsayo(ensayofalla, null);
-            else
-            {
-              ensmanager.GuardarValoresEnsayo(ensayofalla, mSerialNumber);
-            }
-            
-            txtblckInfo.Foreground = mForegroundBrushRed;
-            txtblckInfo.Text = "Se terminó el ensayo con fallas";
-            //NEW
-            dotFalla.Tag = "red";
-
-            LimiteFallas = 0;
-
-            string fallaDesc = getDescripcionDeFalla(Convert.ToInt32(ensayofalla.Codigo));
-
-            ImpresionEtiquetas(ensayofalla, fallaDesc, true);
-          
+        if (ensayofalla.Codigo.Trim().Equals("0"))
+        {
+          if (iErrorNumberChecker < iAppCfgTestEndDelayTicks)
+          {
+            iErrorNumberChecker = iErrorNumberChecker + 1;
+            esperarResultadosTimer.Start();
+            return;
           }
+        }
+        iErrorNumberChecker = 0;
+        // Salvo el ensayo fallado en BBDD.
+        EnsayosManager ensmanager = new EnsayosManager();
+
+        if (!ReadSerialNumberFromScanner)
+          ensmanager.GuardarValoresEnsayo(ensayofalla, null);
+        else
+        {
+          ensmanager.GuardarValoresEnsayo(ensayofalla, mSerialNumber);
+        }
+            
+        txtblckInfo.Foreground = mForegroundBrushRed;
+        txtblckInfo.Text = "Se terminó el ensayo con fallas";
+        //NEW
+        dotFalla.Tag = "red";
+
+        LimiteFallas = 0;
+
+        string fallaDesc = getDescripcionDeFalla(Convert.ToInt32(ensayofalla.Codigo));
+
+        ImpresionEtiquetas(ensayofalla, fallaDesc, true);
+          
+      }
 
           
-          ResetEstados();
-          NumeroDeSerieManager seriemanager = new NumeroDeSerieManager();
-          seriemanager.GuardarNumeroDeSerie();
-          if (!ReadSerialNumberFromScanner)
-            txtUltimo.Text = seriemanager.ObtenerUltimoNumeroDeSerie();
-          else
-            txtUltimo.Text = "";
+      ResetEstados();
+      NumeroDeSerieManager seriemanager = new NumeroDeSerieManager();
+      seriemanager.GuardarNumeroDeSerie();
+      if (!ReadSerialNumberFromScanner)
+        txtUltimo.Text = seriemanager.ObtenerUltimoNumeroDeSerie();
+      else
+        txtUltimo.Text = "";
         
-      //accesoplc.Escribir("ODU_ST_EnsayoAprobado", 0);
-      //accesoplc.Escribir("ODU_ST_CodigoDeFalla", 0);
-      //accesoplc.Escribir("ODU_SP_NumeroModeloCargado", 1); // HACK
       }
 
     /// <summary>
@@ -1549,6 +1539,24 @@ namespace dcf001
             excepcion mExcepcion = new excepcion("Número de Serie", String.Format("El número de serie ya ha sido utilizado en otro ensayo aprobado.{0} No puede ser utilizado para un nuevo ensayo.", Environment.NewLine));
             mExcepcion.ShowAndDie(3);
             return;
+          }
+
+          if (ConfigurationManager.AppSettings["CHECK_HIPOT"] == "1")
+          {
+            mODUDb = new iDU.DAO.ODUDb();
+            bool misValidHiPot = mODUDb.isValidHiPot(txtUltimo.Text.Trim());
+            mODUDb = null; 
+            if (!misValidHiPot)
+            {
+              lblUltimo.Foreground = mForegroundBrushRed;
+              this.lblSerialNumberMessage.Visibility = Visibility.Visible;
+              if (modeloinfo != null)
+                if (Convert.ToInt32(accesoplc.LeerItem("ODU_SP_NumeroModeloCargado")) != 0)
+                  accesoplc.Escribir("ODU_SP_NumeroModeloCargado", 0);
+              excepcion mExcepcion = new excepcion("Número de Serie", String.Format("El número de serie no presenta ensayo aprobado de HiPot.{0} No puede ser utilizado para un ensayo.", Environment.NewLine));
+              mExcepcion.ShowAndDie(3);
+              return;
+            }
           }
         }
         if (!isSerialnumberAvailable)

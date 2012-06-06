@@ -10,7 +10,7 @@ namespace iDU.BL
     public class ConfiguracionManager : Manager 
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(ConfiguracionManager));
-        private Configuracion config;
+        public Configuracion config;
         
         public Configuracion LeerConfiguracion()
         {
@@ -22,7 +22,8 @@ namespace iDU.BL
         {
 
             config = new Configuracion();
-            
+
+            config.ValidarHipot = ConfigurationManager.AppSettings["CHECK_HIPOT"];
             config.CadenaDeConexion = ConfigurationManager.AppSettings["DDBBConnString"];
             config.ImpresoraBulto = ConfigurationManager.AppSettings["ImpresoraBulto"];
             config.ImpresoraProducto = ConfigurationManager.AppSettings["ImpresoraProducto"];
@@ -181,10 +182,15 @@ namespace iDU.BL
 
             app.Settings.Remove("PrintErrorTests");
             app.Settings.Add("PrintErrorTests", config.PrintErrorTests ? "1" : "0");
-            
+
+            app.Settings.Remove("CHECK_HIPOT");
+            app.Settings.Add("CHECK_HIPOT", config.ValidarHipot);
+            //config.ValidarHipot = ConfigurationManager.AppSettings["CHECK_HIPOT"];
+
             // Save the configuration file.
             config2.Save(ConfigurationSaveMode.Modified);
 
+            
             // Force a reload of the changed section.
             ConfigurationManager.RefreshSection("appSettings");
 

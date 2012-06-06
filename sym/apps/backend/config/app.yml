@@ -57,16 +57,30 @@ all:
             image:        potion_red.png
       Ensayos y Logs:
         items:
-          IDU:
+          Ensayos IDU:
             credentials:  [superadmin]
             url:          ensayosrealizadosidu
             image:        bullet_triangle_blue.png
-          ODU:
+          Ensayos ODU:
             credentials:  [superadmin]
             url:          ensayosrealizadosodu
             image:        bullet_triangle_red.png
+          Ensayos HiPot:
+            credentials:  [superadmin]
+            url:          ensayo_alto_potencial
+            image:        plug.png
           Logs de RunTest IDU/ODU:
             credentials:  [superadmin]
             url:          log_idu_odu
             image:        note_pinned.png
-      
+      Fallas Controladas:
+        items:
+          Ensayos Fallas controladas:
+            credentials:  [superadmin]
+            url:          ensayo_falla_controlada
+            image:        breakpoint_run.png
+          Fallas controladas:
+            credentials:  [superadmin]
+            url:          falla_controlada
+            image:        breakpoint_delete.png
+        

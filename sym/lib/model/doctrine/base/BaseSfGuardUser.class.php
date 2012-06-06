@@ -20,6 +20,7 @@ Doctrine_Manager::getInstance()->bindComponent('SfGuardUser', 'doctrine');
  * @property timestamp $last_login
  * @property timestamp $created_at
  * @property timestamp $updated_at
+ * @property Doctrine_Collection $EnsayoFallaControlada
  * @property Doctrine_Collection $SfGuardForgotPassword
  * @property Doctrine_Collection $SfGuardRememberKey
  * @property Doctrine_Collection $SfGuardUserGroup
@@ -39,6 +40,7 @@ Doctrine_Manager::getInstance()->bindComponent('SfGuardUser', 'doctrine');
  * @method timestamp           getLastLogin()             Returns the current record's "last_login" value
  * @method timestamp           getCreatedAt()             Returns the current record's "created_at" value
  * @method timestamp           getUpdatedAt()             Returns the current record's "updated_at" value
+ * @method Doctrine_Collection getEnsayoFallaControlada() Returns the current record's "EnsayoFallaControlada" collection
  * @method Doctrine_Collection getSfGuardForgotPassword() Returns the current record's "SfGuardForgotPassword" collection
  * @method Doctrine_Collection getSfGuardRememberKey()    Returns the current record's "SfGuardRememberKey" collection
  * @method Doctrine_Collection getSfGuardUserGroup()      Returns the current record's "SfGuardUserGroup" collection
@@ -57,6 +59,7 @@ Doctrine_Manager::getInstance()->bindComponent('SfGuardUser', 'doctrine');
  * @method SfGuardUser         setLastLogin()             Sets the current record's "last_login" value
  * @method SfGuardUser         setCreatedAt()             Sets the current record's "created_at" value
  * @method SfGuardUser         setUpdatedAt()             Sets the current record's "updated_at" value
+ * @method SfGuardUser         setEnsayoFallaControlada() Sets the current record's "EnsayoFallaControlada" collection
  * @method SfGuardUser         setSfGuardForgotPassword() Sets the current record's "SfGuardForgotPassword" collection
  * @method SfGuardUser         setSfGuardRememberKey()    Sets the current record's "SfGuardRememberKey" collection
  * @method SfGuardUser         setSfGuardUserGroup()      Sets the current record's "SfGuardUserGroup" collection
@@ -197,6 +200,10 @@ abstract class BaseSfGuardUser extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('EnsayoFallaControlada', array(
+             'local' => 'id',
+             'foreign' => 'usuario_id'));
+
         $this->hasMany('SfGuardForgotPassword', array(
              'local' => 'id',
              'foreign' => 'user_id'));

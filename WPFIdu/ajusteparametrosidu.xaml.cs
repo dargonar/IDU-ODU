@@ -601,23 +601,21 @@ namespace dcf001
 
         private void btnBDLeer_Click(object sender, RoutedEventArgs e)
         {
-          
-          
-          
+
           try
           {
             ParametrosEnsayoIDU param = GuardarDatosEnObjeto();
             parametrizacion formparametros = new parametrizacion(param);
 
             logger.InfoFormat("btnBDLeer_Click(). Parámetros enviados como argumento. {0}", getRawData());
-            
+
             formparametros.ShowDialog();
             if (formparametros.mParam == null)
-                return;
+              return;
 
             ParametrosEnsayoIDU paramform = formparametros.mParam as ParametrosEnsayoIDU;
             LeerDeObjeto(paramform);
-
+            return;
           }
           catch (Exception ex)
           {

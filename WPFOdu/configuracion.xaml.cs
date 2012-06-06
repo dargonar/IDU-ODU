@@ -95,7 +95,11 @@ namespace dcf001
                   this.cmbPrintErrorTests.SelectedIndex = 0;
                 else
                   this.cmbPrintErrorTests.SelectedIndex = 1;
-        
+
+                if (configurador.config.ValidarHipot=="0")
+                  this.cmbHiPot.SelectedIndex = 0;
+                else
+                  this.cmbHiPot.SelectedIndex = 1;
 
             }
             catch (Exception ex)
@@ -192,8 +196,9 @@ namespace dcf001
 
                 }
 
-
-                configurador.GuardarConfiguracion();
+                configurador.config.ValidarHipot = Convert.ToString(this.cmbHiPot.SelectedIndex);
+                
+              configurador.GuardarConfiguracion();
 
                 confirmacioneliminar.Show("Cambios Guardados satisfactoriamente!");
                 this.DialogResult = true;

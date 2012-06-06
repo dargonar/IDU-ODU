@@ -16,6 +16,7 @@ Doctrine_Manager::getInstance()->bindComponent('UserProfile', 'doctrine');
  * @property string $linea
  * @property timestamp $created_at
  * @property timestamp $updated_at
+ * @property SfGuardUser $SfGuardUser
  * @property sfGuardUser $User
  * 
  * @method integer     getId()               Returns the current record's "id" value
@@ -27,6 +28,7 @@ Doctrine_Manager::getInstance()->bindComponent('UserProfile', 'doctrine');
  * @method string      getLinea()            Returns the current record's "linea" value
  * @method timestamp   getCreatedAt()        Returns the current record's "created_at" value
  * @method timestamp   getUpdatedAt()        Returns the current record's "updated_at" value
+ * @method SfGuardUser getSfGuardUser()      Returns the current record's "SfGuardUser" value
  * @method sfGuardUser getUser()             Returns the current record's "User" value
  * @method UserProfile setId()               Sets the current record's "id" value
  * @method UserProfile setSfGuardUserId()    Sets the current record's "sf_guard_user_id" value
@@ -37,6 +39,7 @@ Doctrine_Manager::getInstance()->bindComponent('UserProfile', 'doctrine');
  * @method UserProfile setLinea()            Sets the current record's "linea" value
  * @method UserProfile setCreatedAt()        Sets the current record's "created_at" value
  * @method UserProfile setUpdatedAt()        Sets the current record's "updated_at" value
+ * @method UserProfile setSfGuardUser()      Sets the current record's "SfGuardUser" value
  * @method UserProfile setUser()             Sets the current record's "User" value
  * 
  * @package    sf_sandbox
@@ -134,6 +137,10 @@ abstract class BaseUserProfile extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('SfGuardUser', array(
+             'local' => 'sf_guard_user_id',
+             'foreign' => 'id'));
+
         $this->hasOne('sfGuardUser as User', array(
              'local' => 'sf_guard_user_id',
              'foreign' => 'id',

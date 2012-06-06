@@ -15,6 +15,13 @@ namespace iDU.CommonObjects
             set { mCadenaDeConexion = value; }
         }
 
+        private string mValidarHipot;
+        public string ValidarHipot
+        {
+          get { return mValidarHipot; }
+          set { mValidarHipot = value; }
+        }
+
       private bool mReadSerialNumberFromScanner=false;
 
       public bool ReadSerialNumberFromScanner{

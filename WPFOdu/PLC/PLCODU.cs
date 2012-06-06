@@ -61,7 +61,7 @@ namespace iDU.PLC
                 items.Add(ResolverItem("ODU_SP_TimeoutBajaTension"));
 
                 items.Add(ResolverItem("ODU_VERSION"));
-              
+
                 string[] arrayitems = items.ToArray();
 
         
@@ -251,6 +251,7 @@ namespace iDU.PLC
             items.Add(ResolverItem("ODU_I_PulsadorStop"));
             items.Add(ResolverItem("ODU_I_PulsadorFallaManual"));
 
+            items.Add(ResolverItem("ODU_ST_FALLA_MANUAL_ACCIONADA"));
 
             tagsAsync = items.ToArray();
 

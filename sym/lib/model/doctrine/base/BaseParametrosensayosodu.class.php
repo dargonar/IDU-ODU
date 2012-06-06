@@ -629,7 +629,7 @@ abstract class BaseParametrosensayosodu extends sfDoctrineRecord
         $this->hasColumn('parametrosensayosodu_idversion', 'integer', 4, array(
              'type' => 'integer',
              'fixed' => 0,
-             'unsigned' => false,
+             'unsigned' => true,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,

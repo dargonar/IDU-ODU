@@ -1,3 +1,30 @@
+falla_controlada:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                FallaControlada
+    module:               falla_controlada
+    prefix_path:          /falla_controlada
+    column:               id
+    with_wildcard_routes: true
+
+ensayo_falla_controlada:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                EnsayoFallaControlada
+    module:               ensayo_falla_controlada
+    prefix_path:          /ensayo_falla_controlada
+    column:               id
+    with_wildcard_routes: true
+
+ensayo_alto_potencial:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                EnsayoAltoPotencial
+    module:               ensayo_alto_potencial
+    prefix_path:          /ensayo_alto_potencial
+    column:               id
+    with_wildcard_routes: true
+
 log_idu_odu:
   class: sfDoctrineRouteCollection
   options:

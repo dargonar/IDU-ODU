@@ -16,7 +16,7 @@ abstract class BaseUserProfileForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'               => new sfWidgetFormInputHidden(),
-      'sf_guard_user_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => true)),
+      'sf_guard_user_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SfGuardUser'), 'add_empty' => true)),
       'numero_legajo'    => new sfWidgetFormInputText(),
       'phone'            => new sfWidgetFormInputText(),
       'turno'            => new sfWidgetFormInputText(),
@@ -28,7 +28,7 @@ abstract class BaseUserProfileForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'sf_guard_user_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'required' => false)),
+      'sf_guard_user_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('SfGuardUser'), 'required' => false)),
       'numero_legajo'    => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'phone'            => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'turno'            => new sfValidatorString(array('max_length' => 255, 'required' => false)),
