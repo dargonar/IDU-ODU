@@ -7,11 +7,11 @@
         Title="Interrupción Controlada" 
         WindowStyle="None" 
         Background="Transparent" 
-        Width="790" Height="490.667" Foreground="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
+        Width="799" Height="428" Foreground="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
 		Icon="/Idu;component/idu.ico"  ShowInTaskbar="True" AllowsTransparency="False">
-  <Grid x:Name="LayoutRoot" Width="775" Height="466.667">
+  <Grid x:Name="LayoutRoot" Width="775" Height="420">
     <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" 
-               x:Name="rctPopUpBack" d:IsLocked="True" Margin="12.5,13.333,12.5,90">
+               x:Name="rctPopUpBack" d:IsLocked="True" Margin="12,13,13,30">
       <Rectangle.Fill>
         <LinearGradientBrush EndPoint="0.5,0.023" StartPoint="0.5,0.982">
           <GradientStop Color="#FF000000" Offset="0.197" />
@@ -58,10 +58,7 @@
     </Button>
 
     <Label Height="29.233" Content="Seleccione la interrupción" FontFamily="Myriad Pro" FontSize="16" FontWeight="Bold" Foreground="#FFFFFFFF" x:Name="lblCommSrv" Margin="53,0,350,317" VerticalAlignment="Bottom" />
-    <ComboBox FontSize="30" Height="64" IsSynchronizedWithCurrentItem="True" Margin="53,155,133,0" Style="{DynamicResource styComboBox}" VerticalAlignment="Top" Name="cmbInterrupciones">
-      <ComboBoxItem Content="Carcaza fallada/rota" />
-      <ComboBoxItem Content="Serpentriqui despintado" />
-    </ComboBox>
+    <ComboBox FontSize="30" Height="64" IsSynchronizedWithCurrentItem="True" Margin="53,155,133,0" Style="{DynamicResource styComboBox}" VerticalAlignment="Top" Name="cmbInterrupciones"></ComboBox>
     <Button Height="93" HorizontalAlignment="Right" IsCancel="False" IsEnabled="True" Margin="0,263,43,0" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Top" Width="151" Name="btnGuardar" Click="btnGuardar_Click">
       <Grid Height="Auto" Width="Auto">
         <TextBlock FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center">Guardar<LineBreak />Interrupción<LineBreak />Controlada</TextBlock>

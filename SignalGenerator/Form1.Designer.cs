@@ -42,6 +42,8 @@
       this.btnStartOdu = new System.Windows.Forms.Button();
       this.lblLogOdu = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
+      this.button1 = new System.Windows.Forms.Button();
+      this.button2 = new System.Windows.Forms.Button();
       this.tbctrlIduOdu.SuspendLayout();
       this.tbpgIdu.SuspendLayout();
       this.tbpgOdu.SuspendLayout();
@@ -61,7 +63,7 @@
       // 
       this.btnStopIdu.Location = new System.Drawing.Point(132, 28);
       this.btnStopIdu.Name = "btnStopIdu";
-      this.btnStopIdu.Size = new System.Drawing.Size(75, 34);
+      this.btnStopIdu.Size = new System.Drawing.Size(117, 34);
       this.btnStopIdu.TabIndex = 1;
       this.btnStopIdu.Text = "STOP IDU";
       this.btnStopIdu.UseVisualStyleBackColor = true;
@@ -79,7 +81,7 @@
       // lblLogIdu
       // 
       this.lblLogIdu.AutoSize = true;
-      this.lblLogIdu.Location = new System.Drawing.Point(213, 50);
+      this.lblLogIdu.Location = new System.Drawing.Point(130, 175);
       this.lblLogIdu.Name = "lblLogIdu";
       this.lblLogIdu.Size = new System.Drawing.Size(26, 13);
       this.lblLogIdu.TabIndex = 6;
@@ -89,7 +91,7 @@
       // 
       this.btnStopIduFallado.Location = new System.Drawing.Point(132, 64);
       this.btnStopIduFallado.Name = "btnStopIduFallado";
-      this.btnStopIduFallado.Size = new System.Drawing.Size(75, 34);
+      this.btnStopIduFallado.Size = new System.Drawing.Size(117, 34);
       this.btnStopIduFallado.TabIndex = 7;
       this.btnStopIduFallado.Text = "STOP IDU FALLADO";
       this.btnStopIduFallado.UseVisualStyleBackColor = true;
@@ -103,11 +105,12 @@
       this.tbctrlIduOdu.Location = new System.Drawing.Point(0, 0);
       this.tbctrlIduOdu.Name = "tbctrlIduOdu";
       this.tbctrlIduOdu.SelectedIndex = 0;
-      this.tbctrlIduOdu.Size = new System.Drawing.Size(369, 158);
+      this.tbctrlIduOdu.Size = new System.Drawing.Size(423, 271);
       this.tbctrlIduOdu.TabIndex = 8;
       // 
       // tbpgIdu
       // 
+      this.tbpgIdu.Controls.Add(this.button1);
       this.tbpgIdu.Controls.Add(this.btnStopIdu);
       this.tbpgIdu.Controls.Add(this.btnStopIduFallado);
       this.tbpgIdu.Controls.Add(this.btnStartIdu);
@@ -116,13 +119,14 @@
       this.tbpgIdu.Location = new System.Drawing.Point(4, 22);
       this.tbpgIdu.Name = "tbpgIdu";
       this.tbpgIdu.Padding = new System.Windows.Forms.Padding(3);
-      this.tbpgIdu.Size = new System.Drawing.Size(361, 132);
+      this.tbpgIdu.Size = new System.Drawing.Size(415, 245);
       this.tbpgIdu.TabIndex = 0;
       this.tbpgIdu.Text = "IDU";
       this.tbpgIdu.UseVisualStyleBackColor = true;
       // 
       // tbpgOdu
       // 
+      this.tbpgOdu.Controls.Add(this.button2);
       this.tbpgOdu.Controls.Add(this.btnStopOduOk);
       this.tbpgOdu.Controls.Add(this.btnStopOduFallado);
       this.tbpgOdu.Controls.Add(this.btnStartOdu);
@@ -131,7 +135,7 @@
       this.tbpgOdu.Location = new System.Drawing.Point(4, 22);
       this.tbpgOdu.Name = "tbpgOdu";
       this.tbpgOdu.Padding = new System.Windows.Forms.Padding(3);
-      this.tbpgOdu.Size = new System.Drawing.Size(361, 132);
+      this.tbpgOdu.Size = new System.Drawing.Size(415, 245);
       this.tbpgOdu.TabIndex = 1;
       this.tbpgOdu.Text = "ODU";
       this.tbpgOdu.UseVisualStyleBackColor = true;
@@ -140,7 +144,7 @@
       // 
       this.btnStopOduOk.Location = new System.Drawing.Point(132, 28);
       this.btnStopOduOk.Name = "btnStopOduOk";
-      this.btnStopOduOk.Size = new System.Drawing.Size(75, 34);
+      this.btnStopOduOk.Size = new System.Drawing.Size(118, 34);
       this.btnStopOduOk.TabIndex = 9;
       this.btnStopOduOk.Text = "STOP ODU";
       this.btnStopOduOk.UseVisualStyleBackColor = true;
@@ -150,7 +154,7 @@
       // 
       this.btnStopOduFallado.Location = new System.Drawing.Point(132, 64);
       this.btnStopOduFallado.Name = "btnStopOduFallado";
-      this.btnStopOduFallado.Size = new System.Drawing.Size(75, 34);
+      this.btnStopOduFallado.Size = new System.Drawing.Size(118, 34);
       this.btnStopOduFallado.TabIndex = 12;
       this.btnStopOduFallado.Text = "STOP ODU FALLADO";
       this.btnStopOduFallado.UseVisualStyleBackColor = true;
@@ -169,7 +173,7 @@
       // lblLogOdu
       // 
       this.lblLogOdu.AutoSize = true;
-      this.lblLogOdu.Location = new System.Drawing.Point(213, 50);
+      this.lblLogOdu.Location = new System.Drawing.Point(129, 144);
       this.lblLogOdu.Name = "lblLogOdu";
       this.lblLogOdu.Size = new System.Drawing.Size(31, 13);
       this.lblLogOdu.TabIndex = 11;
@@ -184,11 +188,31 @@
       this.label3.TabIndex = 10;
       this.label3.Text = "ODU";
       // 
+      // button1
+      // 
+      this.button1.Location = new System.Drawing.Point(133, 104);
+      this.button1.Name = "button1";
+      this.button1.Size = new System.Drawing.Size(116, 34);
+      this.button1.TabIndex = 8;
+      this.button1.Text = "STOP IDU FALLA MANUAL";
+      this.button1.UseVisualStyleBackColor = true;
+      this.button1.Click += new System.EventHandler(this.button1_Click);
+      // 
+      // button2
+      // 
+      this.button2.Location = new System.Drawing.Point(133, 104);
+      this.button2.Name = "button2";
+      this.button2.Size = new System.Drawing.Size(118, 34);
+      this.button2.TabIndex = 13;
+      this.button2.Text = "STOP ODU FALLA MANUAL";
+      this.button2.UseVisualStyleBackColor = true;
+      this.button2.Click += new System.EventHandler(this.button2_Click);
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(369, 158);
+      this.ClientSize = new System.Drawing.Size(423, 271);
       this.Controls.Add(this.tbctrlIduOdu);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Form1";
@@ -217,6 +241,8 @@
     private System.Windows.Forms.Button btnStartOdu;
     private System.Windows.Forms.Label lblLogOdu;
     private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.Button button1;
+    private System.Windows.Forms.Button button2;
   }
 }
 

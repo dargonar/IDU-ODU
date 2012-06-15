@@ -276,7 +276,7 @@
                 <TextBlock FontFamily="Myriad Pro" FontSize="16" Text="DEL" TextAlignment="Center" TextWrapping="Wrap" Margin="-3,0,-5,0" />
             </Grid>
         </Button>
-    <Button Height="93" HorizontalAlignment="Right" IsCancel="False" IsEnabled="True" Margin="0,371,47,0" Name="btnInterrControlada" Style="{DynamicResource styBtnRojo}" VerticalAlignment="Top" Width="118.75" Grid.Column="1" Click="btnInterrControlada_Click">
+    <Button Height="93" HorizontalAlignment="Right" IsCancel="False" IsEnabled="False" Margin="0,371,47,0" Name="btnInterrControlada" Style="{DynamicResource styBtnRojo}" VerticalAlignment="Top" Width="118.75" Grid.Column="1" Click="btnInterrControlada_Click">
       <Grid Height="Auto" Width="Auto">
         <TextBlock FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center">Interrupción<LineBreak />Controlada</TextBlock>
       </Grid>

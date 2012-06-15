@@ -39,7 +39,7 @@ namespace WPFiDU.Utils
 
         public static bool IsValidOrdenFabricacion(string s) 
         {
-          return (!string.IsNullOrEmpty(s) && !s.Trim().Equals("N\\A") && s.Trim().ToLower().StartsWith("f") && s.Trim().ToLower().Length == 11);
+          return (!string.IsNullOrEmpty(s) && !s.Trim().Equals("N\\A") && s.Trim().ToLower().StartsWith("f") && s.Trim().ToLower().Length > 10);
         }
 
         public static bool IsValidNumeroSerie(string s)

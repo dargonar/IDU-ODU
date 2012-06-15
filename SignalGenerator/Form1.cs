@@ -138,6 +138,7 @@ namespace SignalGenerator
 
     private void StartIDU()
     {
+      trt.Write("IDU_SP_EtiquetaPendiente", 0); 
       trt.Write("IDU_ST_EnsayoEnCurso", 1);
       oTimerIdu.Start();
     }
@@ -169,6 +170,23 @@ namespace SignalGenerator
       lblLogIdu.Text = string.Format("STATE:{0};FALLA:{1}; "
         , state.ToString()
         , falla.ToString());
+    }
+
+    private void StopIDUFallaManual()
+    {
+      oTimerIdu.Stop();
+      times = 0;
+
+      
+      trt.Write("IDU_ST_NumeroDeFalla", 0);
+      trt.Write("IDU_ST_EquipoEnsayadoOK", 0);
+      trt.Write("IDU_ST_EnsayoEnCurso", 0);
+      trt.Write("IDU_SP_EtiquetaPendiente", 1); 
+      state = State.Stopped;
+
+      lblLogIdu.Text = string.Format("STATE:{0};FALLA:{1}; FALLA MANUAL!"
+        , state.ToString()
+        , 0.ToString());
     }
 
     int[] fallasIdu = new int[] { 2, 3, 6, 7, 10, 12, 13, 14, 15, 18, 19 }; 
@@ -262,6 +280,7 @@ namespace SignalGenerator
 
     private void StartODU()
     {
+      trt.Write("ODU_ST_FALLA_MANUAL_ACCIONADA", 0); 
       trt.Write("ODU_ST_EnsayoEnCurso", 1);
       oTimerOdu.Start();
     }
@@ -295,6 +314,22 @@ namespace SignalGenerator
         , falla.ToString());
     }
 
+    private void StopODUFallaManual()
+    {
+      oTimerOdu.Stop();
+      times = 0;
+
+
+      trt.Write("ODU_ST_CodigoDeFalla", 0);
+      trt.Write("ODU_ST_EnsayoAprobado", 0);
+      trt.Write("ODU_ST_EnsayoEnCurso", 0);
+      trt.Write("ODU_ST_FALLA_MANUAL_ACCIONADA", 1); 
+      state = State.Stopped;
+
+      lblLogOdu.Text = string.Format("STATE:{0};FALLA:{1}; FALLA MANUAL!"
+        , state.ToString()
+        , 0.ToString());
+    }
     int[] fallasOdu = new int[] { 3, 4, 6, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 20, 21, 24 }; 
 
     private int getFallaRandomOdu() 
@@ -319,5 +354,15 @@ namespace SignalGenerator
     }
 
     #endregion Odu Functions and Events
+
+    private void button2_Click(object sender, EventArgs e)
+    {
+      StopODUFallaManual();
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+      StopIDUFallaManual();
+    }
   }
 }

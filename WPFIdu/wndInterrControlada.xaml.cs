@@ -24,27 +24,30 @@ namespace dcf001
     
     private static List<Dictionary<string, string>> listInterrupciones ;
     private string SerialNumber = "";
+
     public wndInterrupcionControlada(string argSerialNumber)
     {
       InitializeComponent();
       this.SerialNumber = argSerialNumber;
-      oDAO = new iDU.DAO.IDUDb();
-      if (wndInterrupcionControlada.listInterrupciones == null)
-        loadInterrupciones();
+      oDAO = new iDU.DAO.ODUDb();
+      loadInterrupciones();
     }
 
-    private void loadInterrupciones() {
+    private void loadInterrupciones()
+    {
       listInterrupciones = null;
       this.cmbInterrupciones.Items.Clear();
 
-      wndInterrupcionControlada.listInterrupciones = this.oDAO.ListFallasControladas();
+      if (wndInterrupcionControlada.listInterrupciones == null)
+        wndInterrupcionControlada.listInterrupciones = this.oDAO.ListFallasControladas();
+
       if (listInterrupciones != null && listInterrupciones.Count > 0)
       {
         for (int i = 0; i < listInterrupciones.Count; i++)
         {
 
           cmbInterrupciones.Items.Add(new VersionEquipo(Convert.ToInt32(wndInterrupcionControlada.listInterrupciones[i]["id"]),
-                                                      wndInterrupcionControlada.listInterrupciones[i]["descripcion"])
+                                                      wndInterrupcionControlada.listInterrupciones[i]["descripcion"].Trim())
                                                       );
         }
       }

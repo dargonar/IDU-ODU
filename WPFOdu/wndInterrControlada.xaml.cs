@@ -22,22 +22,24 @@ namespace dcf001
 
     iDU.DAO.BaseDAO oDAO = null;
     
-    private static List<Dictionary<string, string>> listInterrupciones ;
+    private static List<Dictionary<string, string>> listInterrupciones = null ;
     private string SerialNumber = "";
+
     public wndInterrupcionControlada(string argSerialNumber)
     {
       InitializeComponent();
       this.SerialNumber = argSerialNumber;
       oDAO = new iDU.DAO.ODUDb();
-      if (wndInterrupcionControlada.listInterrupciones == null)
-        loadInterrupciones();
+      loadInterrupciones();
     }
 
     private void loadInterrupciones() {
       listInterrupciones = null;
       this.cmbInterrupciones.Items.Clear();
 
-      wndInterrupcionControlada.listInterrupciones = this.oDAO.ListFallasControladas();
+      if (wndInterrupcionControlada.listInterrupciones == null)
+        wndInterrupcionControlada.listInterrupciones = this.oDAO.ListFallasControladas();
+      
       if (listInterrupciones != null && listInterrupciones.Count > 0)
       {
         for (int i = 0; i < listInterrupciones.Count; i++)

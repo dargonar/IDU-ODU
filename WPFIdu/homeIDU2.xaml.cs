@@ -525,12 +525,12 @@ namespace dcf001
                 if (!Convert.ToInt32(valores[i].Value).Equals(0))
                     lblPasosEnsayo.Content = "Finalización de ensayo";
             }
-            else if (tags[i] == "IDU_SP_EtiquetaPendiente")
-            {
-                if (!Convert.ToInt32(valores[i].Value).Equals(0))
-                    if (accesoplc != null)
-                        accesoplc.Escribir("IDU_SP_EtiquetaPendiente", 0);
-            }
+            //else if (tags[i] == "IDU_SP_EtiquetaPendiente")
+            //{
+            //    if (!Convert.ToInt32(valores[i].Value).Equals(0))
+            //        if (accesoplc != null)
+            //            accesoplc.Escribir("IDU_SP_EtiquetaPendiente", 0);
+            //}
         }
 
         PrimerLeidaTags = false;
@@ -630,6 +630,11 @@ namespace dcf001
       procesarResultadoEnsayo();
     }
 
+    private bool finalizoPorFallaManual()
+    {
+      return Convert.ToBoolean(accesoplc.LeerItem("IDU_SP_EtiquetaPendiente"));
+    }
+
     private int iErrorNumberChecker=0;
 
     private void procesarResultadoEnsayo()
@@ -649,8 +654,8 @@ namespace dcf001
         }
 
       string mOrdenFabricacion = this.txtOrdenFabricacion.Text.Trim();
-      if (mOrdenFabricacion.ToLower().StartsWith("f") && mOrdenFabricacion.ToLower().Length > 11)
-        mOrdenFabricacion = mOrdenFabricacion.Trim().Substring(1,7);
+      if (mOrdenFabricacion.ToLower().StartsWith("f") && mOrdenFabricacion.ToLower().Length > 10)
+        mOrdenFabricacion = mOrdenFabricacion.Trim().Substring(1);
       else
       {
         excepcion formexcepciones = new excepcion("Ensayo Finalizado IDU", "La Orden de Fabricación es incorrecta. El ensayo no tendrá efecto.");
@@ -717,8 +722,7 @@ namespace dcf001
       }
       else
       {
-        //if ((modoensayo == 0 || modoensayo == 1))
-
+        bool falla_manual = this.finalizoPorFallaManual();
 
         EnsayosIDU ensayofalla = accesoplc.LeerValoresEnsayo() as EnsayosIDU;
         ensayofalla.Aprobado = false;
@@ -736,7 +740,7 @@ namespace dcf001
         ensayofalla.Codigo = accesoplc.LeerItem("IDU_ST_NumeroDeFalla");
 
         //logger.DebugFormat("procesarResultadoEnsayo():: ensayodesaprobado ErrCode='{0}'", ensayofalla.Codigo.ToString());  
-        if(ensayofalla.Codigo.Trim().Equals("0"))
+        if (ensayofalla.Codigo.Trim().Equals("0") && !falla_manual)
         {
           //logger.DebugFormat("procesarResultadoEnsayo():: ensayodesaprobado iErrorNumberChecker='{0}'", iErrorNumberChecker.ToString()); 
           if (iErrorNumberChecker < 3)
@@ -771,6 +775,17 @@ namespace dcf001
           txtblFinalizacionEnsayo.Text = "Se terminó el ensayo con fallas";
         }
 
+        if (falla_manual)
+        {
+          Dispatcher.Invoke(DispatcherPriority.Normal
+            , new Action(
+                delegate()
+                {
+                  mostrarFormInterrupcionControlada(mSerialNumber);
+                })
+            );
+        }
+
         string fallaDesc = ensmanager.ObtenerDescripcionFalla(ensayofalla);
 
         ImpresionEtiquetas(ensayofalla, fallaDesc, true);
@@ -786,6 +801,7 @@ namespace dcf001
         txtUltimo.Text = "";
       
       //Meta Hack
+      accesoplc.Escribir("IDU_SP_EtiquetaPendiente", 0); 
       accesoplc.Escribir("IDU_ST_EquipoEnsayadoOK", 0);
       accesoplc.Escribir("IDU_ST_EquipoEnsayadoFalla", 0);
       accesoplc.Escribir("IDU_ST_NumeroDeFalla", 0);
@@ -803,21 +819,7 @@ namespace dcf001
         bEnsayoFinalizo = true;
         ensayoFinalizadoTimer.Start();
       }
-      /*
-       if (bEnsayoFinalizo)
-        if(modoensayo == 0)
-        {
-          if (accesoplc != null)
-          {
-            //accesoplc.Escribir("IDU_ST_EquipoEnsayadoOK", 0);
-            //accesoplc.Escribir("IDU_ST_EquipoEnsayadoFalla", 0); 
-          }
-        }
-        else
-        {
-          //accesoplc.Escribir("IDU_ST_EquipoEnsayadoOK", 0);
-        }
-       */
+      
     }
 
     private void ResetEstados()
@@ -1680,20 +1682,19 @@ namespace dcf001
         return;
       }
 
-      string mSerialNumber = txtUltimo.Text.Trim();
+      mostrarFormInterrupcionControlada(txtUltimo.Text.Trim());
+    }
 
-      if (ReadSerialNumberFromScanner)
-      {
-        if (mSerialNumber.ToLower().StartsWith("s") && mSerialNumber.Length == 11)
-          mSerialNumber = mSerialNumber.Trim().Substring(1);
-        else
-        {
-          excepcion formexcepciones = new excepcion("Interrupción Controlada", "El número de serie es incorrecto. No se puede registrar la Interrupción.");
-          formexcepciones.ShowDialog();
-          return;
-        }
-      }
-      else
+    wndInterrupcionControlada owndInterrupcionControlada = null;
+    private void mostrarFormInterrupcionControlada(string serialNumber)
+    {
+      
+      if (owndInterrupcionControlada != null)
+        return;
+
+      string mSerialNumber = serialNumber;
+
+      if (!ReadSerialNumberFromScanner)
       {
         excepcion formexcepciones = new excepcion("Interrupción Controlada", "Imposible obtener el número de serie. No se puede registrar la Interrupción.");
         formexcepciones.ShowDialog();
@@ -1702,20 +1703,26 @@ namespace dcf001
 
       try
       {
-
-        wndInterrupcionControlada owndInterrupcionControlada = new wndInterrupcionControlada(mSerialNumber);
-        owndInterrupcionControlada.ShowDialog();
-
+        owndInterrupcionControlada = new wndInterrupcionControlada(mSerialNumber);
+        owndInterrupcionControlada.Topmost = true;
+        owndInterrupcionControlada.Closed += new EventHandler(owndInterrupcionControlada_Closed); 
+        owndInterrupcionControlada.Show();
       }
       catch (Exception ex)
       {
         logger.Error("btnInterrControlada_Click()", ex);
-        
+
         excepcion formularioexcepciones = new excepcion(ex);
         formularioexcepciones.ShowDialog();
       }
     }
 
+    private void owndInterrupcionControlada_Closed(object sender, EventArgs e)
+    {
+      owndInterrupcionControlada.Closed -= new EventHandler(owndInterrupcionControlada_Closed); 
+      owndInterrupcionControlada = null;
+
+    }
     
   }
 }
