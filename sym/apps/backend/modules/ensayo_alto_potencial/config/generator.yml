@@ -1,0 +1,38 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           EnsayoAltoPotencial
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          ensayo_alto_potencial
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        id:                       { label: Id }
+        nro_serie:                { label: Número de serie }
+        orden_fabricacion:        { label: Orden de fabricación }
+        fecha:                    { label: Fecha, date_format: yyyy-MM-dd }
+        resultado:                { label: Resultado (1=Ok), help: Ok=1 | No-Ok=0 }
+      list:    
+        title:                    Listado de Ensayos de Alto Potencial (HiPot)
+        sort:                     [id, desc]
+        display:                  [id, nro_serie, orden_fabricacion, fecha, resultado]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:           []
+          #referencia:             { label: 'Ver Referencia' }
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          #_edit:                  { label: 'Editar' }
+        batch_actions:            []
+        actions:                  []
+          #_new:                   { label: 'Crear nuevo'  }  
+      filter:  
+        display:                  [id, nro_serie, orden_fabricacion, fecha, resultado]
+      form:    ~
+      edit:    ~
+      new:     ~

@@ -1,0 +1,41 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           EnsayoFallaControlada
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          ensayo_falla_controlada
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: 
+      fields:
+        id:                     { label:Id}
+        ensayo_nro_serie:       { label:Nro. de Serie}
+        linea:                  { label:Línea }
+        dcf:                    { label:Run Test }
+        fecha:                  { label:Fecha, date_format: yyyy-MM-dd }
+        _falla_controlada_desc: { label:Falla Controlada}
+        _usuario:               {label:Usuario}  
+        usuario_id:             {label:Usuario Id}  
+        falla_controlada_id:    { label:Falla Controlada Id}
+      list:    
+        title:                  Listado de Ensayos rechazados de manera controlada
+        sort:                   [id, desc]
+        display:                [id, ensayo_nro_serie, linea, dcf, fecha, _falla_controlada_desc, _usuario]
+        object_actions:         []
+          #referencia:             { label: 'Ver Referencia' }
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          #_edit:                  { label: 'Editar' }
+        batch_actions:          []
+        actions:                []
+          #_new:                   { label: 'Crear nuevo'  }  
+      filter:  
+        display:                [id, ensayo_nro_serie, linea, dcf, fecha, falla_controlada_id, usuario_id]
+      form:    ~
+      edit:    ~
+      new:     ~

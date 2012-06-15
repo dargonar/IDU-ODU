@@ -1,0 +1,39 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           FallaControlada
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          falla_controlada
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        id:                     { label:Id}
+        descripcion:            { label:Descripción}
+        es_idu:                 { label:Línea (IDU=1 | ODU=0), help: IDU=1 | ODU=0 }
+      list:
+        title:                  Listado de Fallas Controladas
+        sort:                   [id, asc]
+        display:                [id, descripcion, es_idu]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:         
+          #referencia:             { label: 'Ver Referencia' }
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                { label: 'Editar' }
+        batch_actions:          []
+        actions:                
+          _new:                 { label: 'Crear nuevo'  }  
+      filter:  
+        display:                [id, descripcion, es_idu]
+      form:                     ~
+      edit:    
+        actions:
+          _list:                ~
+          _save:                ~
+      new:     ~
