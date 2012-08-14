@@ -90,8 +90,10 @@ class parametros_oduActions extends autoParametros_oduActions
     $values = $request->getParameter($form->getName());
     foreach (array_keys($this->config) as $attr) 
     {
-      $new_value      = $values[$attr] / $this->config[$attr];
-      $values[$attr]  = (double)$new_value; 
+      //$new_value      = $values[$attr] / $this->config[$attr];
+      $new_value      = bcdiv($values[$attr], $this->config[$attr], 3);
+      $values[$attr]  = (int)$new_value; 
+      
     }
     
     $form->bind($values, $request->getFiles($form->getName()));

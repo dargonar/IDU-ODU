@@ -71,8 +71,8 @@ class parametros_iduActions extends autoParametros_iduActions
     
     foreach (array_keys($this->config) as $attr) 
     {
-      $new_value      = $values[$attr] / $this->config[$attr];
-      $values[$attr]  = $new_value; 
+      $new_value      = bcdiv($values[$attr], $this->config[$attr], 3);
+      $values[$attr]  = (int)$new_value; 
     }
     
     $form->bind($values, null);

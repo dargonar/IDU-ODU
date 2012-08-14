@@ -62,7 +62,9 @@ namespace WPFiDU.Etiquetas
     private string mBackGroundProducto_toshiba= "producto_toshiba.jpg";
 
     private string mBackGroundBulto_pria = "bulto_pria.jpg";
-    private string mBackGroundProducto_pria = "producto_pria.jpg"; 
+    private string mBackGroundProducto_pria = "producto_pria.jpg";
+    
+    private string mBackGroundProducto_pria_eco = "producto_pria_eco.jpg"; 
     
     #endregion Private Members
 
@@ -576,7 +578,10 @@ namespace WPFiDU.Etiquetas
                       
           break;
         case EtiquetasManagerEx.mBackGroundProducto:
-          if (modelo.Marca.Trim().StartsWith("PRIA"))
+          if (modelo.Marca.Trim().StartsWith("PRIA ECO"))
+            file = this.mBackGroundProducto_pria_eco; 
+            else
+            if (modelo.Marca.Trim().StartsWith("PRIA"))
             file = this.mBackGroundProducto_pria; 
             else
             if (logo.StartsWith("SUR"))
@@ -906,9 +911,10 @@ namespace WPFiDU.Etiquetas
         Directory.CreateDirectory(sImageDir);
 
       GuardarJpg(OBitmap, sImageName);
-      //OBitmap.SetResolution(300.0f, 300.0f);
-      //OBitmap.Save(sImageName
-      //    , System.Drawing.Imaging.ImageFormat.Png);
+
+      //HACK PRIA ECO
+      //quitar
+      return;
 
       PrintDocument printDoc = new PrintDocument();
 

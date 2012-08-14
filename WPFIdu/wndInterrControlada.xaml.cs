@@ -17,20 +17,26 @@ namespace dcf001
   /// <summary>
   /// Interaction logic for Window1.xaml
   /// </summary>
-  public partial class wndInterrupcionControlada: Window
+  public partial class wndInterrupcionControlada : Window
   {
 
     iDU.DAO.BaseDAO oDAO = null;
-    
-    private static List<Dictionary<string, string>> listInterrupciones ;
+
+    private static List<Dictionary<string, string>> listInterrupciones = null;
     private string SerialNumber = "";
+    private bool FallaSalvada = false;
+    public static int SelectedFallaManual = -1;
 
     public wndInterrupcionControlada(string argSerialNumber)
     {
       InitializeComponent();
       this.SerialNumber = argSerialNumber;
+      this.FallaSalvada = false;
+      wndInterrupcionControlada.SelectedFallaManual = -1;
+
       oDAO = new iDU.DAO.ODUDb();
       loadInterrupciones();
+
     }
 
     private void loadInterrupciones()
@@ -47,7 +53,7 @@ namespace dcf001
         {
 
           cmbInterrupciones.Items.Add(new VersionEquipo(Convert.ToInt32(wndInterrupcionControlada.listInterrupciones[i]["id"]),
-                                                      wndInterrupcionControlada.listInterrupciones[i]["descripcion"].Trim())
+                                                      wndInterrupcionControlada.listInterrupciones[i]["descripcion"])
                                                       );
         }
       }
@@ -81,6 +87,13 @@ namespace dcf001
       }
 
       int interr_id = ((VersionEquipo)cmbInterrupciones.SelectedItem).ID;
+
+      wndInterrupcionControlada.SelectedFallaManual = interr_id;
+      this.FallaSalvada = true;
+
+      this.Close();
+      return;
+      //bool ok = this.oDAO.GuardarInterrupcionControlada(this.SerialNumber,interr_id);
       bool ok = this.oDAO.GuardarInterrupcionControlada(this.SerialNumber, interr_id, Convert.ToInt32(WPFiDU.BL.ManagerUsuarios.sfUser.u__id), System.Environment.MachineName);
 
       if (!ok)
@@ -97,10 +110,24 @@ namespace dcf001
 
     private void btnClose_Click(object sender, RoutedEventArgs e)
     {
+      if (!this.FallaSalvada)
+      {
+        excepcion formularioexepciones = new excepcion("Interrupciones controladas", "Debe registrar la interrupción para poder continuar operando.");
+        formularioexepciones.ShowDialog();
+        return;
+      }
       this.Close();
     }
 
-    
+    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+      if (!this.FallaSalvada)
+      {
+        e.Cancel = true;
+      }
+    }
+
+
 
   }
 }

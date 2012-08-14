@@ -511,37 +511,55 @@ namespace dcf001
         }
 
         iErrorNumberChecker = 0;
-        // Salvo el ensayo fallado en BBDD.
-        EnsayosManager ensmanager = new EnsayosManager();
-
-        if (!ReadSerialNumberFromScanner)
-          ensmanager.GuardarValoresEnsayo(ensayofalla, null);
-        else
+        bool bHuboErrores = false;
+        
+        if (falla_manual)
         {
-          ensmanager.GuardarValoresEnsayo(ensayofalla, mSerialNumber);
+          //Dispatcher.Invoke(DispatcherPriority.Normal
+          //  , new Action(
+          //      delegate()
+          //      {
+          //        mostrarFormInterrupcionControlada(mSerialNumber);
+          //      })
+          //  );
+          ResetEstados();
+          int iFalla = mostrarFormInterrupcionControlada(mSerialNumber);
+          //if (iFalla == -1)
+          //  return;
+          if (iFalla < 1)
+          {
+            return;
+            //excepcion formularioexepciones = new excepcion("Ensayo con fallas", String.Format("El identificador de falla es inválido.{0}Este ensayo no se tendrá en cuenta.",Environment.NewLine));
+            //formularioexepciones.ShowDialog();
+            //bHuboErrores = true;
+          }
+          
+          if (!bHuboErrores) 
+            ensayofalla.Codigo = iFalla.ToString();
         }
-            
+
+        if (!bHuboErrores)
+        { 
+          // Salvo el ensayo fallado en BBDD.
+          EnsayosManager ensmanager = new EnsayosManager();
+
+          if (!ReadSerialNumberFromScanner)
+            ensmanager.GuardarValoresEnsayo(ensayofalla, null);
+          else
+          {
+            ensmanager.GuardarValoresEnsayo(ensayofalla, mSerialNumber);
+          }
+
+          string fallaDesc = getDescripcionDeFalla(Convert.ToInt32(ensayofalla.Codigo));
+          ImpresionEtiquetas(ensayofalla, fallaDesc, true);
+        } 
+
         txtblckInfo.Foreground = mForegroundBrushRed;
         txtblckInfo.Text = "Se terminó el ensayo con fallas";
         //NEW
         dotFalla.Tag = "red";
 
-        if (falla_manual)
-        {
-          Dispatcher.Invoke(DispatcherPriority.Normal
-            , new Action(
-                delegate()
-                {
-                  mostrarFormInterrupcionControlada(mSerialNumber);
-                })
-            );
-        }
-
         LimiteFallas = 0;
-
-        string fallaDesc = getDescripcionDeFalla(Convert.ToInt32(ensayofalla.Codigo));
-        ImpresionEtiquetas(ensayofalla, fallaDesc, true);
-          
       }
 
           
@@ -796,6 +814,7 @@ namespace dcf001
       // Los reset de los equipos estaba en terminoEnsayo();
       accesoplc.Escribir("ODU_ST_EnsayoAprobado", 0);
       accesoplc.Escribir("ODU_ST_CodigoDeFalla", 0);
+      accesoplc.Escribir("ODU_ST_FALLA_MANUAL_ACCIONADA", 0);
       //accesoplc.Escribir("ODU_SP_NumeroModeloCargado", 1); // HACK
       
       EnsayoEnCursoODU = false;
@@ -1640,17 +1659,7 @@ namespace dcf001
       }
     }
 
-    private void txtOrdenFabricacion_TextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
-    {
-      
-    }
-
-    private void txtOrdenFabricacion_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
-    {
-      //e.Handled = true; 
-      //txtUltimo.Text =  e.SystemText + "|"+e.ControlText + "|"+txtOrdenFabricacion.Text;
-      
-    }
+   
 
     private void btnInterrControlada_Click(object sender, RoutedEventArgs e)
     {
@@ -1666,11 +1675,11 @@ namespace dcf001
     }
 
     wndInterrupcionControlada owndInterrupcionControlada = null;
-    private void mostrarFormInterrupcionControlada(string serialNumber)
+    private int mostrarFormInterrupcionControlada(string serialNumber)
     {
 
       if (owndInterrupcionControlada != null)
-        return;
+        return -1;
 
       string mSerialNumber = serialNumber;
 
@@ -1678,7 +1687,7 @@ namespace dcf001
       {
         excepcion formexcepciones = new excepcion("Interrupción Controlada", "Imposible obtener el número de serie. No se puede registrar la Interrupción.");
         formexcepciones.ShowDialog();
-        return;
+        return -2;
       }
 
       try
@@ -1686,8 +1695,8 @@ namespace dcf001
 
         owndInterrupcionControlada = new wndInterrupcionControlada(mSerialNumber);
         owndInterrupcionControlada.Closed += new EventHandler(owndInterrupcionControlada_Closed);
-        owndInterrupcionControlada.Show();
-
+        owndInterrupcionControlada.ShowDialog();
+        return wndInterrupcionControlada.SelectedFallaManual;
       }
       catch (Exception ex)
       {
@@ -1699,6 +1708,7 @@ namespace dcf001
       finally {
         
       }
+      return -3;
     }
 
     private void owndInterrupcionControlada_Closed(object sender, EventArgs e) {

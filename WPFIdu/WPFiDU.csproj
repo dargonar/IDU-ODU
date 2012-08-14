@@ -324,7 +324,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Imagenes\CAPACIDAD\CAP_CAR_09fc.wmf" />
     <None Include="Imagenes\CAPACIDAD\CAP_CAR_09fs.wmf" />
     <None Include="Imagenes\CAPACIDAD\CAP_CAR_12fc.wmf" />

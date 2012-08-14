@@ -24,13 +24,19 @@ namespace dcf001
     
     private static List<Dictionary<string, string>> listInterrupciones = null ;
     private string SerialNumber = "";
+    private bool FallaSalvada = false;
+    public static int SelectedFallaManual = -1;
 
     public wndInterrupcionControlada(string argSerialNumber)
     {
       InitializeComponent();
       this.SerialNumber = argSerialNumber;
+      this.FallaSalvada = false;
+      wndInterrupcionControlada.SelectedFallaManual = -1;
+      
       oDAO = new iDU.DAO.ODUDb();
       loadInterrupciones();
+      
     }
 
     private void loadInterrupciones() {
@@ -80,6 +86,12 @@ namespace dcf001
       }
 
       int interr_id = ((VersionEquipo)cmbInterrupciones.SelectedItem).ID;
+
+      wndInterrupcionControlada.SelectedFallaManual = interr_id;
+      this.FallaSalvada = true;
+
+      this.Close();
+      return;
       //bool ok = this.oDAO.GuardarInterrupcionControlada(this.SerialNumber,interr_id);
       bool ok = this.oDAO.GuardarInterrupcionControlada(this.SerialNumber, interr_id, Convert.ToInt32(WPFiDU.BL.ManagerUsuarios.sfUser.u__id), System.Environment.MachineName);
 
@@ -89,7 +101,7 @@ namespace dcf001
         formularioexepciones.ShowDialog();
         return;
       }
-
+      
       excepcion formularioexepcion = new excepcion("Interrupciones controladas", "Interrupción registrada satisfactoriamente.", true);
       formularioexepcion.ShowDialog();
       this.Close();
@@ -97,7 +109,20 @@ namespace dcf001
 
     private void btnClose_Click(object sender, RoutedEventArgs e)
     {
+      if (!this.FallaSalvada) {
+        excepcion formularioexepciones = new excepcion("Interrupciones controladas", "Debe registrar la interrupción para poder continuar operando.");
+        formularioexepciones.ShowDialog();
+        return;
+      }
       this.Close();
+    }
+
+    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+      if (!this.FallaSalvada)
+      {
+        e.Cancel = true;
+      }
     }
 
     

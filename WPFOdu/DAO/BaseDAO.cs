@@ -1093,14 +1093,15 @@ namespace iDU.DAO
           using (MySqlConnection conn = ConectarBaseDeDatos())
           {
 
-            string sql = "SELECT id, descripcion FROM falla_controlada where es_idu = 0;";
+            //string sql = "SELECT id, descripcion FROM falla_controlada where es_idu = 0;";
+            string sql = "SELECT numerodefalla, descripcion FROM fallasodu where es_falla_controlada = 1;";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
               Dictionary<string, string> item = new Dictionary<string, string>();
-              item.Add("id", reader.GetInt32("id").ToString());
+              item.Add("id", reader.GetInt32("numerodefalla").ToString());
               item.Add("descripcion", reader.GetString("descripcion"));
 
               list.Add(item);

@@ -295,7 +295,7 @@
         <TextBox FontSize="16" Height="44" IsEnabled="True" Margin="354,353,0,0" 
                  Name="txtOrdenFabricacion" Padding="8,2" Style="{DynamicResource styTxtNegro}" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" 
                  HorizontalAlignment="Left" Width="269" LostFocus="txtOrdenFabricacion_LostFocus" 
-                 GotFocus="txtOrdenFabricacion_GotFocus" TextInput="txtOrdenFabricacion_TextInput" PreviewTextInput="txtOrdenFabricacion_PreviewTextInput" />
+                 GotFocus="txtOrdenFabricacion_GotFocus" TextChanged="txtOrdenFabricacion_TextChanged" />
         <TextBlock FontFamily="Myriad Pro" FontSize="15" Foreground="White" Height="41.976" HorizontalAlignment="Left" Margin="235.536,353,0,0" Name="lblOrdenFabricacion" Text="Orden de Fabricación" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="100.086" />
         <Button FontSize="8" Height="42.954" IsEnabled="True" Margin="629,353,607,0" Name="btnCleanOrdenFabricacion" Style="{DynamicResource styBtnRojo}" VerticalAlignment="Top" Click="btnCleanOrdenFabricacion_Click">
             <Grid Height="Auto" Width="Auto">

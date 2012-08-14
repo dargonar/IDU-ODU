@@ -8,7 +8,7 @@
         WindowStyle="None" 
         Background="Transparent" 
         Width="799" Height="428" Foreground="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
-		Icon="/Odu;component/odu.ico"  ShowInTaskbar="True" AllowsTransparency="False">
+		Icon="/Odu;component/odu.ico"  ShowInTaskbar="True" AllowsTransparency="False" Closing="Window_Closing">
   <Grid x:Name="LayoutRoot" Width="775" Height="420">
     <Rectangle Stroke="#FF00B4EB" RadiusX="15" RadiusY="15" StrokeThickness="5" 
                x:Name="rctPopUpBack" d:IsLocked="True" Margin="12,13,13,30">

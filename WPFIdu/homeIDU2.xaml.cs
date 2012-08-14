@@ -753,43 +753,47 @@ namespace dcf001
         }
         
         iErrorNumberChecker=0;
-        EnsayosManager ensmanager = new EnsayosManager();
+        bool bHuboErrores = false;
 
-        
-        
-        if (!ReadSerialNumberFromScanner)
-          ensmanager.GuardarValoresEnsayo(ensayofalla, null);
-        else
+        if (falla_manual)
         {
-          ensmanager.GuardarValoresEnsayo(ensayofalla, mSerialNumber);
-          //ensmanager.GuardarValoresEnsayo(ensayofalla, this.txtUltimo.Text);
+          //Dispatcher.Invoke(DispatcherPriority.Normal
+          //  , new Action(
+          //      delegate()
+          //      {
+          //        mostrarFormInterrupcionControlada(mSerialNumber);
+          //      })
+          //  );
+          int iFalla = mostrarFormInterrupcionControlada(mSerialNumber);
+          ResetEstados();
+          if (iFalla < 1)
+          {
+            //excepcion formularioexepciones = new excepcion("Ensayo con fallas", String.Format("El identificador de falla es inválido.{0}Este ensayo no se tendrá en cuenta.", Environment.NewLine));
+            //formularioexepciones.ShowDialog();
+            //bHuboErrores = true;
+            return;
+          }
+
+          if (!bHuboErrores)
+            ensayofalla.Codigo = iFalla.ToString();
         }
-          
+        if (!bHuboErrores)
+        {
+          EnsayosManager ensmanager = new EnsayosManager();
+          if (!ReadSerialNumberFromScanner)
+            ensmanager.GuardarValoresEnsayo(ensayofalla, null);
+          else
+            ensmanager.GuardarValoresEnsayo(ensayofalla, mSerialNumber);
 
-        //logger.DebugFormat("FinalizacionEnsayo():: EnsayosIDU ensayofalla='{0}'", ensayofalla.ToString());
-
+          string fallaDesc = ensmanager.ObtenerDescripcionFalla(ensayofalla);
+          ImpresionEtiquetas(ensayofalla, fallaDesc, true);
+        }
 
         if (modoensayo == 0)
         {
           txtblFinalizacionEnsayo.Foreground = mForegroundBrushRed;
           txtblFinalizacionEnsayo.Text = "Se terminó el ensayo con fallas";
         }
-
-        if (falla_manual)
-        {
-          Dispatcher.Invoke(DispatcherPriority.Normal
-            , new Action(
-                delegate()
-                {
-                  mostrarFormInterrupcionControlada(mSerialNumber);
-                })
-            );
-        }
-
-        string fallaDesc = ensmanager.ObtenerDescripcionFalla(ensayofalla);
-
-        ImpresionEtiquetas(ensayofalla, fallaDesc, true);
-
       }
       ResetFallasyTimers();
       ResetEstados();
@@ -827,8 +831,9 @@ namespace dcf001
       //Estaba al recibir evento del selector de Modelo.
       accesoplc.Escribir("IDU_ST_EquipoEnsayadoOK", 0);
       accesoplc.Escribir("IDU_ST_EquipoEnsayadoFalla", 0);
-      accesoplc.Escribir("IDU_ST_NumeroDeFalla", 0); 
-      
+      accesoplc.Escribir("IDU_ST_NumeroDeFalla", 0);
+      accesoplc.Escribir("IDU_SP_EtiquetaPendiente", 0); 
+
       EnsayoEnCursoIDU = false;
       EnsayoEnCursoIDUOld = false;
       EnsayoEnCursoIDU_Parte1 = false;
@@ -1175,41 +1180,71 @@ namespace dcf001
     private void reimprimirEtiquetas()
     {
 
-      //Ensayos oensayos = new Ensayos();
-      //ModelosManager oModelosManager = new ModelosManager();
-      //bool esIdu = true;
-      //string file = "W:\\wdir\\iduodu\\Mantenimiento\\2011\\2011-10-20_reimprimir_etiquetas\\Modelos-Seriales.txt";
-      //using (StreamReader sr = new StreamReader(file))
-      //{
-      //  string line;
-      //  // Read and display lines from the file until the end of 
-      //  // the file is reached.
-      //  List<string> lines = new List<string>();
-      //  while ((line = sr.ReadLine()) != null)
-      //  {
-      //    if (line.StartsWith("--"))
-      //      continue;
-      //    if (line.StartsWith("#"))
-      //    {
-      //      esIdu = true;
-      //      if (line.Contains("Conden"))
-      //        esIdu = false;
-      //      oModelosManager.EsIdu = esIdu;
-      //      continue;
-      //    }
+      Ensayos oensayos = new Ensayos();
+      ModelosManager oModelosManager = new ModelosManager();
+      modeloinfo = oModelosManager.ObtenerModeloPorNombre("619EPH1802F");
 
-      //    string[] datu = line.Split(',');
-      //    oensayos.Aprobado = true;
-      //    oensayos.Serie = datu[1].Trim();
+      bool esIdu = true;
+      string file = "C:\\dago\\wdir\\carrier\\Mantenimiento\\2012\\2012-07-28_pria-eco-cambio_etiquetas\\series.csv";
 
-      //    modeloinfo = oModelosManager.ObtenerModeloPorNombre(datu[0].Trim());
+      using (StreamReader sr = new StreamReader(file))
+      {
+        string line;
+        List<string> lines = new List<string>();
+        while ((line = sr.ReadLine()) != null)
+        {
+          if (line.StartsWith("--"))
+            continue;
 
-      //    this.ImpresionEtiquetas(oensayos, null, false);
-      //  }
-      //}
-      //return;
+          string datu = line.Trim();
 
+          
+          //Serie Starts	4811A99000
+          //Date	12/4/2011 23:59
+          EnsayosIDU ensayoaprobado = new EnsayosIDU();
 
+          ensayoaprobado.Serie = datu;
+
+          ensayoaprobado.Aprobado = true;
+          ensayoaprobado.Marca = modeloinfo.Marca;
+          ensayoaprobado.Modelo = modeloinfo.Nombremodelo;
+          
+          this.ImpresionEtiquetas(ensayoaprobado, null, false);
+          
+        }
+      }
+      
+      /* using (StreamReader sr = new StreamReader(file))
+      {
+        string line;
+        // Read and display lines from the file until the end of 
+        // the file is reached.
+        List<string> lines = new List<string>();
+        while ((line = sr.ReadLine()) != null)
+        {
+          if (line.StartsWith("--"))
+            continue;
+          if (line.StartsWith("#"))
+          {
+            esIdu = true;
+            if (line.Contains("Conden"))
+              esIdu = false;
+            oModelosManager.EsIdu = esIdu;
+            continue;
+          }
+
+          string[] datu = line.Split(',');
+          oensayos.Aprobado = true;
+          oensayos.Serie = datu[1].Trim();
+
+          modeloinfo = oModelosManager.ObtenerModeloPorNombre(datu[0].Trim());
+
+          this.ImpresionEtiquetas(oensayos, null, false);
+        }
+      }
+      return;*/
+
+      /*
       ModelosManager oModelosManager = new ModelosManager();
       oModelosManager.EsIdu = true;
       EnsayosManager ensmanager = new EnsayosManager();
@@ -1254,15 +1289,17 @@ namespace dcf001
         }
       }
       return;
-
+      */
 
     }
 
     private void btnEtiquetas_Click(object sender, RoutedEventArgs e)
     {
-      //reimprimirEtiquetas();
-      //MessageBox.Show("Listo");
-      //return;
+      //HACK PRIA ECO
+      reimprimirEtiquetas();
+      MessageBox.Show("Listo");
+      return;
+      
       try
       {
         Consultaxaml formconsultaetiquetas = new Consultaxaml();
@@ -1437,11 +1474,14 @@ namespace dcf001
           WPFiDU.Etiquetas.EtiquetasManagerEx oEtiquetasManagerExProducto =
             new WPFiDU.Etiquetas.EtiquetasManagerEx(false);
           oEtiquetasManagerExProducto.ImprimirImagen(ImagenTemp, nombreimpresora, false);
+
         }
 
         return;
       }
+
       //Impresion Producto
+      /*
       if (configurador.ObtenerImpresoraProductoHabilitada())
       {
 
@@ -1454,10 +1494,13 @@ namespace dcf001
         //System.Drawing.Image imagenaimprimir = escalada;//imgEtiqueta as System.Drawing.Image;
 
         string nombreimpresora = configurador.ObtenerImpresoraProducto();
+        
         WPFiDU.Etiquetas.EtiquetasManagerEx oEtiquetasManagerExProd = 
           new WPFiDU.Etiquetas.EtiquetasManagerEx(true);
+
         oEtiquetasManagerExProd.ImprimirImagen(ImagenTemp, nombreimpresora, false, modeloinfo.Nombremodelo + "-" + infoens.Serie);
       }
+      */
 
       //Impresion Bulto
       if (configurador.ObtenerImpresoraBultoHabilitada())
@@ -1686,11 +1729,11 @@ namespace dcf001
     }
 
     wndInterrupcionControlada owndInterrupcionControlada = null;
-    private void mostrarFormInterrupcionControlada(string serialNumber)
+    private int mostrarFormInterrupcionControlada(string serialNumber)
     {
-      
+
       if (owndInterrupcionControlada != null)
-        return;
+        return -1;
 
       string mSerialNumber = serialNumber;
 
@@ -1698,15 +1741,16 @@ namespace dcf001
       {
         excepcion formexcepciones = new excepcion("Interrupción Controlada", "Imposible obtener el número de serie. No se puede registrar la Interrupción.");
         formexcepciones.ShowDialog();
-        return;
+        return -2;
       }
 
       try
       {
+
         owndInterrupcionControlada = new wndInterrupcionControlada(mSerialNumber);
-        owndInterrupcionControlada.Topmost = true;
-        owndInterrupcionControlada.Closed += new EventHandler(owndInterrupcionControlada_Closed); 
-        owndInterrupcionControlada.Show();
+        owndInterrupcionControlada.Closed += new EventHandler(owndInterrupcionControlada_Closed);
+        owndInterrupcionControlada.ShowDialog();
+        return wndInterrupcionControlada.SelectedFallaManual;
       }
       catch (Exception ex)
       {
@@ -1715,6 +1759,11 @@ namespace dcf001
         excepcion formularioexcepciones = new excepcion(ex);
         formularioexcepciones.ShowDialog();
       }
+      finally
+      {
+
+      }
+      return -3;
     }
 
     private void owndInterrupcionControlada_Closed(object sender, EventArgs e)
