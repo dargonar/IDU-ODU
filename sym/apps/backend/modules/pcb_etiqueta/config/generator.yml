@@ -1,0 +1,35 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Etiqueta
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          etiqueta
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        id:                       {label:Id}
+        nombre:                   {label:Nombre}
+      list:    
+        title:                    Listado de Etiquetas
+        sort:                     [id, asc]
+        display:                  [id, nombre]
+        object_actions:
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          items:                  { label: 'Listar Items' }
+          _edit:                  { label: 'Editar' }
+        batch_actions:            []
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  []
+          #_new:                   { label: 'Crear nuevo'  }  
+      filter:  ~
+      form:    ~
+      edit:    
+        title:                    Editando Etiqueta "<strong>%%nombre%% (%%id%%)</strong>"
+      new:     ~

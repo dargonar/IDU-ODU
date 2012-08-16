@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Serie form.
+ * Resultadoensayo form.
  *
  * @package    sf_sandbox
  * @subpackage form

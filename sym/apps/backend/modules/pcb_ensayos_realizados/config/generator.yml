@@ -1,0 +1,50 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Resultadoensayo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          resultadoensayo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        id:                 {label: Id}
+        ensayook:           {label: Aprobado , help: 1=aprobado; 0=desaprobado}
+        error:              {label: Mensaje de Error}
+        tension5v:          {label: Tensión 5v }
+        tension12v:         {label: Tensión 12v }
+        tensioncorr:        {label: Tensión Corr }
+        velocidades:        {label: Velocidades por paso}
+        numeroserie:        {label: Número de Serie}
+        fecha:              {label: Fecha , date_format: yyyy-MM-dd }
+        placaid:            {label: Placa}
+        _placaid:           {label: Placa}
+        observaciones:      {label: Obs., help:Observaciones}
+        dcf:                {label: DCF, help:Nombre dispositivo de Control}
+        paso:               {label: Paso del Error, help:Si hubo error}  
+        _errorpaso:         {label: Error}  
+      list:    
+        title:                    Listado de Resultados de Ensayos 
+        sort:                     [id, asc]
+        display:                  [id, ensayook, _errorpaso, numeroserie, fecha, _placaid]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:
+          placa:                  { label: 'Ver placa' }
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:            []
+          #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  []
+        max_per_page:             50
+      filter:                     
+        display:                  [ensayook, error, paso, numeroserie, fecha, observaciones, dcf]
+      form:    ~
+      edit:    
+        title:                    Editando Resultado de Ensayo "<strong>%%id%% - %%fecha%% - %%ensayook%%</strong>"
+      new:     ~

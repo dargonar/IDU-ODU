@@ -1,7 +1,7 @@
 <?php
 
 /**
- * EnsayoFallaControlada form.
+ * Versiones form.
  *
  * @package    sf_sandbox
  * @subpackage form

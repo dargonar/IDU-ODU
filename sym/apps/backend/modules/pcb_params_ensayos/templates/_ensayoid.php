@@ -1,0 +1,1 @@
+<?php echo $ensayoparametro->getEnsayo()->getNombre(); ?> (<?php echo $ensayoparametro->getEnsayoId(); ?>)

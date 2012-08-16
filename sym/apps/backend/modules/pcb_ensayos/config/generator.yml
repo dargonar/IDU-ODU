@@ -1,0 +1,38 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Ensayo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          ensayo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        id:                 {label: Id}  
+        nombre:             {label: Nombre}  
+      list:    
+        title:                    Listado de Ensayos
+        sort:                     [id, asc]
+        display:                  [id, nombre]
+        object_actions:
+          parametros:             { label: 'Ver Parámetros' }
+          placas:                 { label: 'Ver Placas vinculadas' }
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  
+          _new:                   { label: 'Crear nuevo'  }  
+        max_per_page:             50
+      filter:  ~
+      form:    ~
+      edit:    
+        title:                    Editando Ensayo "<strong>%%nombre%%</strong>"
+      new:     
+        title:                    Nuevo Ensayo

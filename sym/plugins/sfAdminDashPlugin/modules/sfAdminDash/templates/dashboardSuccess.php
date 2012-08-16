@@ -5,7 +5,7 @@
 ?>
                        
 <div id="sf_admin_container">
-  <h1><?php echo __('Administración RunTest IDU ODU - Carrier UTC', null, 'sf_admin_dash'); ?></h1>
+  <h1><?php echo __('Administración IDU-ODU & PCB - Carrier UTC', null, 'sf_admin_dash'); ?></h1>
   <?php if (count($items)): ?>
     <?php include_partial('dash_list', array('items' => $items)); ?>
   <?php endif; ?>

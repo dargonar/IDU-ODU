@@ -15,15 +15,17 @@ abstract class BaseFallasoduForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'numerodefalla' => new sfWidgetFormInputHidden(),
-      'descripcion'   => new sfWidgetFormInputText(),
-      'prioridadalta' => new sfWidgetFormInputText(),
+      'numerodefalla'       => new sfWidgetFormInputHidden(),
+      'descripcion'         => new sfWidgetFormInputText(),
+      'prioridadalta'       => new sfWidgetFormInputText(),
+      'es_falla_controlada' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
-      'numerodefalla' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('numerodefalla')), 'empty_value' => $this->getObject()->get('numerodefalla'), 'required' => false)),
-      'descripcion'   => new sfValidatorString(array('max_length' => 100)),
-      'prioridadalta' => new sfValidatorInteger(array('required' => false)),
+      'numerodefalla'       => new sfValidatorChoice(array('choices' => array($this->getObject()->get('numerodefalla')), 'empty_value' => $this->getObject()->get('numerodefalla'), 'required' => false)),
+      'descripcion'         => new sfValidatorString(array('max_length' => 100)),
+      'prioridadalta'       => new sfValidatorInteger(array('required' => false)),
+      'es_falla_controlada' => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('fallasodu[%s]');

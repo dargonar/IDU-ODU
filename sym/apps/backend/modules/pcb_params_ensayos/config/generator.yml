@@ -1,0 +1,41 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Ensayoparametro
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          ensayoparametro
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        id:                 {label: Id}
+        tag:                {label: Tag}
+        paso:               {label: Paso}
+        valor:              {label: Valor}
+        ensayoid:           {label: Ensayo}  
+        _ensayoid:          {label: Ensayo}  
+      list:    
+        title:                    Listado de Parámetros de Ensayo
+        sort:                     [id, asc]
+        display:                  [id, tag, paso, valor, ensayoid, _ensayoid]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  
+          _new:                   { label: 'Crear nuevo'  }  
+        max_per_page:             50
+      filter:  ~
+      form:    ~
+      edit:    
+        title:                    Editando Parámetro de ensayo "<strong>%%_ensayoid%%</strong>"
+      new:     
+        title:                    Nuevo parámetro de ensayo 

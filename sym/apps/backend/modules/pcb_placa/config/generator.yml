@@ -1,0 +1,51 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Placa
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          placa
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        id:                       { label: Id}
+        nombre:                   { label: Nombre}
+        codigo:                   { label: Código}
+        descripcion:              { label: Descripción}
+        extra1:                   { label: Extra 1, help: Información Extra 1}
+        extra2:                   { label: Extra 2, help: Información Extra 2}
+        extra3:                   { label: Extra 3, help: Información Extra 3}
+        ensayoid:                 { label: Ensayo, help: Parámetros de ensayo vinculado }  
+        _ensayoid:                { label: Ensayo, help: Parámetros de ensayo vinculado }    
+        etiquetaid:               { label: Etiqueta, help: Etiqueta vinculada }  
+        _etiquetaid:              { label: Etiqueta, help: Etiqueta vinculada }  
+        versionid:                { label: Versión, help: Versión vinculada }  
+        _versionid:               { label: Versión, help: Versión vinculada }  
+      list:    
+        title:                    Listado de Placas
+        sort:                     [id, asc]
+        display:                  [id, codigo, descripcion, _ensayoid, _etiquetaid, _versionid]
+        #table_method:             retrieveBackendArticulosRevistaList
+        object_actions:
+          ensayo:                 { label: 'Ver Ensayo' }
+          etiqueta:               { label: 'Ver Etiqueta' }
+          version:                { label: 'Ver Versión' }
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+          _edit:                  { label: 'Editar' }
+        batch_actions:
+          _delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
+        actions:                  
+          _new:                   { label: 'Crear nuevo'  }  
+        max_per_page:             50
+      filter:  ~
+      form:    ~
+      edit:    
+        title:                    Editando Placa "<strong>%%nombre%%</strong>"
+      new:     
+        title:                    Nueva Placa

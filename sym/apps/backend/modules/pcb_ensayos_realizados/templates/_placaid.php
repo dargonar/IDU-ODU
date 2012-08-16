@@ -1,0 +1,1 @@
+<?php echo $resultadoensayo->getPlaca()->getNombre(); ?> (<?php echo $resultadoensayo->getPlacaId(); ?>)

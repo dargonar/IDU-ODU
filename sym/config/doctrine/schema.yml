@@ -1,3 +1,4 @@
+connection: doctrine
 Caracteristicastecnicasequipos:
   connection: doctrine
   tableName: caracteristicastecnicasequipos
@@ -236,10 +237,10 @@ Caracteristicastecnicasequipos:
       local: caracteristicastecnicasequipos_idparametros_odu
       foreign: parametrosensayosodu_id
       type: one
-
-      
-      
-      
+    # Modelos:
+      # local: caracteristicastecnicasequipos_nombre
+      # foreign: modelos_referencia
+      # type: many
 Componentesetiquetas:
   connection: doctrine
   tableName: componentesetiquetas
@@ -360,6 +361,32 @@ Componentesetiquetas:
       primary: false
       notnull: true
       autoincrement: false
+# Ensayo:
+  # connection: pcb
+  # tableName: ensayo
+  # columns:
+    # id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: true
+      # autoincrement: true
+    # nombre:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+  # relations:
+    # Ensayoparametro:
+      # local: id
+      # foreign: ensayoid
+      # type: many
+    # Placa:
+      # local: id
+      # foreign: ensayoid
+      # type: many
 EnsayoAltoPotencial:
   connection: doctrine
   tableName: ensayo_alto_potencial
@@ -388,8 +415,8 @@ EnsayoAltoPotencial:
       type: timestamp(25)
       fixed: false
       unsigned: false
-      primary: false
       default: '0000-00-00 00:00:00'
+      primary: false
       notnull: true
       autoincrement: false
     resultado:
@@ -399,6 +426,20 @@ EnsayoAltoPotencial:
       primary: false
       notnull: true
       autoincrement: false
+    # puesto:
+      # type: string(16)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # fecha_ensayo:
+      # type: timestamp(25)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
 EnsayoFallaControlada:
   connection: doctrine
   tableName: ensayo_falla_controlada
@@ -460,6 +501,49 @@ EnsayoFallaControlada:
       local: usuario_id
       foreign: id
       type: one
+# Ensayoparametro:
+  # connection: pcb
+  # tableName: ensayoparametro
+  # columns:
+    # id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: true
+      # autoincrement: true
+    # tag:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # paso:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # valor:
+      # type: float()
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # ensayoid:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+  # relations:
+    # Ensayo:
+      # local: ensayoid
+      # foreign: id
+      # type: one
 Ensayosrealizadosidu:
   connection: doctrine
   tableName: ensayosrealizadosidu
@@ -518,7 +602,7 @@ Ensayosrealizadosidu:
       notnull: true
       autoincrement: false
     ensayosrealizadosidu_dcf:
-      type: string(10)
+      type: string(64)
       fixed: false
       unsigned: false
       primary: false
@@ -711,7 +795,7 @@ Ensayosrealizadosodu:
       notnull: true
       autoincrement: false
     ensayosrealizadosodu_dcf:
-      type: string(10)
+      type: string(64)
       fixed: false
       unsigned: false
       primary: false
@@ -976,6 +1060,32 @@ Ensayosrealizadosodu:
       default: N/D
       notnull: false
       autoincrement: false
+# Etiqueta:
+  # connection: pcb
+  # tableName: etiqueta
+  # columns:
+    # id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: true
+      # autoincrement: true
+    # nombre:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+  # relations:
+    # Itemetiqueta:
+      # local: id
+      # foreign: etiquetaid
+      # type: many
+    # Placa:
+      # local: id
+      # foreign: etiquetaid
+      # type: many
 Etiquetas:
   connection: doctrine
   tableName: etiquetas
@@ -1071,6 +1181,14 @@ Fallasidu:
       default: '0'
       notnull: true
       autoincrement: false
+    es_falla_controlada:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
 Fallasodu:
   connection: doctrine
   tableName: fallasodu
@@ -1092,6 +1210,14 @@ Fallasodu:
       type: integer(1)
       fixed: false
       unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    es_falla_controlada:
+      type: integer(1)
+      fixed: false
+      unsigned: true
       primary: false
       default: '0'
       notnull: true
@@ -1144,6 +1270,127 @@ Infoensayosreset:
       default: 'b''0'''
       notnull: true
       autoincrement: false
+# Itemetiqueta:
+  # connection: pcb
+  # tableName: itemetiqueta
+  # columns:
+    # id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: true
+      # autoincrement: true
+    # font:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # size:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # bold:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # italic:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # xini:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # xfin:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # yini:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # yfin:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # variable:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # tipo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # rot:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # alignh:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # alignv:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # etiquetaid:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # valor:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # default: ''
+      # notnull: true
+      # autoincrement: false
+  # relations:
+    # Etiqueta:
+      # local: etiquetaid
+      # foreign: id
+      # type: one
 LogIduOdu:
   connection: doctrine
   tableName: log_idu_odu
@@ -1373,6 +1620,58 @@ Modelos:
       local: modelos_referencia
       foreign: caracteristicastecnicasequipos_nombre
       type: one
+# Numeroserie:
+  # connection: pcb
+  # tableName: numeroserie
+  # columns:
+    # id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: true
+      # autoincrement: true
+    # tipo:
+      # type: string(1)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # numero:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # maximo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # minimo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # prefijo:
+      # type: string(10)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # sufijo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
 Parametrosensayosidu:
   connection: doctrine
   tableName: parametrosensayosidu
@@ -2014,6 +2313,99 @@ Parametrosensayosodu:
       local: parametrosensayosodu_id
       foreign: caracteristicastecnicasequipos_idparametros_odu
       type: many
+# Placa:
+  # connection: pcb
+  # tableName: placa
+  # columns:
+    # id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: true
+      # autoincrement: true
+    # nombre:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # codigo:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # descripcion:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # extra1:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # extra2:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # extra3:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # ensayoid:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # default: '0'
+      # notnull: true
+      # autoincrement: false
+    # etiquetaid:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # default: '0'
+      # notnull: true
+      # autoincrement: false
+    # versionid:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # default: '0'
+      # notnull: true
+      # autoincrement: false
+  # relations:
+    # Ensayo:
+      # local: ensayoid
+      # foreign: id
+      # type: one
+    # Etiqueta:
+      # local: etiquetaid
+      # foreign: id
+      # type: one
+    # Version:
+      # local: versionid
+      # foreign: id
+      # type: one
+    # Resultadoensayo:
+      # local: id
+      # foreign: placaid
+      # type: many
 Reimpresiones:
   connection: doctrine
   tableName: reimpresiones
@@ -2080,59 +2472,591 @@ Reimpresiones:
       primary: false
       notnull: true
       autoincrement: false
-Serie:
+# Resultadoensayo:
+  # connection: pcb
+  # tableName: resultadoensayo
+  # columns:
+    # id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: true
+      # autoincrement: true
+    # ensayook:
+      # type: integer(1)
+      # fixed: false
+      # unsigned: true
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # error:
+      # type: string(2048)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # tension5v:
+      # type: float()
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # tension12v:
+      # type: float()
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # tensioncorr:
+      # type: float()
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # velocidades:
+      # type: string(1024)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # numeroserie:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # fecha:
+      # type: timestamp(25)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # placaid:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # observaciones:
+      # type: string(2048)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # dcf:
+      # type: string(256)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # paso:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+  # relations:
+    # Placa:
+      # local: placaid
+      # foreign: id
+      # type: one
+# Serie:
+  # connection: doctrine
+  # tableName: serie
+  # columns:
+    # serie_id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: true
+      # autoincrement: true
+    # serie_tipo:
+      # type: string(1)
+      # fixed: true
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # serie_numero:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # serie_maximo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # serie_minimo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # serie_prefijo:
+      # type: string(10)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # serie_sufijo:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: true
+      # primary: false
+      # default: '0'
+      # notnull: true
+      # autoincrement: false
+# SfGuardForgotPassword:
+  # connection: doctrine
+  # tableName: sf_guard_forgot_password
+  # columns:
+    # id:
+      # type: integer(8)
+      # fixed: false
+      # unsigned: false
+      # primary: true
+      # autoincrement: true
+    # user_id:
+      # type: integer(8)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # unique_key:
+      # type: string(255)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: false
+      # autoincrement: false
+    # expires_at:
+      # type: timestamp(25)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # created_at:
+      # type: timestamp(25)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # updated_at:
+      # type: timestamp(25)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+  # relations:
+    # SfGuardUser:
+      # local: user_id
+      # foreign: id
+      # type: one
+SfGuardGroup:
   connection: doctrine
-  tableName: serie
+  tableName: sf_guard_group
   columns:
-    serie_id:
-      type: integer(4)
+    id:
+      type: integer(8)
       fixed: false
-      unsigned: true
+      unsigned: false
       primary: true
       autoincrement: true
-    serie_tipo:
-      type: string(1)
-      fixed: true
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    serie_numero:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: true
-      autoincrement: false
-    serie_maximo:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: true
-      autoincrement: false
-    serie_minimo:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: true
-      autoincrement: false
-    serie_prefijo:
-      type: string(10)
+    name:
+      type: string(255)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    serie_sufijo:
-      type: integer(4)
+    description:
+      type: string()
       fixed: false
-      unsigned: true
+      unsigned: false
       primary: false
-      default: '0'
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
       notnull: true
       autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    SfGuardGroupPermission:
+      local: id
+      foreign: group_id
+      type: many
+    SfGuardUserGroup:
+      local: id
+      foreign: group_id
+      type: many
+SfGuardGroupPermission:
+  connection: doctrine
+  tableName: sf_guard_group_permission
+  columns:
+    group_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    permission_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    SfGuardGroup:
+      local: group_id
+      foreign: id
+      type: one
+    SfGuardPermission:
+      local: permission_id
+      foreign: id
+      type: one
+SfGuardPermission:
+  connection: doctrine
+  tableName: sf_guard_permission
+  columns:
+    id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    description:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    SfGuardGroupPermission:
+      local: id
+      foreign: permission_id
+      type: many
+    SfGuardUserPermission:
+      local: id
+      foreign: permission_id
+      type: many
+SfGuardRememberKey:
+  connection: doctrine
+  tableName: sf_guard_remember_key
+  columns:
+    id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    user_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    remember_key:
+      type: string(32)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ip_address:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    SfGuardUser:
+      local: user_id
+      foreign: id
+      type: one
+SfGuardUser:
+  connection: doctrine
+  tableName: sf_guard_user
+  columns:
+    id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    first_name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    last_name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    email_address:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    username:
+      type: string(128)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    algorithm:
+      type: string(128)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: sprintf
+      notnull: true
+      autoincrement: false
+    salt:
+      type: string(128)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    password:
+      type: string(128)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: false
+      autoincrement: false
+    is_super_admin:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: false
+      autoincrement: false
+    last_login:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    EnsayoFallaControlada:
+      local: id
+      foreign: usuario_id
+      type: many
+    SfGuardForgotPassword:
+      local: id
+      foreign: user_id
+      type: many
+    SfGuardRememberKey:
+      local: id
+      foreign: user_id
+      type: many
+    SfGuardUserGroup:
+      local: id
+      foreign: user_id
+      type: many
+    SfGuardUserPermission:
+      local: id
+      foreign: user_id
+      type: many
+    UserProfile:
+      local: id
+      foreign: sf_guard_user_id
+      type: many
+SfGuardUserGroup:
+  connection: doctrine
+  tableName: sf_guard_user_group
+  columns:
+    user_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    group_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    SfGuardGroup:
+      local: group_id
+      foreign: id
+      type: one
+    SfGuardUser:
+      local: user_id
+      foreign: id
+      type: one
+SfGuardUserPermission:
+  connection: doctrine
+  tableName: sf_guard_user_permission
+  columns:
+    user_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    permission_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    SfGuardPermission:
+      local: permission_id
+      foreign: id
+      type: one
+    SfGuardUser:
+      local: user_id
+      foreign: id
+      type: one
 UserProfile:
   connection: doctrine
   tableName: user_profile
@@ -2229,6 +3153,35 @@ Usuarios:
       primary: false
       notnull: true
       autoincrement: false
+# Version:
+  # connection: pcb
+  # tableName: version
+  # columns:
+    # id:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: true
+      # autoincrement: true
+    # descripcion:
+      # type: string(128)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+    # plc:
+      # type: integer(4)
+      # fixed: false
+      # unsigned: false
+      # primary: false
+      # notnull: true
+      # autoincrement: false
+  # relations:
+    # Placa:
+      # local: id
+      # foreign: versionid
+      # type: many
 Versiones:
   connection: doctrine
   tableName: versiones

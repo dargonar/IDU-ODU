@@ -51,6 +51,7 @@ generator:
           #_delete:                { label: 'Borrar' , params: confirm=¿Está seguro?  }
         actions:                  []
           #_new:                   { label: 'Crear nuevo'  }  
+        max_per_page:             50
       filter:  
         display:                  [ensayosrealizadosidu_id, ensayosrealizadosidu_marca, ensayosrealizadosidu_modelo, ensayosrealizadosidu_codigo, ensayosrealizadosidu_serie, orden_fabricacion,  ensayosrealizadosidu_fecha, ensayosrealizadosidu_aprobado, ensayosrealizadosidu_dcf]
       form:    ~

@@ -1,0 +1,1 @@
+<?php echo $placa->getEnsayo()->getNombre(); ?> (<?php echo $placa->getEnsayoId(); ?>)

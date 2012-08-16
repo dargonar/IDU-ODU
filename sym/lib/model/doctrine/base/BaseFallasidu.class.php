@@ -10,13 +10,16 @@ Doctrine_Manager::getInstance()->bindComponent('Fallasidu', 'doctrine');
  * @property integer $numerodefalla
  * @property string $descripcion
  * @property integer $prioridadalta
+ * @property integer $es_falla_controlada
  * 
- * @method integer   getNumerodefalla() Returns the current record's "numerodefalla" value
- * @method string    getDescripcion()   Returns the current record's "descripcion" value
- * @method integer   getPrioridadalta() Returns the current record's "prioridadalta" value
- * @method Fallasidu setNumerodefalla() Sets the current record's "numerodefalla" value
- * @method Fallasidu setDescripcion()   Sets the current record's "descripcion" value
- * @method Fallasidu setPrioridadalta() Sets the current record's "prioridadalta" value
+ * @method integer   getNumerodefalla()       Returns the current record's "numerodefalla" value
+ * @method string    getDescripcion()         Returns the current record's "descripcion" value
+ * @method integer   getPrioridadalta()       Returns the current record's "prioridadalta" value
+ * @method integer   getEsFallaControlada()   Returns the current record's "es_falla_controlada" value
+ * @method Fallasidu setNumerodefalla()       Sets the current record's "numerodefalla" value
+ * @method Fallasidu setDescripcion()         Sets the current record's "descripcion" value
+ * @method Fallasidu setPrioridadalta()       Sets the current record's "prioridadalta" value
+ * @method Fallasidu setEsFallaControlada()   Sets the current record's "es_falla_controlada" value
  * 
  * @package    sf_sandbox
  * @subpackage model
@@ -49,6 +52,16 @@ abstract class BaseFallasidu extends sfDoctrineRecord
              'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
+             'primary' => false,
+             'default' => '0',
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1,
+             ));
+        $this->hasColumn('es_falla_controlada', 'integer', 1, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => true,
              'primary' => false,
              'default' => '0',
              'notnull' => true,

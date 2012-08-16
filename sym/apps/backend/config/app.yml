@@ -11,52 +11,39 @@ all:
     image_dir:                    /sfAdminDashPlugin/images/icons/
     default_image:                config.png
     resize_mode:                  thumbnail
-    site:                         CARRIER IDU ODU
+    site:                         CARRIER IDU ODU & PCB
     include_path:                 true
     include_jquery_no_conflict:   false
     logout:                       true
     login_route:                  @sf_guard_signin
     logout_route:                 @sf_guard_signout
     categories:
-      Usuarios:
+      IDU ODU:
         items:
-          Listado:
+          Listado de usuarios:
             credentials:  [superadmin]
             url:          user_profile
             image:        users.png
-          Nuevo:
+          Nuevo usuario:
             credentials:  [superadmin]
             url:          user_profile/new
             image:        user1_add.png
-      Modelos:
-        items:
-          Listado:
+          Listado de Modelos:
             credentials:  [superadmin]
             url:          modelos
             image:        index.png
-          # Nuevo:
-            # credentials:  [superadmin]
-            # url:          modelos/new
-            # image:        index_add.png
-            
-      Caract. Técnicas (referencias):
-        items:
-          Listado:
+          Listado de Referencias(CT):
             credentials:  [superadmin]
             url:          caracteristicastecnicasequipos
             image:        text_rich.png
-      Parámetros de Ensayos:
-        items:
-          IDU:
+          Parámetros de Ensayos IDU:
             credentials:  [superadmin]
             url:          parametrosensayosidu
             image:        potion_blue.png
-          ODU:
+          Parámetros de Ensayos ODU:
             credentials:  [superadmin]
             url:          parametrosensayosodu
             image:        potion_red.png
-      Ensayos y Logs:
-        items:
           Ensayos IDU:
             credentials:  [superadmin]
             url:          ensayosrealizadosidu
@@ -73,14 +60,38 @@ all:
             credentials:  [superadmin]
             url:          log_idu_odu
             image:        note_pinned.png
-      Fallas Controladas:
-        items:
-          Ensayos Fallas controladas:
-            credentials:  [superadmin]
-            url:          ensayo_falla_controlada
-            image:        breakpoint_run.png
+          # Ensayos Fallas controladas:
+            # credentials:  [superadmin]
+            # url:          ensayo_falla_controlada
+            # image:        breakpoint_run.png
           Fallas controladas:
             credentials:  [superadmin]
             url:          falla_controlada
             image:        breakpoint_delete.png
-        
+      PCB:
+        items:
+          Placas:
+            credentials:  [superadmin]
+            url:          placa
+            image:        PCI-card.png
+          # Parámetros de ensayo:
+            # credentials:  [superadmin]
+            # url:          ensayoparametro
+            # image:        potion_green.png
+          Ensayos (configuración):
+            credentials:  [superadmin]
+            url:          ensayo
+            image:        potion_green.png 
+            #image:        PCI-card_preferences.png
+          Ensayos Realizados:
+            credentials:  [superadmin]
+            url:          resultadoensayo
+            image:        bullet_triangle_green.png
+          Versiones de Placa:
+            credentials:  [superadmin]
+            url:          version
+            image:        rubberstamp.png
+          Etiquetas:
+            credentials:  [superadmin]
+            url:          etiqueta
+            image:        document.png

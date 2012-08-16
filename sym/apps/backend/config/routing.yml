@@ -1,3 +1,66 @@
+ensayo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Ensayo
+    module:               pcb_ensayos
+    prefix_path:          /pcb_ensayos
+    column:               id
+    with_wildcard_routes: true
+
+etiqueta:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Etiqueta
+    module:               pcb_etiqueta
+    prefix_path:          /pcb_etiqueta
+    column:               id
+    with_wildcard_routes: true
+
+itemetiqueta:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Itemetiqueta
+    module:               pcb_etiqueta_item
+    prefix_path:          /pcb_etiqueta_item
+    column:               id
+    with_wildcard_routes: true
+
+version:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Version
+    module:               pcb_placa_versiones
+    prefix_path:          /pcb_placa_versiones
+    column:               id
+    with_wildcard_routes: true
+
+resultadoensayo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Resultadoensayo
+    module:               pcb_ensayos_realizados
+    prefix_path:          /pcb_ensayos_realizados
+    column:               id
+    with_wildcard_routes: true
+
+placa:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Placa
+    module:               pcb_placa
+    prefix_path:          /pcb_placa
+    column:               id
+    with_wildcard_routes: true
+
+ensayoparametro:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Ensayoparametro
+    module:               pcb_params_ensayos
+    prefix_path:          /pcb_params_ensayos
+    column:               id
+    with_wildcard_routes: true
+
 falla_controlada:
   class: sfDoctrineRouteCollection
   options:

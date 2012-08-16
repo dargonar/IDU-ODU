@@ -2,20 +2,20 @@
 # http://www.symfony-project.org/reference/1_4/en/07-Databases
 
 all:
-  doctrine:
+  pcb:
     class: sfDoctrineDatabase
     param:
-      dsn:      mysql:host=localhost;dbname=test_idu_odu
+      dsn:      mysql:host=localhost;dbname=pcb_div
       #dsn:      mysql:host=172.29.29.44;dbname=test_idu_odu
       #dsn:      mysql:host=172.29.29.44;dbname=idu_odu_min
       #mysql:host=localhost;dbname=idu_odu_min
       username: root
       password: 248
-
-  pcb:
+      
+  doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn:      mysql:host=localhost;dbname=pcb_div
+      dsn:      mysql:host=localhost;dbname=test_idu_odu
       #dsn:      mysql:host=172.29.29.44;dbname=test_idu_odu
       #dsn:      mysql:host=172.29.29.44;dbname=idu_odu_min
       #mysql:host=localhost;dbname=idu_odu_min

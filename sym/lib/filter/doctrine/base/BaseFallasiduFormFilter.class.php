@@ -13,13 +13,15 @@ abstract class BaseFallasiduFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'descripcion'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'prioridadalta' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'descripcion'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'prioridadalta'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'es_falla_controlada' => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
-      'descripcion'   => new sfValidatorPass(array('required' => false)),
-      'prioridadalta' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'descripcion'         => new sfValidatorPass(array('required' => false)),
+      'prioridadalta'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'es_falla_controlada' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('fallasidu_filters[%s]');
@@ -39,9 +41,10 @@ abstract class BaseFallasiduFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'numerodefalla' => 'Number',
-      'descripcion'   => 'Text',
-      'prioridadalta' => 'Number',
+      'numerodefalla'       => 'Number',
+      'descripcion'         => 'Text',
+      'prioridadalta'       => 'Number',
+      'es_falla_controlada' => 'Number',
     );
   }
 }

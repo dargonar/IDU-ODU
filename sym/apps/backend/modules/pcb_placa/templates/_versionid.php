@@ -1,0 +1,1 @@
+<?php echo $placa->getVersion()->getDescripcion(); ?> (<?php echo $placa->getVersionId(); ?>)
