@@ -64,6 +64,8 @@ namespace WPFiDU.Etiquetas
     private string mBackGroundBulto_pria = "bulto_pria.jpg";
     private string mBackGroundProducto_pria = "producto_pria.jpg"; 
     
+    private string mBackGroundProducto_pria_eco = "producto_pria_eco.jpg"; 
+    
     #endregion Private Members
 
     #region Const
@@ -576,7 +578,10 @@ namespace WPFiDU.Etiquetas
                       
           break;
         case EtiquetasManagerEx.mBackGroundProducto:
-          if (modelo.Marca.Trim().StartsWith("PRIA"))
+          if (modelo.Marca.Trim().StartsWith("PRIA ECO"))
+            file = this.mBackGroundProducto_pria_eco; 
+            else
+            if (modelo.Marca.Trim().StartsWith("PRIA"))
             file = this.mBackGroundProducto_pria; 
             else
             if (logo.StartsWith("SUR"))

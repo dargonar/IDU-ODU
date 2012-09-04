@@ -19,7 +19,8 @@ namespace dcf001
   /// </summary>
   public partial class wndInterrupcionControlada : Window
   {
-
+    private static readonly ILog logger = LogManager.GetLogger(typeof(wndInterrupcionControlada));
+    
     iDU.DAO.BaseDAO oDAO = null;
 
     private static List<Dictionary<string, string>> listInterrupciones = null;
@@ -41,11 +42,16 @@ namespace dcf001
 
     private void loadInterrupciones()
     {
-      listInterrupciones = null;
+      //listInterrupciones = null;
       this.cmbInterrupciones.Items.Clear();
 
       if (wndInterrupcionControlada.listInterrupciones == null)
-        wndInterrupcionControlada.listInterrupciones = this.oDAO.ListFallasControladas();
+      {
+        logger.Debug("Lista de interrupciones NO cacheadas");
+        wndInterrupcionControlada.listInterrupciones = this.oDAO.ListFallasControladas(); 
+      }
+      else
+        logger.Debug("Lista de interrupciones cacheadas");
 
       if (listInterrupciones != null && listInterrupciones.Count > 0)
       {
@@ -110,13 +116,21 @@ namespace dcf001
 
     private void btnClose_Click(object sender, RoutedEventArgs e)
     {
-      if (!this.FallaSalvada)
+      if (this.FallaSalvada)
       {
-        excepcion formularioexepciones = new excepcion("Interrupciones controladas", "Debe registrar la interrupción para poder continuar operando.");
-        formularioexepciones.ShowDialog();
+        this.Close();
+      }
+      
+      if (confirmacioneliminar.Show("Interrupción Controlada", "No ha salvado la interrupción, ¿está seguro que desea cerrar la ventana?") == true)
+      {
+        logger.Error("Interrupción Controlada NO SALVADA");
+        this.Close();
         return;
       }
-      this.Close();
+        
+      excepcion formularioexepciones = new excepcion("Interrupciones controladas", "Debe registrar la interrupción para poder continuar operando.");
+      formularioexepciones.ShowDialog();
+      
     }
 
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
