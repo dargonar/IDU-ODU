@@ -1296,9 +1296,9 @@ namespace dcf001
     private void btnEtiquetas_Click(object sender, RoutedEventArgs e)
     {
       //HACK PRIA ECO
-      reimprimirEtiquetas();
-      MessageBox.Show("Listo");
-      return;
+      //reimprimirEtiquetas();
+      //MessageBox.Show("Listo");
+      //return;
       
       try
       {
@@ -1481,7 +1481,7 @@ namespace dcf001
       }
 
       //Impresion Producto
-      /*
+      
       if (configurador.ObtenerImpresoraProductoHabilitada())
       {
 
@@ -1500,7 +1500,7 @@ namespace dcf001
 
         oEtiquetasManagerExProd.ImprimirImagen(ImagenTemp, nombreimpresora, false, modeloinfo.Nombremodelo + "-" + infoens.Serie);
       }
-      */
+       
 
       //Impresion Bulto
       if (configurador.ObtenerImpresoraBultoHabilitada())

@@ -914,7 +914,7 @@ namespace WPFiDU.Etiquetas
 
       //HACK PRIA ECO
       //quitar
-      return;
+      //return;
 
       PrintDocument printDoc = new PrintDocument();
 
