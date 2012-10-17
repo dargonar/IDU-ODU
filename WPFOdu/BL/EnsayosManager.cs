@@ -9,6 +9,12 @@ namespace iDU.BL
 {
     class EnsayosManager : Manager
     {
+      public List<Ensayos> ObtenerEnsayosPorSerie(string Serie)
+      {
+
+        return AccesoDatos.ObtenerEnsayosPorSerie(Serie);
+        //return null;
+      }
         public void EliminarEnsayo(int identificacion)
         {
             //'iDU.DAO.IDUDb AccesoDatos = new IDUDb();

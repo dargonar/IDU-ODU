@@ -834,6 +834,76 @@ namespace iDU.DAO
             return base.ObtenerCaracteristicasTecnicas(true);
         }
 
+        public override List<Ensayos> ObtenerEnsayosPorSerie(string numero_serie) 
+        {
+          if (String.IsNullOrEmpty(numero_serie))
+            return new List<Ensayos>();
+
+          using (MySqlConnection conn = ConectarBaseDeDatos())
+          {
+            List<Ensayos> ensayosidu = new List<Ensayos>();
+            
+            string parametro = "%" + numero_serie.Trim() + "%";
+            string sql = "select ensayosrealizadosidu_id, ensayosrealizadosidu_marca, ensayosrealizadosidu_modelo, ensayosrealizadosidu_codigo, "+
+                          " ensayosrealizadosidu_serie, ensayosrealizadosidu_fecha, ensayosrealizadosidu_aprobado, ensayosrealizadosidu_dcf, "+
+                          " ensayosrealizadosidu_tiempoensayo, ensayosrealizadosidu_velocidadinicial, ensayosrealizadosidu_velocidadbajatension, "+
+                          " ensayosrealizadosidu_velocidadlow, ensayosrealizadosidu_velocidadhigh, ensayosrealizadosidu_corrienteinicial, "+
+                          " ensayosrealizadosidu_corrientebajatension, ensayosrealizadosidu_corrientelow, ensayosrealizadosidu_corrientehigh, "+
+                          " ensayosrealizadosidu_corrientecalorinicial, ensayosrealizadosidu_hipot, ensayosrealizadosidu_fuga, ensayosrealizadosidu_observaciones ,"+
+                          " ensayosrealizadosidu_usuario from ensayosrealizadosidu where LOWER(ensayosrealizadosidu_serie) like '{0}' " +
+                          " order by ensayosrealizadosidu_fecha desc ;";
+            sql = string.Format(sql, parametro.ToLower());
+            
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            
+            MySqlDataReader reader = cmd.ExecuteReader();
+            
+                while (reader.Read())
+                {
+                    EnsayosIDU nuevoensayoidu = new EnsayosIDU();
+
+                    nuevoensayoidu.ID = reader.GetInt32("ensayosrealizadosidu_id");
+                    nuevoensayoidu.Marca = reader.GetString("ensayosrealizadosidu_marca");
+                    nuevoensayoidu.Observaciones = reader.GetString("ensayosrealizadosidu_observaciones");
+                    nuevoensayoidu.Serie = reader.GetString("ensayosrealizadosidu_serie");
+                    nuevoensayoidu.TiempoEnsayo = reader.GetInt32("ensayosrealizadosidu_tiempoensayo");
+                    nuevoensayoidu.VelocidadBajaTension = reader.GetFloat("ensayosrealizadosidu_velocidadbajatension");
+                    nuevoensayoidu.VelocidadHigh = reader.GetFloat("ensayosrealizadosidu_velocidadhigh");
+                    nuevoensayoidu.VelocidadInicial = reader.GetFloat("ensayosrealizadosidu_velocidadinicial");
+                    nuevoensayoidu.VelocidadLow = reader.GetFloat("ensayosrealizadosidu_velocidadlow");
+                    nuevoensayoidu.Hipot = reader.GetString("ensayosrealizadosidu_hipot");
+                    nuevoensayoidu.Fuga = reader.GetString("ensayosrealizadosidu_fuga");
+                    nuevoensayoidu.Fecha = reader.GetDateTime("ensayosrealizadosidu_fecha");
+                    nuevoensayoidu.DCF = reader.GetString("ensayosrealizadosidu_dcf");
+                    nuevoensayoidu.CorrienteLow = reader.GetFloat("ensayosrealizadosidu_corrientelow");
+                    nuevoensayoidu.CorrienteInicial = reader.GetFloat("ensayosrealizadosidu_corrienteinicial");
+                    nuevoensayoidu.CorrienteCalorInicial = reader.GetFloat("ensayosrealizadosidu_corrientecalorinicial");
+                    nuevoensayoidu.CorrienteBajaTension = reader.GetFloat("ensayosrealizadosidu_corrientebajatension");
+                    nuevoensayoidu.Codigo = reader.GetString("ensayosrealizadosidu_codigo");
+                    nuevoensayoidu.Modelo = reader.GetString("ensayosrealizadosidu_modelo");
+                    nuevoensayoidu.CorrienteHIGH = reader.GetFloat("ensayosrealizadosidu_corrientehigh");
+                    nuevoensayoidu.Usuario = reader.GetString("ensayosrealizadosidu_usuario");
+
+                    if (reader.GetInt32("ensayosrealizadosidu_aprobado") == 1)
+                    {
+                      nuevoensayoidu.Aprobado = true;
+                    }
+                    else
+                    {
+                        nuevoensayoidu.Aprobado = false;
+                    }
+
+                    ensayosidu.Add(nuevoensayoidu);
+                }
+
+                reader.Close();
+                return ensayosidu;
+                    
+                
+            }
+          
+        }
+
         public override List<Ensayos> ObtenerEnsayosPorFecha(DateTime desde, DateTime hasta)
         {
             using (MySqlConnection conn = ConectarBaseDeDatos())

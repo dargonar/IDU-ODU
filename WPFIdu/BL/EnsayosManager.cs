@@ -30,10 +30,12 @@ namespace iDU.BL
             //return null;
         }
 
-       /* public void VerDetallesDelEnsayo(Ensayos ne)
+        public List<Ensayos> ObtenerEnsayosPorSerie(string Serie)
         {
 
-        }*/
+          return AccesoDatos.ObtenerEnsayosPorSerie(Serie);
+          //return null;
+        }
 
         public int EliminarFallas()
         {

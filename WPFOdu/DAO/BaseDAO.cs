@@ -692,6 +692,7 @@ namespace iDU.DAO
         #endregion
         #region Ensayos
 
+        public abstract List<Ensayos> ObtenerEnsayosPorSerie(string numero_serie);
         public abstract List<Ensayos> ObtenerEnsayosPorFecha(DateTime desde, DateTime hasta);
         public abstract List<Ensayos> ObtenerEnsayosAprobados(DateTime actual);
         public abstract List<Ensayos> ObtenerEnsayosFallados(DateTime actual);

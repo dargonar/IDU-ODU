@@ -642,14 +642,15 @@ namespace dcf001
       string mSerialNumber = this.txtUltimo.Text.Trim();
       
       if (ReadSerialNumberFromScanner)
+        //if (!WPFiDU.Utils.Utils.IsValidNumeroSerie(mSerialNumber)) 
         if (mSerialNumber.ToLower().StartsWith("s") && mSerialNumber.ToLower().Length == 11)
           mSerialNumber = mSerialNumber.Trim().Substring(1);
         else
         {
+          ResetEstados(); 
           excepcion formexcepciones = new excepcion("Ensayo finalizado con errores", "El número de serie es incorrecto. El ensayo no tendrá efecto.");
           formexcepciones.ShowDialog();
           //confirmacioneliminar.Show("Ensayo finalizado con errores","El número de serie es incorrecto. El ensayo no tendrá efecto.");
-          ResetEstados();
           return;
         }
 
@@ -1550,7 +1551,8 @@ namespace dcf001
       {
         lblOrdenFabricacion.Foreground = mForegroundBrushGreen;
         //this.lblSerialNumberMessage.Visibility = Visibility.Hidden;
-        if (!WPFiDU.Utils.Utils.IsValidNumeroSerie(txtUltimo.Text))
+        //if (!WPFiDU.Utils.Utils.IsValidNumeroSerie(txtUltimo.Text))
+        if (!(txtUltimo.Text.Trim().ToLower().StartsWith("s") && txtUltimo.Text.Trim().ToLower().Length == 11))
         {
           if (Convert.ToInt32(accesoplc.LeerItem("IDU_SP_VModelo")) != 0)
             accesoplc.Escribir("IDU_SP_VModelo", 0);
@@ -1587,7 +1589,8 @@ namespace dcf001
         //    || txtUltimo.Text.Trim().Equals("N\\A")
         //    || !txtUltimo.Text.Trim().ToLower().StartsWith("s")
         //    || txtUltimo.Text.Trim().ToLower().Length != 11)
-        if (!WPFiDU.Utils.Utils.IsValidNumeroSerie(txtUltimo.Text))
+        //if (!WPFiDU.Utils.Utils.IsValidNumeroSerie(txtUltimo.Text))
+        if (!(txtUltimo.Text.Trim().ToLower().StartsWith("s") && txtUltimo.Text.Trim().ToLower().Length == 11))
         {
           lblUltimo.Foreground = mForegroundBrushRed;
           this.lblSerialNumberMessage.Visibility = Visibility.Visible;

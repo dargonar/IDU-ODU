@@ -64,8 +64,11 @@ namespace WPFiDU.Etiquetas
     private string mBackGroundBulto_pria = "bulto_pria.jpg";
     private string mBackGroundProducto_pria = "producto_pria.jpg"; 
     
-    private string mBackGroundProducto_pria_eco = "producto_pria_eco.jpg"; 
-    
+    private string mBackGroundProducto_pria_eco = "producto_pria_eco.jpg";
+
+    private string mBackGroundBulto_nexgenii= "bulto_nexgenii.jpg";
+    private string mBackGroundProducto_nexgenii = "producto_nexgenii.jpg"; 
+
     #endregion Private Members
 
     #region Const
@@ -572,9 +575,9 @@ namespace WPFiDU.Etiquetas
                       else
                         if(logo.StartsWith("TOSHI"))
                           file = this.mBackGroundBulto_toshiba;
-                        //else
-                        //  if (logo.StartsWith("PRIA"))
-                        //    file = this.mBackGroundBulto_pria; 
+                        else
+                          if (logo.StartsWith("NEXGEN II") || logo.StartsWith("NEXGENII") || logo.StartsWith("NEXGEN-II"))
+                            file = this.mBackGroundBulto_nexgenii;
                       
           break;
         case EtiquetasManagerEx.mBackGroundProducto:
@@ -604,9 +607,9 @@ namespace WPFiDU.Etiquetas
                       else
                         if (logo.StartsWith("TOSHI"))
                           file = this.mBackGroundProducto_toshiba;
-                        //else
-                        //  if (logo.StartsWith("PRIA"))
-                        //    file = this.mBackGroundProducto_pria;
+                        else
+                          if (logo.StartsWith("NEXGEN II") || logo.StartsWith("NEXGENII") || logo.StartsWith("NEXGEN-II"))
+                            file = this.mBackGroundProducto_nexgenii;
           file = "square-corner_"+file;
           break;
 

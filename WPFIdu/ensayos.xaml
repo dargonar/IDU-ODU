@@ -114,7 +114,7 @@
         <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text="Eliminar Registro" />
       </Grid>
     </Button>
-    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnVer" Width="168" Height="66.667" HorizontalAlignment="Right" Margin="0,0,279,232" VerticalAlignment="Bottom" Click="btnVer_Click">
+    <Button Style="{DynamicResource styBtnNegro}" x:Name="btnVer" Width="118" Height="66.667" HorizontalAlignment="Right" Margin="0,0,278,220" VerticalAlignment="Bottom" Click="btnVer_Click">
       <Grid Width="Auto" Height="Auto">
         <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Myriad Pro" Text=" Ver Detalles del Ensayo" />
       </Grid>
@@ -166,14 +166,16 @@
         </LinearGradientBrush>
       </Path.Stroke>
     </Path>
-        <Button Height="66.667" HorizontalAlignment="Left" Margin="388,0,0,232" Name="button1" Style="{DynamicResource styBtnNegro}" VerticalAlignment="Bottom" Width="115" Click="button1_Click">
+        <Button Height="66.667" HorizontalAlignment="Left" Margin="439,0,0,220" Name="button1" Style="{DynamicResource styBtnNegro}" VerticalAlignment="Bottom" Width="115" Click="button1_Click">
             <Grid Height="Auto" Width="Auto">
                 <TextBlock FontFamily="Myriad Pro" FontSize="16" HorizontalAlignment="Center" Margin="0" Text="Teclado en Pantalla" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
       </Grid>
         </Button>
-    <Label Content="Consultando..." FontFamily="Myriad Pro" FontSize="20" FontWeight="Normal" Foreground="White" Height="37" HorizontalAlignment="Right" HorizontalContentAlignment="Right" IsEnabled="True" Margin="0,0,75,208" Name="lblCambiando" VerticalAlignment="Bottom" Width="134" />
-    <TextBox FontSize="16" Foreground="White" Height="44" IsEnabled="True" Margin="54,0,578,232" Name="txtBusqueda" Padding="8,2" Style="{DynamicResource styTxtNegro}" TextWrapping="Wrap" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+    <Label Content="Consultando..." FontFamily="Myriad Pro" FontSize="20" FontWeight="Normal" Foreground="White" Height="37" HorizontalAlignment="Right" HorizontalContentAlignment="Right" IsEnabled="True" Margin="0,0,39,208" Name="lblCambiando" VerticalAlignment="Bottom" Width="134" />
+    <TextBox FontSize="16" Foreground="White" Height="44" IsEnabled="True" Margin="54,0,603,232" Name="txtBusqueda" Padding="8,2" Style="{DynamicResource styTxtNegro}" TextWrapping="Wrap" VerticalAlignment="Bottom" VerticalContentAlignment="Center" KeyUp="txtBusqueda_KeyUp" />
     <Label Content="Filtrar:" FontFamily="Myriad Pro" FontSize="18" FontWeight="Bold" Foreground="#FFFFFFFF" Height="Auto" HorizontalAlignment="Left" Margin="50,0,0,269" Name="label1" VerticalAlignment="Bottom" Width="Auto" />
-    <Image Height="48" HorizontalAlignment="Left" Margin="795,501,0,0" Name="loadingImg" Stretch="None" VerticalAlignment="Top" Width="48" Source ="/Images/loadinfo.net.gif" />
+    <Image Height="48" HorizontalAlignment="Left" Margin="831,501,0,0" Name="loadingImg" Stretch="None" VerticalAlignment="Top" Width="48" Source ="/Images/loadinfo.net.gif" />
+    <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="64" HorizontalAlignment="Right" Margin="0,513,527,0" Name="btnSearch" Style="{DynamicResource styBtnVerde}" VerticalAlignment="Top" Width="70" Click="btnSearch_Click" />
+    <Image Height="43" HorizontalAlignment="Right" Margin="0,523,539,0" Name="imgRefresh" Source="/Idu;component/Images/view.png" Stretch="Fill" VerticalAlignment="Top" Width="49" MouseUp="imgRefresh_MouseUp" />
   </Grid>
 </Window>

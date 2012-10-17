@@ -10,6 +10,9 @@ namespace iDU.DAO
 {
     class ODUDb : BaseDAO
     {
+      public override List<Ensayos> ObtenerEnsayosPorSerie(string numero_serie)
+      { return null; }
+
         public override List<Ensayos> ObtenerEnsayos()
         {
             using (MySqlConnection conn = ConectarBaseDeDatos())

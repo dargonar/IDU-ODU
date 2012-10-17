@@ -36,7 +36,7 @@ namespace dcf001
       btnReimprimirCaja.IsEnabled = false;
       btnReimprimirProducto.IsEnabled = false;
 
-      LlenarEnsayos(false);
+      LlenarEnsayos(true);
 		}
 
     private void HideLoadingUIComponent()
@@ -68,21 +68,30 @@ namespace dcf001
       LlenarEnsayos(true);
     }
 
-    private void LlenarEnsayos(bool showMessageIfNone)
+    private void LlenarEnsayos(bool ensayos_del_dia)
     {
-      ShowLoadingUIComponent();
+      //ShowLoadingUIComponent();
       try
       {
         ltvEnsayos.Items.Clear();
 
-        EnsayosManager emgr = new EnsayosManager();
-        List<Ensayos> ensayosDelDia = emgr.ObtenerEnsayosPorFecha(DateTime.Today, DateTime.Today.AddHours(24));
-
-        foreach (Ensayos ensayo in ensayosDelDia)
+        if (ensayos_del_dia)
         {
-          ltvEnsayos.Items.Add(ensayo);
-        }
+          EnsayosManager emgr = new EnsayosManager();
+          List<Ensayos> ensayosDelDia = emgr.ObtenerEnsayosPorFecha(DateTime.Today, DateTime.Today.AddHours(24));
 
+          foreach (Ensayos ensayo in ensayosDelDia)
+          {
+            ltvEnsayos.Items.Add(ensayo);
+          }
+        }
+        else
+        {
+          foreach (Ensayos ensayo in ListaEnsayos)
+          {
+            ltvEnsayos.Items.Add(ensayo);
+          }
+        }
 
       }
       catch (Exception ex)
@@ -93,11 +102,13 @@ namespace dcf001
         formexcepciones = null;
 
       }
-      finally{
+      //finally{
+      //  HideLoadingUIComponent();
+      //}
+      if (ensayos_del_dia)
         HideLoadingUIComponent();
-      }
 
-      if (ltvEnsayos.Items.Count <= 0 & showMessageIfNone)
+      if (ensayos_del_dia && ltvEnsayos.Items.Count <= 0)
       {
         excepcion oMsg = new excepcion("Listado de ensayos", "No hay ensayos que mostrar");
         oMsg.ShowDialog();
@@ -132,7 +143,7 @@ namespace dcf001
             if (confirmacioneliminar.Show("Eliminar fallas", "Esta seguro de que desea eliminar todas las fallas ? ") == false)
                 return;
 
-            Teclado tec = new dcf001.Teclado();
+            Teclado tec = new Teclado();
 
             tec.ShowDialog();
 
@@ -198,6 +209,90 @@ namespace dcf001
       }
     }
 
+    private void searchEnsayo() 
+    {
+
+      if (ListaEnsayos == null)
+        return; 
+      
+      try
+      {
+        string txt = txtBusqueda.Text.ToLower();
+        txt.Trim();
+
+        ltvEnsayos.Items.Clear();
+        if (txt == string.Empty)
+        {
+          LlenarEnsayos();
+          return;
+        }
+        else
+        {
+          for (int i = 0; i < ListaEnsayos.Count; i++)
+          {
+            System.Windows.Controls.ListViewItem o = new System.Windows.Controls.ListViewItem();
+            Ensayos ensayo = ListaEnsayos[i];
+
+            //bool bMatchUserInput = ensayo.Codigo.ToLower().IndexOf(txt) >= 0;
+            //bMatchUserInput = bMatchUserInput|| ensayo.Marca.ToLower().IndexOf(txt) >= 0;
+            //bMatchUserInput = bMatchUserInput|| ensayo.Modelo.ToLower().IndexOf(txt) >= 0;
+            //bMatchUserInput = bMatchUserInput|| ensayo.Usuario.ToLower().IndexOf(txt) >= 0;
+            //bMatchUserInput = bMatchUserInput|| ensayo.DCF.ToLower().IndexOf(txt) >= 0;
+            //bMatchUserInput = bMatchUserInput|| ensayo.Serie.ToLower().IndexOf(txt) >= 0;
+            bool bMatchUserInput = (ensayo.Codigo.ToLower().IndexOf(txt) >= 0
+              || ensayo.Marca.ToLower().IndexOf(txt) >= 0
+              || ensayo.Modelo.ToLower().IndexOf(txt) >= 0
+              || ensayo.Usuario.ToLower().IndexOf(txt) >= 0
+              || ensayo.DCF.ToLower().IndexOf(txt) >= 0
+              || ensayo.Serie.ToLower().IndexOf(txt) >= 0);
+            if (!String.IsNullOrEmpty(ensayo.OrdenFabricacion)) 
+                bMatchUserInput = bMatchUserInput || ensayo.OrdenFabricacion.ToLower().IndexOf(txt) >= 0;
+            //bool bMatchUserInput = (ensayo.Codigo.ToLower().IndexOf(txt) >= 0
+                    //|| ensayo.Marca.ToLower().IndexOf(txt) >= 0
+                    //|| ensayo.Modelo.ToLower().IndexOf(txt) >= 0
+                    //|| ensayo.Usuario.ToLower().IndexOf(txt) >= 0
+                    //|| ensayo.DCF.ToLower().IndexOf(txt) >= 0
+                    //|| ensayo.Serie.ToLower().IndexOf(txt) >= 0
+                    //|| ensayo.OrdenFabricacion.ToLower().IndexOf(txt) >= 0);
+
+            if (!bMatchUserInput)
+              continue;
+
+            o.Content = ensayo;
+            ltvEnsayos.Items.Add(o);
+          }
+          autosizeColumns();
+        }
+
+      }
+      catch (Exception ex)
+      {
+          logger.ErrorFormat("txtBusqueda_TextChanged(object sender , RoutedEventArgs e):: Message:'{0}', StackTrace:'{1}', InnerException:'{2}' "
+        , ex.Message
+          , ex.StackTrace
+        , ex.InnerException != null ? ex.InnerException.Message : "");
+          excepcion formexepciones = new excepcion(ex);
+          formexepciones.ShowDialog();
+      }
+      ltvEnsayos.InvalidateVisual();
+    }
+
+    private void autosizeColumns()
+    {
+      GridView view = this.ltvEnsayos.View as GridView;
+      double width = 0;
+      for (int i = 0; i < view.Columns.Count - 1; i++)
+      {
+        GridViewColumn col = view.Columns[i];
+        width += col.ActualWidth;
+
+        //ResizeGridViewColumn(col);
+      }
+      view.Columns[view.Columns.Count - 1].Width = ltvEnsayos.ActualWidth - width; ;
+
+    }
+
+    private List<Ensayos> ListaEnsayos = null;
     private void btnConsultar_Click(object sender, RoutedEventArgs e)
     {
       try
@@ -216,29 +311,10 @@ namespace dcf001
         hasta = hasta.AddHours(24);
 
         lblTitleEnsayos.Content = "Ensayos";
-        List<Ensayos> ListaEnsayos = ManejadorEnsayos.ObtenerEnsayosPorFecha(desde, hasta);
+        ListaEnsayos = ManejadorEnsayos.ObtenerEnsayosPorFecha(desde, hasta);
 
-        if (txtBusqueda.Text.Equals(string.Empty))
-        {
-          foreach (Ensayos ensayo in ListaEnsayos)
-          {
-            ltvEnsayos.Items.Add(ensayo);
-          }
-        }
-        else
-        {
-          ModelosManager modManager = new ModelosManager();                          
-          foreach (Ensayos ensayo in ListaEnsayos)
-          {
-            Modelo modelo = modManager.ObtenerModeloPorNombre(ensayo.Modelo);
+        LlenarEnsayos(false);
 
-            if (modelo.ID == 0)
-              continue;
-
-            if(modelo.Referencia.IndexOf(txtBusqueda.Text)>=0)
-              ltvEnsayos.Items.Add(ensayo);
-          }
-        }
       }
       catch (Exception ex)
       {
@@ -340,8 +416,8 @@ namespace dcf001
 
           Ensayos oEnsayo = (Ensayos) ltvEnsayos.SelectedItem;
 
-          dcf001.detallesensayoodu formulariodetallesodu = new detallesensayoodu(oEnsayo);
-          formulariodetallesodu.ShowDialog();
+          detallesensayoodu formulariodetallesidu = new detallesensayoodu(oEnsayo);
+          formulariodetallesidu.ShowDialog();
 
       }
       catch (Exception ex)
@@ -427,6 +503,57 @@ namespace dcf001
         btnReimprimirCaja.IsEnabled = false;
         btnReimprimirProducto.IsEnabled = false;
       }
+    }
+
+    private void txtBusqueda_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+      searchEnsayo();
+    }
+
+    private void btnSearch_Click(object sender, RoutedEventArgs e)
+    {
+      searchEnsayoLikeSerie();
+    }
+
+    private void searchEnsayoLikeSerie(){
+      if(txtBusqueda.Text.Trim().Length<5){
+        excepcion oMsg = new excepcion("Listado de ensayos", String.Format("Para limitar el tráfico con la BBDD,{0}le pedimos que ingrese al menos 5 caracteres del nro . de serie.", System.Environment.NewLine));
+        oMsg.ShowDialog();
+        oMsg = null;
+        return;
+      }
+      try
+      {
+        ltvEnsayos.Items.Clear();
+        
+        ShowLoadingUIComponent();
+
+        lblTitleEnsayos.Content = "Ensayos";
+        ListaEnsayos = ManejadorEnsayos.ObtenerEnsayosPorSerie(this.txtBusqueda.Text);
+
+        LlenarEnsayos(false);
+
+      }
+      catch (Exception ex)
+      {
+        logger.Error("btnConsultar_Click()", ex);
+        excepcion formularioexepciones = new excepcion(ex);
+        formularioexepciones.ShowDialog();
+        formularioexepciones = null;
+      }
+
+      HideLoadingUIComponent();
+      if (ltvEnsayos.Items.Count <= 0)
+      {
+        excepcion oMsg = new excepcion("Listado de ensayos", String.Format("No hay ensayos que mostrar con le número de serie indicado.", System.Environment.NewLine));
+        oMsg.ShowDialog();
+        oMsg = null;
+      }
+    }
+
+    private void imgRefresh_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+      searchEnsayoLikeSerie();
     }
 	}
 }

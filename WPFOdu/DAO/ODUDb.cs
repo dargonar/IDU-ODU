@@ -10,6 +10,101 @@ namespace iDU.DAO
 {
     class ODUDb : BaseDAO
     {
+
+      public override List<Ensayos> ObtenerEnsayosPorSerie(string numero_serie)
+      {
+        if (String.IsNullOrEmpty(numero_serie))
+          return new List<Ensayos>();
+
+        using (MySqlConnection conn = ConectarBaseDeDatos())
+        {
+          List<Ensayos> listaensayos = new List<Ensayos>();
+
+          string parametro = "%" + numero_serie.Trim() + "%";
+          string sql = " select ensayosrealizadosodu_id, ensayosrealizadosodu_marca, ensayosrealizadosodu_modelo, ensayosrealizadosodu_codigo, " +
+                      " ensayosrealizadosodu_serie, ensayosrealizadosodu_fecha, ensayosrealizadosodu_aprobado, ensayosrealizadosodu_dcf, " +
+                      " ensayosrealizadosodu_diferenciadetemperatura, ensayosrealizadosodu_temperaturaambiente, ensayosrealizadosodu_humedad, ensayosrealizadosodu_tensionalta, " +
+                      " ensayosrealizadosodu_tensionbaja, ensayosrealizadosodu_corrientealta, ensayosrealizadosodu_corrientebaja, ensayosrealizadosodu_potenciaalta, " +
+                      " ensayosrealizadosodu_factordepotencia, ensayosrealizadosodu_velocidadalta, ensayosrealizadosodu_velocidadbaja, ensayosrealizadosodu_presioninicial, " +
+                      " ensayosrealizadosodu_presionbajatension, ensayosrealizadosodu_presionensayo, ensayosrealizadosodu_presionrecuperacion, ensayosrealizadosodu_flags, " +
+                      " ensayosrealizadosodu_tensionaltacalor, ensayosrealizadosodu_corrientealtacalor, ensayosrealizadosodu_factordepotenciacalor, ensayosrealizadosodu_potenciaaltacalor, " +
+                      " ensayosrealizadosodu_velocidadaltacalor, ensayosrealizadosodu_temperaturaaltacalor, ensayosrealizadosodu_temperaturaambientecalor, ensayosrealizadosodu_humedadcalor, " +
+                      " ensayosrealizadosodu_presionbajatensioncalor, ensayosrealizadosodu_vacio, ensayosrealizadosodu_hipot, ensayosrealizadosodu_fuga, ensayosrealizadosodu_observaciones, " +
+                      " ensayosrealizadosodu_tiempoensayo , ensayosrealizadosodu_usuario " +
+                      " from ensayosrealizadosodu " +
+                      " where LOWER(ensayosrealizadosodu_serie) like '{0}' " +
+                      " order by ensayosrealizadosodu_fecha desc ;";
+          sql = string.Format(sql, parametro.ToLower());
+
+          MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+          MySqlDataReader reader = cmd.ExecuteReader();
+
+          while (reader.Read())
+          {
+            EnsayosODU nuevoensayo = new EnsayosODU();
+
+
+            if (reader.GetInt32("ensayosrealizadosodu_aprobado") == 1)
+            {
+
+              nuevoensayo.Aprobado = true;
+            }
+            else
+            {
+              nuevoensayo.Aprobado = false;
+            }
+
+
+            nuevoensayo.Codigo = reader.GetString("ensayosrealizadosodu_codigo");
+            nuevoensayo.Corrientehc = reader.GetFloat("ensayosrealizadosodu_corrientealtacalor");
+            nuevoensayo.Corrienteh = reader.GetFloat("ensayosrealizadosodu_corrientealta");
+            nuevoensayo.Tiempoensayo = reader.GetInt32("ensayosrealizadosodu_tiempoensayo");
+            nuevoensayo.Corrientel = reader.GetFloat("ensayosrealizadosodu_corrientebaja");
+            nuevoensayo.Cosf = reader.GetFloat("ensayosrealizadosodu_factordepotencia");
+            nuevoensayo.Cosfc = reader.GetFloat("ensayosrealizadosodu_factordepotenciacalor");
+            nuevoensayo.DCF = reader.GetString("ensayosrealizadosodu_dcf");
+            nuevoensayo.Fecha = reader.GetDateTime("ensayosrealizadosodu_fecha");
+            nuevoensayo.Flags = reader.GetFloat("ensayosrealizadosodu_flags");
+            nuevoensayo.Fuga = reader.GetString("ensayosrealizadosodu_fuga"); ;
+            nuevoensayo.Hipot = reader.GetString("ensayosrealizadosodu_hipot");
+            nuevoensayo.Humedad = reader.GetFloat("ensayosrealizadosodu_humedad");
+            nuevoensayo.Humedadc = reader.GetFloat("ensayosrealizadosodu_humedadcalor");
+            nuevoensayo.ID = reader.GetInt32("ensayosrealizadosodu_id");
+            nuevoensayo.Marca = reader.GetString("ensayosrealizadosodu_marca");
+            nuevoensayo.Observaciones = reader.GetString("ensayosrealizadosodu_observaciones");
+            nuevoensayo.Potenciah = reader.GetFloat("ensayosrealizadosodu_potenciaalta");
+            nuevoensayo.Potenciahc = reader.GetFloat("ensayosrealizadosodu_potenciaaltacalor");
+            nuevoensayo.Presion1 = reader.GetFloat("ensayosrealizadosodu_presioninicial");
+            nuevoensayo.Presion2 = reader.GetFloat("ensayosrealizadosodu_presionbajatension");
+            nuevoensayo.Presion3 = reader.GetFloat("ensayosrealizadosodu_presionrecuperacion");
+            nuevoensayo.Presion4 = reader.GetFloat("ensayosrealizadosodu_presionensayo");
+            nuevoensayo.Presionc = reader.GetFloat("ensayosrealizadosodu_presionbajatensioncalor");
+            nuevoensayo.Serie = reader.GetString("ensayosrealizadosodu_serie");
+            nuevoensayo.Tamb = reader.GetFloat("ensayosrealizadosodu_temperaturaambiente");
+            nuevoensayo.Tambc = reader.GetFloat("ensayosrealizadosodu_temperaturaambientecalor");
+            nuevoensayo.Temph = reader.GetFloat("ensayosrealizadosodu_diferenciadetemperatura");
+            nuevoensayo.Temphc = reader.GetFloat("ensayosrealizadosodu_temperaturaaltacalor");
+            nuevoensayo.Tensionh = reader.GetFloat("ensayosrealizadosodu_tensionalta");
+            nuevoensayo.Tensionhc = reader.GetFloat("ensayosrealizadosodu_tensionaltacalor");
+            nuevoensayo.Tensionl = reader.GetFloat("ensayosrealizadosodu_tensionbaja");
+            nuevoensayo.Vacio = reader.GetString("ensayosrealizadosodu_vacio");
+            nuevoensayo.Velocidadh = reader.GetFloat("ensayosrealizadosodu_velocidadalta");
+            nuevoensayo.Velocidadhc = reader.GetFloat("ensayosrealizadosodu_velocidadaltacalor");
+            nuevoensayo.Velocidadl = reader.GetFloat("ensayosrealizadosodu_velocidadbaja");
+            nuevoensayo.Modelo = reader.GetString("ensayosrealizadosodu_modelo");
+            nuevoensayo.Usuario = reader.GetString("ensayosrealizadosodu_usuario");
+            listaensayos.Add(nuevoensayo);
+          }
+
+          reader.Close();
+          return listaensayos;
+
+        }
+
+      }
+
+        
         public override List<Ensayos> ObtenerEnsayos()
         {
             using (MySqlConnection conn = ConectarBaseDeDatos())

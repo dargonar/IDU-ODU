@@ -1,4 +1,4 @@
-Modelo;895;1730;24;120;23;Arial;1;0;0;0;
+﻿Modelo;895;1730;24;120;23;Arial;1;0;0;0;
 ModeloPeq;1100;1450;250;320;9;Arial;0;0;0;0;
 Capacidad;60;800;212;260;12;Arial;1;0;0;0;
 ModoFrio;802;1500;950;1050;20;Arial;1;0;0;0;
@@ -26,8 +26,8 @@ CodigoBarraConjunto;930;1730;147;120;30;Free 3 of 9 Extended;0;0;0;0;
 CodigoAAE;516;550;943;980;7;Arial;1;0;0;0;
 FixAAE;310;550;943;980;7;Arial;1;0;0;0;CÓDIGO AAE:
 EANBarCode;930;1730;630;120;45;Code EAN13;0;0;0;0;
-Nro_Serie_BarCode;1010;1580;430;580;26;Free 3 of 9 Extended;0;0;0;0;
-Nro_Serie_Small;1110;1580;510;580;8;Arial;1;0;0;0;
+Nro_Serie_BarCode;930;1580;425;580;28;Free 3 of 9 Extended;0;0;0;0;
+Nro_Serie_Small;1110;1580;515;580;7;Arial;0;0;0;0;
 -- 3 of 9 Barcode
 -- Modelo;895;1730;24;120;23;Arial;1;0;0;0;
 -- ModeloPeq;1050;1450;280;320;11;Arial;0;0;0;0;
